@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JDBC 테스트</title>
+</head>
+<body>
+	<h1>JDBC 테스트</h1>
+	
+<% 
+
+//하기 3가지 항상 선언
+	Connection conn = null; // 접속 객체
+	PreparedStatement pstmt = null; //쿼리객체
+	ResultSet rs = null; // 쿼리결과 객체
+	
+try {
+	Class.forName("com.mysql.jdbc.Driver"); //JDBC 드라이버 로드
+		//out.print("드라이버 로드 성공");
+		String url = "jdbc:mysql://localhost:3306/mysql"; //접속url
+		String user = "root";
+		String passwd = "";
+		conn = DriverManager.getConnection(url, user, passwd); //DB에 연결
+		out.print(conn); //
+		
+	} catch (Exception e) {
+		out.print(e);
+	}
+
+%>
+
+
+
+</body>
+</html>

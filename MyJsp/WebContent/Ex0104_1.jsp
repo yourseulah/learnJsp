@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%
 	//자바문법 적용 영역 
 	out.print("안녕하세요" +"<br>");
@@ -20,6 +21,7 @@
 	}
 	out.print("1~10까지의 합" + total + "<br>");
 %>
+
 </body>
 
 </html>
