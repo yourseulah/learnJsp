@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<%
+	request.setCharacterEncoding("utf-8"); 
+	String b_num = request.getParameter("b_num"); //Get 방식에 의한 전송
+%>
+
+	<h3>상세보기</h3>
+	<a href="./list.jsp">글목록</a>
+
+<%
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String qury = "";
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		String url = "jdbc:mysql://localhost:3360/mysql";
+		String user = "root";
+		String passwd = "";
+		conn = DriverManager.getConnection(url, user, passwd);
+		//out.print(conn);
+		
+		query = "select * from tblboard where b_num = ?" ; // ?를 사용해서 b_num에 대응하도록 설정
+		pstmt = conn.prepareStatement(query);
+		pstmt.setInt(1, Integer.parseInt(b_num)); //정수형  
+		
+	}
+%>
+
+
+</body>
+</html>
