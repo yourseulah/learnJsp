@@ -14,8 +14,8 @@
 	//여기서는 데이터를 넘기고 받을때 한글로처리 / 상단에 1~2라인은 이 파일 자체를 한글로처리
 	String b_subject = request.getParameter("b_subject"); 
 	String b_name = request.getParameter("b_name");
-	String b_contents = request.getParameter("b_contents"); //굳이 확인할 필요는 없지만 출력이 잘 되는지 확인하기
-	out.print(b_subject + "/" + b_name + "/" + b_contents); 
+	String b_contents = request.getParameter("b_contents"); 
+	out.print(b_subject + "/" + b_name + "/" + b_contents); //굳이 확인할 필요는 없지만 출력이 잘 되는지 확인하기
 %>
 
 <%

@@ -46,7 +46,10 @@
 		String b_name = rs.getString("b_name");
 		String b_contents = rs.getString("b_contents");
 		String b_date = rs.getString("b_date");
-		b_contents = b_contents.replace("\n", "<br>");  //이것이 무엇인가?
+		b_contents = b_contents.replace("\n", "<br>");  // <br>로 치환해서 업데이트 
+		// write.jsp에서 textarea에서는 줄바꿈이 가능한데 
+		// view.jsp에서 일반적인 <td>같이 다른곳에서는 가능하지 않으므로 
+		// 그걸 가능하게/연출 해주기 위해서 .relace("<br>")로 줄바꿈이 반영되도록 한다.  
 %>
 
 	<table border="1">
@@ -63,17 +66,17 @@
 		<td align="center" width="300"><%=b_name %><br></td>
 	</tr>	
 	<tr>	
-		<td align="center" width="150">작성일</td>
+		<td align="center" width="150">내용</td>
 		<td align="center" width="300"><%=b_contents %><br></td>
 	</tr>	
 	<tr>	
-		<td align="center" width="150">등록일</td> 
+		<td align="center" width="150">작성일</td> 
 		<td align="center" width="300"><%=b_date %><br></td>
 	</tr>
 	<tr>
 		<td align="center" colspan="2">
-			수정 : update.jsp
-			삭제 : delete.jsp 
+			<a href="./update.jsp?b_num=<%=b_num %>">[수정]</a> &nbsp;&nbsp;
+			<a href="./delete.jsp?b_num=<%=b_num %>">[삭제]</a>
 		</td>
 	</tr>
 	</table>
