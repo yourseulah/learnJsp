@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.BoardMapper">
+	
+	<select id="getlist" resultType="com.it.domain.BoardVO"> 
+		select * from tblboard order by b_num desc
+	</select>
+	
+	<insert id="insert"> 
+		insert into tblboard (b_subject, b_name, b_contents) <!-- 테이블필드명 -->
+		values (#{b_subject}, #{b_name}, #{b_contents}) <!-- boardVO에 있는 입력되는 내용 3개 -->
+	</insert>
+	
+	<select id="read" resultType="com.it.domain.BoardVO"> <!-- 반환받는게 있을때 resultType써준다 -->
+		select * from tblboard where b_num = #{b_num}
+	</select>
+	
+	<update id="update">
+		update tblboard set b_subject = #{b_subject},
+		b_name = #{b_name}, b_contents = #{b_contents}
+		where b_num = #{b_num}
+	</update>
+	
+	<delete id="delete">
+		delete from tblboard where b_num = #{b_num}
+	</delete>
+	
+</mapper>
+
