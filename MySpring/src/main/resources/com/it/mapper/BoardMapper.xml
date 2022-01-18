@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.mapper.BoardMapper">
 	
-	<select id="getlist" resultType="com.it.domain.BoardVO"> 
+	<select id="getList" resultType="com.it.domain.BoardVO"> 
 		select * from tblboard order by b_num desc
 	</select>
 	

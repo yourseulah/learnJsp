@@ -1,6 +1,5 @@
 package com.it.mapper;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,11 +18,12 @@ public class BoardMapperTest {
 	
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
-	// BoardMapper 인터페이스의 객체 mapper 를 @Setter를 통해 만들어줌?
+	// BoardMapper 인터페이스의 mapper변수/객체를 선언만 해놓고 생성이 안되어 있는데 밑에서 갔다가 쓸수 있는 이유는 
+	// 기본생성을 @Setter 를통해 (의존성주입 dependency injection) 해주었기때문이다.
 	
-	@Test
+	//@Test
 	public void testGetList() { //전체를 읽는것
-		mapper.getlist().forEach(board ->log.info(board)); //레코드만큼 반복하는 람다식
+		mapper.getList().forEach(board ->log.info(board)); //레코드만큼 반복하는 람다식
 	}
 	
 	//@Test
