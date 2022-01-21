@@ -8,7 +8,7 @@
 <div class="container-fluid">
 
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">Write Post</h1>
+	<h1 class="h3 mb-2 text-gray-800">Update Post</h1>
 	<p class="mb-4"></p>
 
 	<!-- Write page Example -->
@@ -21,28 +21,42 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<form class="user" method="post" action="/board/insert">
+
+				<form class="user" method="post" action="/board/update">
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>제목</label>
-							<input type="text" class="form-control form-control-user"
-							 name="b_subject" placeholder="제목">
+							<label>번호</label> <input type="text"
+								class="form-control form-control-user" name="b_num"
+								value="${board.b_num}" readonly>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-6 mb-3 mb-sm-0">
+							<label>제목</label> <input type="text"
+								class="form-control form-control-user" name="b_subject"
+								value="${board.b_subject}">
 						</div>
 						<div class="col-sm-6">
-						<label>작성자</label>
-							<input type="text" class="form-control form-control-user"
-								name="b_name" placeholder="작성자">
+							<label>작성자</label> <input type="text"
+								class="form-control form-control-user" name="b_name"
+								value="${board.b_name}">
 						</div>
 					</div>
 					<div class="form-group">
 						<label>내용</label>
-						<textarea rows="10" class="form-control" name="b_contents"
-							placeholder="내용"></textarea>
+						<textarea rows="10" class="form-control" name="b_contents">${board.b_contents}</textarea>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<label>작성일</label> 
+							${board.b_date}
+						</div>
 					</div>
 
-					<input type="submit" class="btn btn-primary btn-user btn-block">
-
+					<input type="submit" class="btn btn-primary btn-user btn-block"
+						value="수정하기">
 				</form>
+
 			</div>
 		</div>
 	</div>

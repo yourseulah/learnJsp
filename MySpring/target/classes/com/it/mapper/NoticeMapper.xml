@@ -24,12 +24,12 @@
 	
 	<update id="update">
 		update tblnotice set n_subject = #{n_subject},
-		n_name=#{n_name}, n_contents = #{n_contents}
+		n_name = #{n_name}, n_contents = #{n_contents}
 		where n_num = #{n_num}
 	</update>
 	
 	<delete id="delete">
-		delete from tblnotice where n_num= #{n_num} 
+		delete from tblnotice where n_num = #{n_num} 
 	</delete>
 	
 	

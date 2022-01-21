@@ -6,7 +6,7 @@ import com.it.domain.BoardVO;
 
 public interface BoardMapper {
 	
-	//board를 안넘겼으니까 BoardMapper.xml에서 #기호를 쓸수 없다.
+	//board를 안넘겼으니까 BoardMapper.xml에서 getList함수에서는 #기호를 쓸수 없다.
 	public List<BoardVO> getList();
 	
 	//하기 4개 메서드는 board를 넘겼으니까 BoardMapper.xml에서 #기호를 쓸수 있다.

@@ -11,7 +11,7 @@ import com.it.mapper.BoardMapper;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
-@Log4j	//로그 추출
+@Log4j	//로그 추출 log.info() 쓸수있게
 @Service //인터페이스를 구현하는데 필요한 내용을 담고 있다
 public class BoardServiceImpl implements BoardService {
 //mapper에서 하던일을 자바코드로 만드는 과정

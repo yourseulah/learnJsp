@@ -19,47 +19,52 @@ public class NoticeMapperTest {
 	@Setter(onMethod_ = @Autowired)
 	private NoticeMapper mapper;
 	
+	
 	//@Test
-	public void testGetNotice() {
-		mapper.getNotice().forEach(notice -> log.info(notice));
+	public void testGetNotice() { //전체읽기
+		mapper.getNotice().forEach(notice->log.info(notice));
+		 //레코드만큼 반복하는 람다식
 	}
 	
 	//@Test
-	public void testInsert() {
+	public void testInsert() { //입력
 		NoticeVO notice = new NoticeVO();
-		notice.setN_subject("공지사항테스트입니다.");
-		notice.setN_name("이슬아");
-		notice.setN_contents("공지사항");
-		//log.info(notice);
-		mapper.insert(notice);
+		notice.setN_subject("안녕");
+		notice.setN_name("서창빈");
+		notice.setN_contents("spring프래임워크");
+		mapper.insert(notice); //notice 객체를 테이블에 넣는 문법
+		log.info(notice); 
+		//notice객체생성이 잘 만들어 졌는지, 즉 데이터가 만들어졌는지 확인하기 위한 로그찍기
+		//b_num이나 b_date는 데이터베이스가 찍어주는 건데 지금 확인만한거니까 
+		//b_num=0이나 b_date=null으로 나오는것
 	}
 	
 	//@Test
-	public void testRead() {
+	public void testRead() { //특정레코드읽기
 		NoticeVO notice = new NoticeVO();
-		notice.setN_num(2); 
+		notice.setN_num(1); // 1번을 notice객체에 저장 
+		//반환받는게 있다면 비어있는 객체를 생성해서 아와야 함
 		notice = mapper.read(notice);
-		//log.info(notice);
-		log.info(mapper.read(notice)); //리턴받는거니까 
+		log.info(notice);
 	}
 	
 	//@Test
-	public void testUpdate() {
+	public void testUpdate() { //업데이트
 		NoticeVO notice = new NoticeVO();
 		notice.setN_num(2);
-		notice.setN_subject("게시판내용 수정합니다.");
-		notice.setN_name("슬아");
-		notice.setN_contents("게시판내용 수정123");
-		//log.info(notice);
+		notice.setN_subject("안녕");
+		notice.setN_name("한지성");
+		notice.setN_contents("자바프로그래밍 잘하고싶다");
 		mapper.update(notice);
 	}
 	
 	@Test
-	public void testDelete() {
+	public void testDelete() { //삭제
 		NoticeVO notice = new NoticeVO();
 		notice.setN_num(3);
 		mapper.delete(notice);
 	}
+	
 	
 	
 	
