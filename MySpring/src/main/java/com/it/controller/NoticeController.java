@@ -73,6 +73,8 @@ public class NoticeController {
 		//update.jsp로 넘겨주는 model객체 선언
 		log.info("---업데이트를 위한 번호 ---");
 		log.info(notice);
+		
+		
 		//notice로 데이터 들어온것 확인 (mapper까지 내려감)
 		//글번호 하나만 받은 board를 service의 read함수로 모든 데이터를 다시 notice객체에 대입
 		notice = service.read(notice); 
@@ -81,7 +83,7 @@ public class NoticeController {
 		
 		//글번호에 해당하는 모든 정보를 담은 board를 변수"notice"로 view.jsp에 넘겨준다.
 		//왼쪽board : jsp에서 사용할명칭 (따라서 다른이름도 상관없는데 의미부여를위해)
-		//오른쪽board : 위에서 데이터받은 객체
+		//오른쪽board : 위에서 데이터받은 객체   
 		model.addAttribute("notice", notice);
 	}
 	
