@@ -15,9 +15,9 @@
 		
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/mysql?serverTimezone=Asia/Seoul"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value=""></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/webjava?serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="javauser"></property>
+		<property name="password" value="webjava"></property>
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

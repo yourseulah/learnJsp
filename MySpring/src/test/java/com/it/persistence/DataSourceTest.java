@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -35,7 +36,7 @@ public class DataSourceTest {
 		}
 	}
 	
-	//@Test
+	@Test
 	public void testMybatis() {
 		try {
 			SqlSession session = sqlSessionFactory.openSession();

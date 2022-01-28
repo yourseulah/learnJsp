@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.MemberMapper">
+	
+	<select id="getList" resultType="com.it.domain.MemberVO"> 
+		select * from tblmember order by m_id
+	</select>
+	
+	<insert id="insert"> 
+		insert into tblmember (m_id, m_passwd, m_name) <!-- 테이블필드명 -->
+		values (#{m_id}, #{m_passwd}, #{m_name}) <!-- boardVO에 있는 입력되는 내용 3개 -->
+	</insert>
+	
+	<select id="read" resultType="com.it.domain.MemberVO"> <!-- 반환받는게 있을때 resultType써준다 -->
+		select * from tblmember where m_id = #{m_id}
+	</select>
+	
+	<!-- 아이디 패스워드처리용 쿼리 만들기 -->
+	<!-- 하지만 mapper 레벨 쿼리를 이렇게 막 많이 만드는건 좋은 방법이 아님 service레벨 인터페이스로 -->
+	<!-- <select id="auth" resultType="com.it.domain.MemberVO">
+		select * from tblmember where m_id = #{m_id} and m_id = #{m_id}
+	</select> -->
+	
+	
+	<update id="update">
+		update tblmember set m_name = #{m_name}, m_passwd = #{m_passwd}, m_udate = sysdate()
+		where m_id= #{m_id} 
+	</update>
+	
+	<delete id="delete">
+		delete from tblmember where m_id = #{m_id}
+	</delete>
+	
+</mapper>

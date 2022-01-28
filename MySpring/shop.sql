@@ -1,16 +1,52 @@
 /*쇼핑몰구현*/
-use mysql;
+use webjava;
 
+/* 데이터베이스 생성
+create database webjava default character set utf8;
+*/
+/* 데이터베이스 오픈 
+show databases;
+use webjava;
+*/
+
+/* 유저 생성 및 암호 지정
+grant all privileges on webjava.* to javauser@localhost identified by 'webjava';
+ */
+
+/* tblboard 테이블 */
+create table tblboard (
+ b_num int not null primary key AUTO_INCREMENT,
+ b_subject varchar(100) not null,
+ b_contents varchar(2000) not null,
+ b_name varchar(50) not null,
+ b_date datetime not null default sysdate()
+);
+
+select * from tblboard;
+INSERT INTO tblboard (b_subject, b_name, b_contents) VALUES ('제목이다','홍길동','jsp프로그래밍');
+
+/* tblnotice 테이블 */
+create table tblnotice (
+ n_num int not null primary key AUTO_INCREMENT,
+ n_subject varchar(100) not null,
+ n_contents varchar(2000) not null,
+ n_name varchar(50) not null,
+ n_date datetime not null default sysdate()
+);
+
+select * from tblnotice;
+INSERT INTO tblnotice (n_subject, n_name, n_contents) VALUES ('제목이다','홍길동','jsp프로그래밍');
 
 /* 고객테이블*/
 create table tblmember (
 	m_id varchar(50) not null primary key, -- 아이디 
+	m_passwd varchar(50) not null, -- 비밀번호
 	m_name varchar(50) not null, -- 성명
 	m_rdate datetime not null default sysdate(),
 	m_udate datetime not null default sysdate()
 );
 
--- select * from tblmember;
+--select * from tblmember;
 
 /* 상품테이블*/
 create table tblproduct(
@@ -55,7 +91,7 @@ create table tblcartsub(
 );
 
 alter table tblcartsub auto_increment=1001;
--- select * from tblcartsub;
+select * from tblcartsub;
 
 /* 주문 main */
 create table tblordermain (
@@ -85,9 +121,8 @@ create table tblordersub(
 alter table tblordersub auto_increment=1001;
 -- select * from tblordersub;
 
-/* 전체 테이블 삭제 코드 미리 만들어 놓기*/
-/*
- * foreign key가 먼저 있는 것 부터
+/* 전체 테이블 삭제 코드 미리 만들어 놓기
+foreign key가 먼저 있는 것 부터
 drop table tblordersub;
 drop table tblordermain;
 drop table tblcartsub;
@@ -96,9 +131,8 @@ drop table tblproduct;
 drop table tblmember;
 */
 
-
-insert into tblmember (m_id, m_name) values ('tiger', '홍길동');
-insert into tblmember (m_id, m_name) values ('lion', '김삿갓');
+insert into tblmember (m_id, m_name, m_passwd) values ('tiger', '홍길동', '1234');
+insert into tblmember (m_id, m_name, m_passwd) values ('lion', '김삿갓', '1234');
 select * from tblmember;
 
 insert into tblproduct (p_name, p_price) values ('삼성냉장고200리터', 1000000);
@@ -160,7 +194,7 @@ insert into tblordersub (om_code, p_code, os_cnt)
 	where cm_code = (select cm_code from tblcartmain where m_id = 'tiger');
 -- sub query, 부질의 : 미리 추려내서 성능이 더 좋다 
 
-delete from tblordersub;
+-- delete from tblordersub;
 	
 /* tiger가 가장 최근에 구매한 내역 */
 -- 가장 최근에 tiger가 주문한 주문번호 : subquery로 들어갈 질의문
@@ -220,10 +254,14 @@ select om.om_code, om.m_id, os.p_code, os.os_cnt,
 select sum(p.p_price * os.os_cnt)
 from tblordermain om, tblordersub os, tblproduct p
 	where p.p_code = os.p_code
+	and om.om_code = os.om_code
 	and om.om_code = (select om_code from tblordermain where m_id = 'lion'
 		order by om_code desc limit 1);
 		
-select * from tblordersub;
+desc tblmember;
+select * from tblmember;
+
+delete from tblmember where m_id = '1';
 		
 		
 		

@@ -93,6 +93,7 @@ public class NoticeController {
 		log.info(notice);
 		service.update(notice); //업데이트
 		return "redirect:/notice/view?n_num=" + notice.getN_num();
+		//get으로 넘길때 id값이 영문이어야만 한다. 한글 못읽음
 	}
 	
 	@GetMapping("/delete")
