@@ -17,7 +17,7 @@ public class MemberServiceImpl implements MemberService{
 	@Setter(onMethod_ = @Autowired)
 	private MemberMapper mapper;
 	
-	@Override //BoardService인터페이스에서 선언된 메서드 이름과 동일하게 
+	@Override //MemberService인터페이스에서 선언된 메서드 이름과 동일하게 
 	public MemberVO read(MemberVO member) {
 		return mapper.read(member);
 	}
@@ -35,7 +35,7 @@ public class MemberServiceImpl implements MemberService{
 			
 			if(member.getM_passwd().equals(tmp.getM_passwd())) { //암호동일할경우 
 				//member.getM_passwd() : 사용자가 입력한 passwd 
-				//tmp.getM_passwd() : id를 가지고 테이블 레코드의 passwd  
+				//tmp.getM_passwd() : id를 가지고 조회한 테이블 레코드의 passwd  
 				
 				log.info(tmp); //진짜 정보 들어있고
 				log.info("인증성공");

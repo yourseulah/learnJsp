@@ -63,7 +63,6 @@ alter table tblproduct auto_increment=1001;
 -- select * from tblproduct;
 
 /* 장바구니 main */
--- 언제 
 -- 실제 정보는 장바구니sub로 분리
 create table tblcartmain (
 	cm_code int not null primary key auto_increment,
@@ -72,7 +71,7 @@ create table tblcartmain (
 	-- 항상 실제 상품을 조회해서 가져오는것이 더 데이터를 안전하게 사용할수 있다. 이건 장바구니sub에서
 	cm_rdate datetime not null default sysdate(),
 	cm_udate datetime not null default sysdate(),
-	constraint foreign key (m_id) references tblmember(m_id) -- constraint 붙이고 안붙이고 상관없음
+	constraint foreign key (m_id) references tblmember(m_id) -- constraint 붙이고 안붙이고 상관없음 이름 주려면 필요
 );
 
 alter table tblcartmain auto_increment=1001;

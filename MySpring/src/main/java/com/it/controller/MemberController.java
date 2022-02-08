@@ -1,5 +1,7 @@
 package com.it.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,6 +88,7 @@ public class MemberController {
 		log.info(member);
 		service.update(member); //업데이트
 		return "redirect:/member/view?m_id=" + member.getM_id();
+		//get으로 넘길때 id값이 영문이어야만 한다. 한글 못읽음
 	}
 
 	@GetMapping("/delete")
@@ -94,5 +97,37 @@ public class MemberController {
 		service.delete(member);
 		return "redirect:/member/list";
 	}
+	
+	@GetMapping("/login")
+	public void  login() {
+		//로그인 페이지 호출
+	}
+	
+	@PostMapping("/login")
+	public void login(MemberVO member, HttpSession session) {
+		log.info(member);
+		//service 쪽 log가 찍히지 않아서 여기서 다시 해주기
+		
+		boolean chk = service.auth(member);
+		if(chk == true) {	
+			member = service.read(member); // auth로는 못가져와서 read로 id와 passwd 가져오기
+			//세션변수 생성하면서 저장하는 setAttribute 메서드
+			//setAttribute (저장할변수이름, 변수값)
+			session.setAttribute("m_id", member.getM_id()); //세션변수 생성
+			session.setAttribute("m_name", member.getM_name()); //세션변수 생성
+			log.info("로그인성공");
+		} else {
+			log.info("로그인실패");
+		}
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		//세션처리용으로 session 
+		session.invalidate(); //세션 끊기, 관련된 모든 변수 삭제 
+		//로그아웃한 뒤에 home으로 가라
+		return "redirect:/";
+	}
+	
 	
 }

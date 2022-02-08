@@ -42,7 +42,7 @@ public class MemberServiceTest {
 	//@Test
 	public void testInsert() {
 		MemberVO member = new MemberVO();
-		member.setM_id("2");
+		member.setM_id("puppy");
 		member.setM_passwd("강아지");
 		member.setM_name("김승민");
 		service.insert(member);
@@ -52,7 +52,7 @@ public class MemberServiceTest {
 	//@Test
 	public void testUpdate() {
 		MemberVO member = new MemberVO();
-		member.setM_id("1");
+		member.setM_id("puppy");
 		member.setM_passwd("뽁아리");
 		member.setM_name("필릭스");
 		service.update(member);
@@ -62,7 +62,7 @@ public class MemberServiceTest {
 	//@Test
 	public void testDelete() {
 		MemberVO member = new MemberVO();
-		member.setM_id("이번");
+		member.setM_id("puppy");
 		service.delete(member);
 	}
 	
