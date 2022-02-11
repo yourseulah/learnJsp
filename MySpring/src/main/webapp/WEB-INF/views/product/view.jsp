@@ -6,7 +6,8 @@
 
 <script>
 	function ImgWinOpen(p_code) {
-		alert(p_code);
+		window.open("/product/imgupload?p_code="+p_code,"","width=500,height=300,menubar=no,toobar=no, status=no,scrollbars=no,");
+		
 	}
 </script>
 
