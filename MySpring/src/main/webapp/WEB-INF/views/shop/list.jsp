@@ -24,7 +24,7 @@
 
 					<tbody>
 						<!-- JSTL 반복문 사용 -->
-						<c:set var="cnt" value="0" /> <!-- 변수선언 -->
+						<c:set var="cnt" value="0" /> <!-- 아직 몇개인지 모르니까 변수선언 -->
 						<c:forEach items ="${list}" var="product" > <!-- Controller에서 넘어온 넘어온 list배열로부터 product변수에 각각 저장하고 forEach 반복구문으로 뽑아온다 -->
 							<c:choose>
 							<c:when test="${cnt % 3 == 0}"> <!-- 3으로 나눈 나머지가 0인그룹 -->
@@ -35,6 +35,20 @@
 									<tr><td>상품이름 : ${product.p_name}</td><tr>
 									<tr><td><img src="/resources/product/${product.p_code}.jpg" width="230" height="300"></td></tr>
 									<tr><td>상품가격 : ${product.p_price}</td><tr>
+									<tr>
+										<td>
+										<form method="post" action="/shop/cart">
+											<input type="hidden" name="p_code" value="${product.p_code}">
+											<select name="cs_cnt">
+												<c:forEach var="count" begin="0" end="30" step="1">
+												<option value="${count}">${count}개</option>
+												</c:forEach>
+											</select> &nbsp;&nbsp;
+											<input type="submit" value="장바구니">
+										</form>
+										</td>
+									</tr>
+								
 								</table>
 								</td>
 							</c:when>
@@ -46,6 +60,19 @@
 									<tr><td>상품이름 : ${product.p_name}</td><tr>
 									<tr><td><img src="/resources/product/${product.p_code}.jpg" width="230" height="300"></td></tr>
 									<tr><td>상품가격 : ${product.p_price}</td><tr>
+									<tr>
+										<td>
+										<form method="post" action="/shop/cart">
+											<input type="hidden" name="p_code" value="${product.p_code}">
+											<select name="cs_cnt">
+												<c:forEach var="count" begin="0" end="30" step="1">
+												<option value="${count}">${count}개</option>
+												</c:forEach>
+											</select> &nbsp;&nbsp;
+											<input type="submit" value="장바구니">
+										</form>
+										</td>
+									</tr>
 								</table> 
 								</td>
 							</tr>
@@ -58,6 +85,19 @@
 									<tr><td>상품이름 : ${product.p_name}</td><tr>
 									<tr><td><img src="/resources/product/${product.p_code}.jpg" width="230" height="300"></td></tr>
 									<tr><td>상품가격 : ${product.p_price}</td><tr>
+									<tr>
+										<td>
+										<form method="post" action="/shop/cart">
+											<input type="hidden" name="p_code" value="${product.p_code}">
+											<select name="cs_cnt">
+												<c:forEach var="count" begin="0" end="30" step="1">
+												<option value="${count}">${count}개</option>
+												</c:forEach>
+											</select> &nbsp;&nbsp;
+											<input type="submit" value="장바구니">
+										</form>
+										</td>
+									</tr>
 								</table>  
 								</td>
 							</c:otherwise>
@@ -66,25 +106,6 @@
 							
 							<c:set var="cnt" value="${cnt+1}" /> <!-- cnt = cnt + 1 -->
 						</c:forEach>
-						
-						
-						
-						
-						
-						<!-- 
-						<c:forEach items="${list}" var="product"> 
-						 Controller에서 넘어온 list배열로부터 product변수에 각각 저장하고 forEach 반복구문으로 뽑아온다
-						 	<tr>
-								<td>${product.p_code}</td>
-								<td><a href="/product/view?p_code=${product.p_code}">${product.p_name}</a></td>
-								<td>${product.p_price}</td>
-								get방식에서는 띄어쓰기 X, &으로 여러개 넘길수도 있음
-								<td><img src="/resources/product/${product.p_code}.jpg" height="70"></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${product.p_rdate}"/></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${product.p_udate}"/></td>
-							</tr>
-						</c:forEach>
-						 -->
 						
 					</tbody>
 				</table>

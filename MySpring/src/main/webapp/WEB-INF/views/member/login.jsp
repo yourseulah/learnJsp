@@ -38,7 +38,7 @@
 								name="m_passwd" placeholder="패스워드">
 						</div>
 					</div>
-					<input type="submit" class="btn btn-primary btn-user btn-block">
+					<input type="submit" class="col-sm-6 btn btn-primary btn-user btn-block">
 
 				</form>
 			</div>

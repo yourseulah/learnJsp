@@ -5,7 +5,7 @@
 <mapper namespace="com.it.mapper.ProductMapper">
 	
 	<select id="getList" resultType="com.it.domain.ProductVO"> 
-		select * from tblproduct order by p_code desc
+		select * from tblproduct order by p_code asc
 	</select>
 	
 	<insert id="insert"> 

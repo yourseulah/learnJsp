@@ -145,10 +145,10 @@ insert into tblcartmain (m_id) values ('tiger'); -- tiger 장바구니코드발�
 insert into tblcartmain (m_id) values ('lion'); -- lion 장바구니코드발생
 select * from tblcartmain;
 
-insert into tblcartsub(cm_code, p_code, cs_cnt) values (1001, 1001, 1);
-insert into tblcartsub(cm_code, p_code, cs_cnt) values (1001, 1003, 5);
-insert into tblcartsub(cm_code, p_code, cs_cnt) values (1002, 1002, 1);
-insert into tblcartsub(cm_code, p_code, cs_cnt) values (1002, 1004, 3);
+insert into tblcartsub(cm_code, p_code, cs_cnt) values (1003, 1001, 1);
+insert into tblcartsub(cm_code, p_code, cs_cnt) values (1003, 1003, 5);
+insert into tblcartsub(cm_code, p_code, cs_cnt) values (1004, 1002, 1);
+insert into tblcartsub(cm_code, p_code, cs_cnt) values (1004, 1004, 3);
 select * from tblcartsub;
 
 -- 시뮬레이션 시작 --
@@ -261,8 +261,16 @@ from tblordermain om, tblordersub os, tblproduct p
 desc tblmember;
 select * from tblmember;
 
-delete from tblmember where m_id = '1';
-		
+--이 순서대로
+delete from tblordersub;
+delete from tblordermain;
+delete from tblcartsub;
+delete from tblcartmain;
+	
+desc tblcartsub;
+desc tblcartmain;
+select * from tblcartmain;
+select * from tblcartsub;
 		
 		
 

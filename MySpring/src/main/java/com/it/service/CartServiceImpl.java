@@ -1,0 +1,71 @@
+package com.it.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.it.domain.CartmainVO;
+import com.it.domain.CartsubVO;
+import com.it.mapper.CartMapper;
+
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+
+@Log4j	
+@Service 
+public class CartServiceImpl implements CartService {
+
+	@Setter(onMethod_ = @Autowired)
+	private CartMapper mapper;
+
+	@Override
+	public void cartinsert(CartmainVO cartmain, CartsubVO cartsub) {
+		//Controller 레벨에서는 로그가찍히는데 그 아래쪽 레벨 인터페이스 구현하는 클라스에서는 안찍힘 
+		//그래서 하기와 같이 쓸수 없음
+		//log.info("----------장바구니 비즈니스로직 ----------");
+		//log.info(cartmain);
+		//log.info(cartsub);
+		//대신 출력문으로 확인
+		//System.out.println(cartmain.getM_id());
+		//System.out.println(cartsub.getP_code() + ":" + cartsub.getCs_cnt());
+		
+		CartmainVO cm = new CartmainVO();
+		cm = mapper.readmainid(cartmain); //세션 아이디를 인수로 조회하여 결과 반환, 있으면 레코드 1개, 없으면 null 
+		if (cm == null) { //cartmain에 해당사용자의 레코드 1개를 신규생성해야 함
+			mapper.insertmain(cartmain); //cartmain에 레코드 추가 
+			//cm_code 가 생성되었으나 조회해야 알수 있음
+			cm = mapper.readmainid(cartmain); //해당 사용자로 신규 추가 후 조회 (몰랐던 cm_code 알수있음) 
+			cartsub.setCm_code(cm.getCm_code()); //조회한 신규cm_code를 cartsub에 추가
+			mapper.insertsub(cartsub);
+		} else { //이미 최소 1개는 카트에 상품이 존재한다는 의미
+			cartsub.setCm_code(cm.getCm_code()); //조회한 신규cm_code를 cartsub에 추가
+			CartsubVO cs = new CartsubVO();
+			cs = mapper.readsubproduct(cartsub);
+			
+			if (cs == null) { //선택한 상품이 장바구니에 없다면 
+				mapper.insertsub(cartsub);	
+			} else { //존재한다면 덧셈하여 치환 - 기존 mapper.updatesub사용
+				//int tmp = cs.getCs_cnt() + cartsub.getCs_cnt(); //기존 + 신규  또는
+				cs.setCs_cnt(cs.getCs_cnt() + cartsub.getCs_cnt()); //기존 + 신규
+				mapper.updatesub(cs);
+				
+			}
+			
+			
+		}
+	}
+	
+	@Override
+	public CartmainVO readcmcode(CartmainVO cartmain) {
+		cartmain = mapper.readmainid(cartmain);
+		return cartmain;
+	}
+
+	@Override 
+	public List<CartsubVO> getListCart(CartsubVO cartsub) {
+		return mapper.getListCart(cartsub);
+	}
+	
+}
+

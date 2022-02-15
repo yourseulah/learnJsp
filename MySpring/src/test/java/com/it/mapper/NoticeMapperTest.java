@@ -1,6 +1,5 @@
 package com.it.mapper;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -58,7 +57,7 @@ public class NoticeMapperTest {
 		mapper.update(notice);
 	}
 	
-	@Test
+	//@Test
 	public void testDelete() { //삭제
 		NoticeVO notice = new NoticeVO();
 		notice.setN_num(3);
