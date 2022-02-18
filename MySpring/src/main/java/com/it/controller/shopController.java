@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it.domain.CartmainVO;
+import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
 import com.it.service.CartService;
 import com.it.service.MemberService;
@@ -53,7 +54,6 @@ public class shopController {
 				//cartmain : 사용자정보가 담겨있고 m_id만 담김
 				//cartsub : 상품정보가 담겨있고
 			//log.info("로그인오케이");
-			
 			return "redirect: /shop/cartinfo";
 		} else {
 			//log.info("로그인안됨");
@@ -62,26 +62,44 @@ public class shopController {
 	}
 	
 	@GetMapping ("/cartinfo")
-	public void cartinfo (HttpSession session, Model model) {
+	public String cartinfo (HttpSession session, Model model) {
 		//장바구니버튼 눌러서 넘어올수도 있고 위에 장바구니로 넘어올수도 있고 - 고려해서 만들기 
 		//해당사용자의 장바구니리스트 tblcartsub에서는 m_id없으니까 cm_code로 
 		
-		//1. 세션아이디를 이용해서 cm_code를 조회해야함
-		//2. cm_code를 이용해서 getListCart 를 조회해서 리스트 출력
+		//로그인상태확인 
 		String m_id = (String)session.getAttribute("m_id");
-		CartmainVO cartmain = new CartmainVO();
-		cartmain.setM_id(m_id);
-		cartmain = cartservice.readcmcode(cartmain);
-		CartsubVO cartsub = new CartsubVO();
-		log.info(cartmain);
-	
-		cartsub.setCm_code(cartmain.getCm_code());
-		log.info(cartsub);
+		String m_name = (String)session.getAttribute("m_name");
+			if (m_id != null) { //로그인이 되어 있다면
 		
-		model.addAttribute("list", cartservice.getListCart(cartsub));
-		//List<CartsubVO> cartlist = cartservice.getListCart(cartsub);
-		//cartlist.forEach(cart -> log.info(cart));
-	}
+				//1. 세션아이디(m_id)를 이용해서 cm_code를 조회해야함
+				CartmainVO cartmain = new CartmainVO();
+				cartmain.setM_id(m_id);
+				cartmain = cartservice.readcmcode(cartmain);
+				log.info(cartmain);
+				
+				if (cartmain != null) { //장바구니에 담은 상품이 있다면 - 같은상품이아니더라도 뭐 하나라도 있으면
+					//cartservice.getListCart(cartmain).forEach(cartsub -> log.info(cartsub));
+					model.addAttribute("list", cartservice.getListCartDetail(cartmain)); 
+				
+					CartmemberDTO carttotal = cartservice.getCartTotal(cartmain); //cm_total만 있으니까
+					carttotal.setCm_code(cartmain.getCm_code()); //cm_code 넣기
+					carttotal.setM_id(m_id); // m_id 넣기
+					carttotal.setM_name(m_name); //m_name 넣기
+					model.addAttribute("carttotal", carttotal); 
+					log.info("장바구니에 담은 상품이 있습니다");
+				} else {
+					log.info("장바구니에 담은 상품이 없습니다 ");
+				}
+					log.info("로그인상태");
+					return "/shop/cartinfo"; //cartinfo 페이지로 이동 (반드시 작성)
+					//이미할일다하고 보내는거라 redirect를 쓰지 않는다
+					
+			} else {
+				log.info("로그아웃상태");
+				return "/member/login"; //컨트롤러의 메서드를 호출후에 jsp로 이동, redirect생략시 jsp 페이지로 바로 이동한다
+
+			}
 	
+}
 	
 }

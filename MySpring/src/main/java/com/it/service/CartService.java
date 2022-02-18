@@ -2,7 +2,9 @@ package com.it.service;
 
 import java.util.List;
 
+import com.it.domain.CartdetailDTO;
 import com.it.domain.CartmainVO;
+import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
 
 public interface CartService {
@@ -13,6 +15,13 @@ public interface CartService {
 	public void cartinsert(CartmainVO cartmain, CartsubVO cartsub);
 	
 	public CartmainVO readcmcode(CartmainVO cartmain);
+	//mapper레벨에서와같이 메서드 이름을 readmainid로 해도 상관없음 
+	//여기서 받을건 정작 cmcode라서 이름을 readcmcode라고 한것뿐임
 	
-	public List<CartsubVO> getListCart(CartsubVO cartsub);
+	public List<CartsubVO> getListCart(CartmainVO cartmain);
+	
+	public List<CartdetailDTO> getListCartDetail(CartmainVO cartmain);
+	
+	public CartmemberDTO getCartTotal(CartmainVO cartmain);
+	
 }

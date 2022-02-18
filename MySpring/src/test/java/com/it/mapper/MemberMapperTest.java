@@ -64,7 +64,7 @@ public class MemberMapperTest {
 	
 	//이로서 CRUD 완료!!! 
 	
-
+	
 	
 	
 }

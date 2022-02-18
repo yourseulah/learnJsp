@@ -35,7 +35,6 @@
 							class="form-control form-control-user" value="${product.p_code}"
 							readonly>
 					</div>
-					
 				</div>
 				
 				<div class="form-group row">

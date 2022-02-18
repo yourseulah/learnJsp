@@ -34,7 +34,7 @@
 									<tr><td>상품코드 : ${product.p_code}</td><tr>
 									<tr><td>상품이름 : ${product.p_name}</td><tr>
 									<tr><td><img src="/resources/product/${product.p_code}.jpg" width="230" height="300"></td></tr>
-									<tr><td>상품가격 : ${product.p_price}</td><tr>
+									<tr><td>상품가격 : <fmt:formatNumber value="${product.p_price}" /></td><tr>
 									<tr>
 										<td>
 										<form method="post" action="/shop/cart">
@@ -59,7 +59,7 @@
 									<tr><td>상품코드 : ${product.p_code}</td><tr>
 									<tr><td>상품이름 : ${product.p_name}</td><tr>
 									<tr><td><img src="/resources/product/${product.p_code}.jpg" width="230" height="300"></td></tr>
-									<tr><td>상품가격 : ${product.p_price}</td><tr>
+									<tr><td>상품가격 : <fmt:formatNumber value="${product.p_price}" /></td><tr>
 									<tr>
 										<td>
 										<form method="post" action="/shop/cart">
@@ -84,7 +84,7 @@
 									<tr><td>상품코드 : ${product.p_code}</td><tr>
 									<tr><td>상품이름 : ${product.p_name}</td><tr>
 									<tr><td><img src="/resources/product/${product.p_code}.jpg" width="230" height="300"></td></tr>
-									<tr><td>상품가격 : ${product.p_price}</td><tr>
+									<tr><td>상품가격 : <fmt:formatNumber value="${product.p_price}" /></td><tr>
 									<tr>
 										<td>
 										<form method="post" action="/shop/cart">

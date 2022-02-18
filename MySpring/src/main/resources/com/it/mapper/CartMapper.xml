@@ -13,7 +13,19 @@
 	<select id="getListCart" resultType="com.it.domain.CartsubVO"> 
 		select * from tblcartsub where cm_code = ${cm_code}
 	</select>
+	<select id="getListCartDetail" resultType="com.it.domain.CartdetailDTO"> 
+		select cs_code, p.p_code, p.p_name, p.p_price, cs.cs_cnt, p.p_price*cs.cs_cnt cs_money <!-- price*cnt : CartdetailDTO의 cs_money에 해당 --> 
+		from tblproduct p, tblcartsub cs
+		where p.p_code = cs.p_code
+		and cs.cm_code = #{cm_code}
+	</select>
 	
+	<select id="getCartTotal" resultType="com.it.domain.CartmemberDTO">
+		select sum(p.p_price * cs.cs_cnt) cm_total
+		from tblproduct p, tblcartsub cs
+		where p.p_code = cs.p_code
+		and cs.cm_code = #{cm_code}
+	</select>
 	
 	<select id="readmain" resultType="com.it.domain.CartmainVO"> 
 		select * from tblcartmain where cm_code = #{cm_code}
