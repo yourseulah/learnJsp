@@ -266,11 +266,16 @@ delete from tblordersub;
 delete from tblordermain;
 delete from tblcartsub;
 delete from tblcartmain;
+
+delete from tblordermain;
+delete from tblordersub;
 	
 desc tblcartsub;
 desc tblcartmain;
 select * from tblcartmain;
 select * from tblcartsub;
-		
+
+select * from tblordermain;
+select * from tblordersub;
 		
 

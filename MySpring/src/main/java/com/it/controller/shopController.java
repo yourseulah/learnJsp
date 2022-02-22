@@ -14,6 +14,7 @@ import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
 import com.it.service.CartService;
 import com.it.service.MemberService;
+import com.it.service.OrderService;
 import com.it.service.ProductService;
 
 import lombok.Setter;
@@ -32,6 +33,9 @@ public class shopController {
 	
 	@Setter(onMethod_ = @Autowired)
 	private CartService cartservice;
+	
+	@Setter(onMethod_ = @Autowired)
+	private OrderService orderservice;
 	
 	@GetMapping("/list")
 	public void list(Model model) { //Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전달
@@ -86,8 +90,12 @@ public class shopController {
 					carttotal.setM_id(m_id); // m_id 넣기
 					carttotal.setM_name(m_name); //m_name 넣기
 					model.addAttribute("carttotal", carttotal); 
+					//mapper레벨까지 가서 getListCartDetail쿼리를 고치지 않고 cm_code를 이미담은 변수 넘기기(장바구니 세부항목 삭제시 필요)
+					//model.addAttribute("cartmain", cartmain); //cm_code을 담은 cartmain 가방을 넘기자
+					model.addAttribute("cm_code", cartmain.getCm_code()); //cm_code 단일변수명으로 넘기기
+					
 					log.info("장바구니에 담은 상품이 있습니다");
-				} else {
+				} else { //장바구니에 담은 상품이 없다면 
 					log.info("장바구니에 담은 상품이 없습니다 ");
 				}
 					log.info("로그인상태");
@@ -97,9 +105,34 @@ public class shopController {
 			} else {
 				log.info("로그아웃상태");
 				return "/member/login"; //컨트롤러의 메서드를 호출후에 jsp로 이동, redirect생략시 jsp 페이지로 바로 이동한다
-
 			}
+		}
 	
-}
+	@PostMapping("/cartupdate")
+	public String cartupdate(CartsubVO cartsub) {
+		//cs_code하고 cm_code넘어옴
+		cartservice.updatesub(cartsub);
+		return "redirect:/shop/cartinfo";
+	}
 	
+	@GetMapping("/cartdelete")
+	public String cartdelete(CartsubVO carsub) { //cs_code & cm_code 같이 넘어감
+		cartservice.deletesub(carsub);
+		return "redirect: /shop/cartinfo";
+	}
+	
+	@GetMapping("/cartdeleteall")
+	public String cartdeletall(CartmainVO cartmain) {
+		cartservice.deletesuball(cartmain);
+		return "redirect: /shop/cartinfo";
+	}
+	
+	@GetMapping("/orderinfo")
+	public String orderinfo(HttpSession session, CartmainVO cartmain) {
+		String m_id = (String)session.getAttribute("m_id");
+		cartmain.setM_id(m_id);
+		orderservice.orderproc(cartmain);
+		return "/shop/orderinfo";
+	}
+
 }

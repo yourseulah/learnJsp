@@ -64,6 +64,9 @@
 	<delete id="deletesub">
 		delete from tblcartsub where cs_code = #{cs_code}
 	</delete>
+	<delete id="deletesuball">
+		delete from tblcartsub where cm_code = #{cm_code}
+	</delete>
 	
 	
 </mapper>

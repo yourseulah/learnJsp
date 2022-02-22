@@ -40,7 +40,7 @@
 										<form method="post" action="/shop/cart">
 											<input type="hidden" name="p_code" value="${product.p_code}">
 											<select name="cs_cnt">
-												<c:forEach var="count" begin="0" end="30" step="1">
+												<c:forEach var="count" begin="1" end="30" step="1">
 												<option value="${count}">${count}개</option>
 												</c:forEach>
 											</select> &nbsp;&nbsp;
@@ -65,7 +65,7 @@
 										<form method="post" action="/shop/cart">
 											<input type="hidden" name="p_code" value="${product.p_code}">
 											<select name="cs_cnt">
-												<c:forEach var="count" begin="0" end="30" step="1">
+												<c:forEach var="count" begin="1" end="30" step="1">
 												<option value="${count}">${count}개</option>
 												</c:forEach>
 											</select> &nbsp;&nbsp;
@@ -90,7 +90,7 @@
 										<form method="post" action="/shop/cart">
 											<input type="hidden" name="p_code" value="${product.p_code}">
 											<select name="cs_cnt">
-												<c:forEach var="count" begin="0" end="30" step="1">
+												<c:forEach var="count" begin="1" end="30" step="1">
 												<option value="${count}">${count}개</option>
 												</c:forEach>
 											</select> &nbsp;&nbsp;

@@ -8,7 +8,7 @@
 <div class="container-fluid">
 
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">Cart Info</h1>
+	<h1 class="h3 mb-2 text-gray-800" >${carttotal.m_id}'s Cart Info</h1>
 	<p class="mb-4">
 	</p>
 
@@ -20,17 +20,17 @@
 		</div>
 	
 		<div class="card-body">
-		<div class="form-group row">
+	<%-- 	<div class="form-group row">
 			<div class="col-sm-6 mb-3 mb-sm-0">
 				<label>아이디</label> <input type="text"
 					class="form-control form-control-user" value="${carttotal.m_id}"
 				readonly>
 			</div>
-		</div>
+		</div> --%>
 		
 		<div class="form-group row">
 			<div class="col-sm-6 mb-3 mb-sm-0">
-				<label>사용자</label> <input type="text"
+				<label>성함</label> <input type="text"
 					class="form-control form-control-user" value="${carttotal.m_name}"
 				readonly>
 			</div>
@@ -46,8 +46,8 @@
 							<th>상품코드</th>
 							<th>상품명</th>
 							<th>이미지</th>
-							<th>수량</th>
 							<th>단가</th>
+							<th>수량</th>
 							<th>금액</th>
 						</tr>
 					</thead>
@@ -60,26 +60,43 @@
 								<td>${cartsub.p_code}</td>
 								<td>${cartsub.p_name}</td>
 								<td><img src="/resources/product/${cartsub.p_code}.jpg" height="40"></td>
-								<td>${cartsub.cs_cnt}</td>
 								<td><fmt:formatNumber value="${cartsub.p_price}" /></td>
+								<td>
+									<form method="post" action="/shop/cartupdate">
+									<input type="hidden" name="cs_code" value="${cartsub.cs_code}">
+									<select name="cs_cnt">
+										<c:forEach var="count" begin="1" end="30" step="1">
+										<c:if test="${count == cartsub.cs_cnt}">
+											<option value="${count}" selected>${count}</option>
+											<!-- <option value="${count}" selected>${count}</option>
+											데이터베이스에 있는 값과 동일한 값을 보이게 할때 selected-->
+										</c:if>
+										<c:if test="${count != cartsub.cs_cnt}">
+											<option value="${count}">${count}</option>
+											<!-- java에는 if-else가 없으니까 이렇게 써준것임  -->
+										</c:if> -
+										</c:forEach>
+									</select>&nbsp;
+									<input type="submit" value="수정">
+									</form>
+									&nbsp;<a href="/shop/cartdelete?cs_code=${cartsub.cs_code}&cm_code=${cm_code}">delete</a>
+								</td>
 								<td><fmt:formatNumber value="${cartsub.cs_money}" /></td>
 							</tr>
 						</c:forEach>
 							<tr align = "right">
-								<td colspan="7">
+								<td colspan="7" style="font-weight:bold">
 									총금액 : <fmt:formatNumber value="${carttotal.cm_total}" pattern="#,###" />원
+									<!-- cm_code있을때만 전체삭제나타나도록 -->
+									&nbsp;
+									<c:if test="${not empty cm_code}"> <!--cm_code가 비어있지 않다면-->
+									&nbsp;&nbsp;<a href = "/shop/cartdeleteall?cm_code=${cm_code}">모두삭제</a>
+									&nbsp;&nbsp;<a href = "/shop/orderinfo?cm_code=${cm_code}">주문</a>
+									</c:if>
 								</td>							
 							</tr>
 					</tbody>
 				</table>
-		
-					<%-- <div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0" >
-						<label> 총금액</label> <input type="text"
-						class="form-control form-control-user" value="${carttotal.cm_total}"
-						readonly>
-					</div> --%>
-				
 			</div>
 		</div>
 	</div>

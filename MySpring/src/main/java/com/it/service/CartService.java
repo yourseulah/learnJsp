@@ -24,4 +24,11 @@ public interface CartService {
 	
 	public CartmemberDTO getCartTotal(CartmainVO cartmain);
 	
+	public void updatesub(CartsubVO cartsub);
+	//cs_code를 담아서 넘기기
+	
+	public void deletesub(CartsubVO cartsub);
+	
+	public void deletesuball(CartmainVO cartmain);
+	//cm_code 하나만 넘기기
 }

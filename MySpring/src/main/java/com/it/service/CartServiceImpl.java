@@ -51,10 +51,7 @@ public class CartServiceImpl implements CartService {
 				//int tmp = cs.getCs_cnt() + cartsub.getCs_cnt(); //기존 + 신규  또는
 				cs.setCs_cnt(cs.getCs_cnt() + cartsub.getCs_cnt()); //기존 + 신규
 				mapper.updatesub(cs);
-				
 			}
-			
-			
 		}
 	}
 	
@@ -81,5 +78,39 @@ public class CartServiceImpl implements CartService {
 		return mapper.getCartTotal(cartmain);
 	}
 	
+	@Override
+	public void updatesub(CartsubVO cartsub) {
+		mapper.updatesub(cartsub);
+	}
+	
+	@Override
+	public void deletesub(CartsubVO cartsub) {
+		mapper.deletesub(cartsub);
+		CartmainVO cartmain = new CartmainVO();
+		cartmain.setCm_code(cartsub.getCm_code());
+		List<CartsubVO> tmp = mapper.getListCart(cartmain);
+		//tmp는 리스트구조이니까 null이 아니라 뭐라도 있다. 그래서 size로 
+		if(tmp.size() == 0) { //장바구니에 상품이 1개도 없음
+			mapper.deletemain(cartmain); //cartmain 삭제 
+		}
+		
+		//디버깅용 (서비스레벨이니까 출력을 log가 아니라 System.out.println()으로 해보기)
+		tmp = mapper.getListCart(cartmain); 
+		System.out.println(tmp); //배열표기로 [ ] 
+		System.out.println(tmp.size()); //숫자로
+	}
+	
+	@Override
+	public void deletesuball(CartmainVO cartmain) {
+		mapper.deletesuball(cartmain); //장바구니 상세 삭제 (cm_code활용)
+		mapper.deletemain(cartmain); //장바구니 메인(영수증) 삭제 (cm_code활용)
+	}
+	
+	
+	
+	
+	
 }
+
+
 
