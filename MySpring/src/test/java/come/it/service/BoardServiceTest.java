@@ -1,12 +1,14 @@
 package come.it.service;
 
-import org.junit.Test;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.it.domain.BoardVO;
+import com.it.domain.PageDTO;
 import com.it.service.BoardService;
 
 import lombok.Setter;
@@ -28,9 +30,10 @@ public class BoardServiceTest {
 		log.info(board);
 	}
 	
-	@Test
+	//@Test
 	public void testGetList() {
-		service.getList().forEach(board -> log.info(board)); //변수명은 아무거나
+		PageDTO page = new PageDTO();
+		service.getList(page).forEach(board -> log.info(board)); //변수명은 아무거나
 	}
 	
 	//@Test

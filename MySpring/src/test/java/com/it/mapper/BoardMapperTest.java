@@ -1,11 +1,13 @@
 package com.it.mapper;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.it.domain.BoardVO;
+import com.it.domain.PageDTO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -21,9 +23,10 @@ public class BoardMapperTest {
 	// BoardMapper 인터페이스의 mapper변수/객체를 선언만 해놓고 생성이 안되어 있는데 밑에서 갔다가 쓸수 있는 이유는 
 	// 기본생성을 @Setter 를통해 (의존성주입 dependency injection) 해주었기때문이다.
 	
-	//@Test
+	@Test
 	public void testGetList() { //전체를 읽는것
-		mapper.getList().forEach(board ->log.info(board)); //레코드만큼 반복하는 람다식
+		PageDTO page = new PageDTO(2, 10); //pagination을 위한 생성자
+		mapper.getList(page).forEach(board ->log.info(board)); //레코드만큼 반복하는 람다식
 	}
 	
 	//@Test

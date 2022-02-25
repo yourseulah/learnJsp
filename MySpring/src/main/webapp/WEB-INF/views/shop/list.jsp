@@ -8,7 +8,7 @@
 <div class="container-fluid">
 
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">Cart List</h1>
+	<h1 class="h3 mb-2 text-gray-800">Shop List</h1>
 	<p class="mb-4">
 	</p>
 
@@ -48,7 +48,6 @@
 										</form>
 										</td>
 									</tr>
-								
 								</table>
 								</td>
 							</c:when>

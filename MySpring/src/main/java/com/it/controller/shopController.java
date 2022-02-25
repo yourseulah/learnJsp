@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.it.domain.CartmainVO;
 import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
+import com.it.domain.OrdermainVO;
+import com.it.domain.OrdermemberDTO;
 import com.it.service.CartService;
 import com.it.service.MemberService;
 import com.it.service.OrderService;
@@ -110,7 +112,7 @@ public class shopController {
 	
 	@PostMapping("/cartupdate")
 	public String cartupdate(CartsubVO cartsub) {
-		//cs_code하고 cm_code넘어옴
+		//cs_code넘어옴
 		cartservice.updatesub(cartsub);
 		return "redirect:/shop/cartinfo";
 	}
@@ -128,11 +130,28 @@ public class shopController {
 	}
 	
 	@GetMapping("/orderinfo")
-	public String orderinfo(HttpSession session, CartmainVO cartmain) {
+	public String orderinfo(HttpSession session, CartmainVO cartmain, Model model) {
+		//로그인상태확인
 		String m_id = (String)session.getAttribute("m_id");
-		cartmain.setM_id(m_id);
-		orderservice.orderproc(cartmain);
-		return "/shop/orderinfo";
+		String m_name = (String)session.getAttribute("m_name");
+			if (m_id != null) { //로그인이 되어 있다면
+				cartmain.setM_id(m_id);
+				OrdermainVO ordermain = orderservice.orderproc(cartmain); //om_code획득
+				model.addAttribute("list", orderservice.getListOrderDetail(ordermain)); 
+				
+				OrdermemberDTO ordertotal = orderservice.getOrderTotal(ordermain); //om_total만 있으니까
+				ordertotal.setOm_code(ordermain.getOm_code()); //om_code 넣기
+				ordertotal.setM_id(m_id); // m_id 넣기
+				ordertotal.setM_name(m_name); //m_name 넣기
+				model.addAttribute("ordertotal", ordertotal); 
+								
+				return "/shop/orderinfo";
+			} else {
+				return "/member/login"; 
+				//redirect 사용할경우 : 처리할 내용이 Controller에 있을때. 컨트롤러의 메서드를 호출후에 jsp로 이동, 
+				//redirect 사용하지않을경우 : 처리할 내용이 Controller에 없을때. jsp 페이지로 바로 이동한다
+			}
+	
 	}
 
 }

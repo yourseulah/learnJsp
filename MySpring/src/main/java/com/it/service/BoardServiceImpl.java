@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.it.domain.BoardVO;
+import com.it.domain.PageDTO;
 import com.it.mapper.BoardMapper;
 
 import lombok.Setter;
@@ -29,8 +30,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<BoardVO> getList() {
-		return mapper.getList();
+	public List<BoardVO> getList(PageDTO page) {
+		return mapper.getList(page);
 	}
 	
 	@Override
@@ -41,6 +42,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void delete(BoardVO board) {
 		mapper.delete(board);
+	}
+	
+	@Override
+	public int getTotalCount() {
+		return mapper.getTotalCount();
 	}
 	
 	

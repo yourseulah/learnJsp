@@ -15,7 +15,7 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary"><a href="/shop/list">Cart List</a></h6>
+			<h6 class="m-0 font-weight-bold text-primary"><a href="/shop/list">Shop List</a></h6>
 		<!-- 컨트롤러로 간다. /product/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
 	

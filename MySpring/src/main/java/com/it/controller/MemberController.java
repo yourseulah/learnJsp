@@ -104,7 +104,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public void login(MemberVO member, HttpSession session) {
+	public String login(MemberVO member, HttpSession session) {
 		log.info(member);
 		//service 쪽 log가 찍히지 않아서 여기서 다시 해주기
 		
@@ -116,8 +116,11 @@ public class MemberController {
 			session.setAttribute("m_id", member.getM_id()); //세션변수 생성
 			session.setAttribute("m_name", member.getM_name()); //세션변수 생성
 			log.info("로그인성공");
+			return "redirect: /shop/list";
+			
 		} else {
 			log.info("로그인실패");
+			return "redirect:/member/login";
 		}
 	}
 	

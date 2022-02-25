@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it.domain.BoardVO;
+import com.it.domain.PageDTO;
+import com.it.domain.PageViewDTO;
 import com.it.service.BoardService;
 
 import lombok.Setter;
@@ -22,10 +24,17 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/list")
-	public void list(Model model) { 
+	public void list(Model model, PageDTO page) { 
 	//Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전송
-		model.addAttribute("list", service.getList()); 
-		//getList로 조회한 모든 내용을 list 변수로 전달
+		
+		model.addAttribute("list", service.getList(page)); 
+		//getList로 조회한 모든 내용(출력시킬데이터)을 list 변수로 전달
+		
+		int total = service.getTotalCount(); //전체레코드 갯수 뽑아내기
+		
+		PageViewDTO pageview = new PageViewDTO(page, total);
+		//log.info(pageview);
+		model.addAttribute("pageview", pageview);
 	}
 	
 	@GetMapping("/insert")

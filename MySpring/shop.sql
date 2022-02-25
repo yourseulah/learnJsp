@@ -278,4 +278,12 @@ select * from tblcartsub;
 select * from tblordermain;
 select * from tblordersub;
 		
+-- Pagination을 위한 쿼리
 
+--	재귀쿼리
+insert into tblboard (b_subject, b_contents, b_name)
+	select b_subject, b_contents, b_name from tblboard; 
+
+select count(*) from tblboard;
+
+select * from tblboard order by b_num desc limit 10 offset 10;

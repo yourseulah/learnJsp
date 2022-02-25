@@ -19,4 +19,6 @@
     <fullyQualifiedTypeName name="com.it.domain.OrdermainVO"/>
     <fullyQualifiedTypeName name="com.it.domain.OrdersubVO"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="com.it.domain.OrdermemberDTO"/>
 </qualifiedTypeNameHistroy>

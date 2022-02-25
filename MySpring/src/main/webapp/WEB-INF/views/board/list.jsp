@@ -8,14 +8,14 @@
 <div class="container-fluid">
 
 	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">게시판리스트</h1>
+	<h1 class="h3 mb-2 text-gray-800">Board List</h1>
 	<p class="mb-4">
 	</p>
 
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary"><a href="/board/insert">게시판글쓰기</a></h6>
+			<h6 class="m-0 font-weight-bold text-primary"><a href="/board/insert">New</a></h6>
 		<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
 		<div class="card-body">
@@ -40,8 +40,19 @@
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.b_date}"/></td>
 							</tr>
 						</c:forEach>
+						<%-- <tr>
+							<td >
+								<c:forEach var="num" begin="${pageview.startPage}" end="${pageview.endPage}">
+									<a href="#">[${num}]</a> &nbsp;&nbsp;
+								</c:forEach>
+							</td>
+						</tr>	 --%>					
+						
 					</tbody>
 				</table>
+					<c:forEach var="num" begin="${pageview.startPage}" end="${pageview.endPage}">
+						<a href="#">[${num}]</a> &nbsp;&nbsp;
+					</c:forEach>
 			</div>
 		</div>
 	</div>
