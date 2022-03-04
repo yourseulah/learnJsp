@@ -12,7 +12,7 @@ public interface BoardService {
 	public void insert (BoardVO board); //레코드입력
 	
 	public List<BoardVO> getList(PageDTO page); 
-	//전체레코드조회 //Pagination을위해 parametor 줌
+	//전체레코드조회 //Pagination을위해 parameter 줌
 	
 	public void update(BoardVO board); //레코드수정
 	

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it.domain.NoticeVO;
+import com.it.domain.PageDTO;
+import com.it.domain.PageViewDTO;
 import com.it.service.NoticeService;
 
 import lombok.Setter;
@@ -22,10 +24,18 @@ public class NoticeController {
 	private NoticeService service;
 	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Model model, PageDTO page) {
 	//Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전송
-		model.addAttribute("list", service.getNotice());
+		model.addAttribute("list", service.getNotice(page));
 		//getNotice로 조회한 모든 내용을 list변수로 전달
+		
+		int total = service.getTotalCount(); //전체레코드 갯수 뽑아내기
+		
+		PageViewDTO pageview = new PageViewDTO(page, total);
+		//log.info(page);
+		//log.info(total);
+		model.addAttribute("pageview", pageview);
+		model.addAttribute("page", page);
 	}
 	
 	@GetMapping("/insert")
@@ -49,7 +59,7 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/view")
-	public void view (NoticeVO notice, Model model) {
+	public void view (NoticeVO notice, Model model, PageDTO page) {
 		//list.jsp로부터 get방식으로 넘겨온 번호를 하나 받는데 
 		//이렇게 큰 가방이 필요할까 싶지만 그래도 가장 안전한 방법
 		log.info("---읽기전---");
@@ -65,10 +75,11 @@ public class NoticeController {
 		//왼쪽board : jsp에서 사용할명칭 (따라서 다른이름도 상관없는데 의미부여를위해)
 		//오른쪽board : 위에서 데이터받은 객체
 		model.addAttribute("notice", notice);
+		model.addAttribute("page", page);
 	}
 	
 	@GetMapping("/update")
-	public void update(NoticeVO notice, Model model) {
+	public void update(NoticeVO notice, Model model, PageDTO page) {
 		//view.jsp 수정태크로부터 get방식으로 넘겨온 번호 하나를 notice가방안에 임시저장한다
 		//update.jsp로 넘겨주는 model객체 선언
 		log.info("---업데이트를 위한 번호 ---");
@@ -85,14 +96,15 @@ public class NoticeController {
 		//왼쪽board : jsp에서 사용할명칭 (따라서 다른이름도 상관없는데 의미부여를위해)
 		//오른쪽board : 위에서 데이터받은 객체   
 		model.addAttribute("notice", notice);
+		model.addAttribute("page", page);
 	}
 	
 	@PostMapping("/update")
-	public String update(NoticeVO notice) {
+	public String update(NoticeVO notice, PageDTO page) {
 		log.info("---업데이트데이터---");
 		log.info(notice);
 		service.update(notice); //업데이트
-		return "redirect:/notice/view?n_num=" + notice.getN_num();
+		return "redirect:/notice/view?n_num=" + notice.getN_num() +"&pageNum=" + page.getPageNum();
 		//get으로 넘길때 id값이 영문이어야만 한다. 한글 못읽음
 	}
 	

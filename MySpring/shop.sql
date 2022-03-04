@@ -38,6 +38,18 @@ create table tblnotice (
 select * from tblnotice;
 INSERT INTO tblnotice (n_subject, n_name, n_contents) VALUES ('제목이다','홍길동','jsp프로그래밍');
 
+
+/* 관리자테이블*/
+create table tbladmin (
+	a_id varchar(50) not null primary key, -- 아이디 
+	a_passwd varchar(50) not null, -- 비밀번호
+	a_name varchar(50) not null, -- 성명
+	a_rdate datetime not null default sysdate(),
+	a_udate datetime not null default sysdate()
+);
+insert into tbladmin (a_id, a_passwd, a_name) values('admin', '1234', '관리자');
+select * from tbladmin;
+
 /* 고객테이블*/
 create table tblmember (
 	m_id varchar(50) not null primary key, -- 아이디 
@@ -287,3 +299,12 @@ insert into tblboard (b_subject, b_contents, b_name)
 select count(*) from tblboard;
 
 select * from tblboard order by b_num desc limit 10 offset 10;
+select * from tblboard limit 5;
+
+
+select * from tblnotice;
+--	재귀쿼리
+insert into tblnotice (n_subject, n_contents, n_name)
+	select n_subject, n_contents, n_name from tblnotice; 
+	
+select count(*) from tblnotice;

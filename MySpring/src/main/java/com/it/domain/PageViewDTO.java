@@ -11,6 +11,7 @@ public class PageViewDTO {
 	//맨처음으로 맨끝으로 
 	private int startPage;
 	private int endPage;
+	private int realend;
 	private boolean prev;
 	private boolean next;
 	
@@ -25,16 +26,16 @@ public class PageViewDTO {
 		//마지막페이지값을 알기위해 나눗셈을 한뒤에 무조건올림을해서 
 		//1-10페이지의 마지막페이지는 10
 		//11-20페이지의 마지막페이지는 20 
-		this.endPage = (int)Math.ceil(page.getPageNum() / (double)page.getPageAmount()) * page.getPageAmount();
+		this.endPage = (int)Math.ceil(page.getPageNum() / 10.0) * 10;
 		//1-10페이지의 첫번째페이지는 1
 		//11-20페이지의 첫번째페이지는 11
-		this.startPage = this.endPage - page.getPageAmount()+1;
-		int realend = (int)Math.ceil(total / page.getPageAmount()); //실제 마지막 페이지번호
-		if (realend < this.endPage) {
-			this.endPage = realend;
+		this.startPage = this.endPage - 10 + 1;
+		this.realend = (int)Math.ceil(total / (double)page.getPageAmount()); //실제 마지막 페이지번호 (실제 row숫자)
+		if (this.realend < this.endPage) {
+			this.endPage = this.realend; //147개 일때 realend페이지가 15, endPage도 15로 된상태
 		}
 		this.prev = this.startPage > 1; //최소한 시작이 11페이지일 경우 참
-		this.next = this.endPage < realend;
+		this.next = this.endPage < this.realend; //endPage는 시시각각 바뀌는 값이고 realend값은 고정값 따라서 참, 거짓 둘다 나올수 있음
 	}
 	     
 	

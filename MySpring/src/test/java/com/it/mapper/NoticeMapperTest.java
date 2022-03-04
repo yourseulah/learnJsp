@@ -6,6 +6,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.it.domain.NoticeVO;
+import com.it.domain.PageDTO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -21,7 +22,8 @@ public class NoticeMapperTest {
 	
 	//@Test
 	public void testGetNotice() { //전체읽기
-		mapper.getNotice().forEach(notice->log.info(notice));
+		PageDTO page = new PageDTO(2, 10);
+		mapper.getNotice(page).forEach(notice->log.info(notice));
 		 //레코드만큼 반복하는 람다식
 	}
 	

@@ -3,8 +3,10 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.mapper.NoticeMapper">
+
 	<select id="getNotice" resultType="com.it.domain.NoticeVO">
 		select * from tblnotice order by n_num desc
+		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
 	</select>
 	
 	<insert id="insert">
@@ -32,5 +34,8 @@
 		delete from tblnotice where n_num = #{n_num} 
 	</delete>
 	
+	<select id="getTotalCount" resultType="int">
+		select count(n_num) from tblnotice 
+	</select>
 	
 </mapper>

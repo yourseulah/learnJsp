@@ -15,7 +15,7 @@
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">
-				<a href="/board/list">Back to List</a>
+				<a href="/board/list?pageNum=${page.pageNum}">Back to List</a>
 			</h6>
 			<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
@@ -58,7 +58,7 @@
 				
 				<div class="form-group row">
 					<div class="col-sm-6">
-						<a href="/board/update?b_num=${board.b_num}">[수정]</a>
+						<a href="/board/update?b_num=${board.b_num}&pageNum=${page.pageNum}">[수정]</a>
 						&nbsp;&nbsp;&nbsp;
 						<a href="/board/delete?b_num=${board.b_num}">[삭제]</a>
 					</div>
