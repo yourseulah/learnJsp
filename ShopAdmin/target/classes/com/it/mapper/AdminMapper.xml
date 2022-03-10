@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.AdminMapper">
+	
+	<!-- 로그인용 -->
+	<select id="read" resultType="com.it.domain.AdminVO"> <!-- 반환받는게 있을때 resultType써준다 -->
+		select * from tbladmin where 
+		a_id = #{a_id} and 
+		a_passwd = hex(aes_encrypt(#{a_passwd}, sha2('123987!', 512)))
+	</select>
+
+
+</mapper>

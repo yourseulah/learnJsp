@@ -26,6 +26,19 @@ create table tblboard (
 select * from tblboard;
 INSERT INTO tblboard (b_subject, b_name, b_contents) VALUES ('제목이다','홍길동','jsp프로그래밍');
 
+/* tblboard2 테이블 */
+create table tblboard2 (
+ b_num int not null primary key AUTO_INCREMENT,
+ b_subject varchar(100) not null,
+ b_contents varchar(2000) not null,
+ b_file varchar(200),  --업로드파일
+ b_name varchar(50) not null,
+ b_date datetime not null default sysdate()
+);
+
+select * from tblboard2;
+
+
 /* tblnotice 테이블 */
 create table tblnotice (
  n_num int not null primary key AUTO_INCREMENT,
@@ -42,13 +55,29 @@ INSERT INTO tblnotice (n_subject, n_name, n_contents) VALUES ('제목이다','�
 /* 관리자테이블*/
 create table tbladmin (
 	a_id varchar(50) not null primary key, -- 아이디 
-	a_passwd varchar(50) not null, -- 비밀번호
+	a_passwd varchar(500) not null, -- 비밀번호
 	a_name varchar(50) not null, -- 성명
 	a_rdate datetime not null default sysdate(),
 	a_udate datetime not null default sysdate()
 );
-insert into tbladmin (a_id, a_passwd, a_name) values('admin', '1234', '관리자');
+
+/* 16진수로 암호화된 비번과 같이 데이터 추가 */
+insert into tbladmin (a_id, a_passwd, a_name) 
+	values('admin', hex(aes_encrypt('1234', sha2('123987!', 512))), '관리자');
+insert into tbladmin (a_id, a_passwd, a_name) 
+	values('subadmin', hex(aes_encrypt('12345', sha2('123987!', 512))), '보조관리자');
+/* a_id와 암호화된 a_passwd와 매치되는 데이터 확인하기*/	
+select * from tbladmin where 
+	a_id = 'subadmin' and
+	a_passwd = hex(aes_encrypt('12345', sha2('123987!', 512)));
+
+/* 16진수로 암호화 복호화 연습 */
+select hex(aes_encrypt('tiger', sha2('123!', 512)));
+select aes_decrypt(unhex('FAEE86A08A044E2B3CCAADDECD3B272A'), sha2('123!', 512));	
+	
 select * from tbladmin;
+drop table tbladmin;
+
 
 /* 고객테이블*/
 create table tblmember (
