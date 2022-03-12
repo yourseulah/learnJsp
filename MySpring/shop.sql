@@ -37,7 +37,7 @@ create table tblboard2 (
 );
 
 select * from tblboard2;
-
+delete from tblboard2;
 
 /* tblnotice 테이블 */
 create table tblnotice (
