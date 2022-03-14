@@ -37,7 +37,7 @@
 								<td>${board.b_num}</td>
 								<td><a href="/board2/view?b_num=${board.b_num}&pageNum=${pageview.page.pageNum}">${board.b_subject}</a></td>
 								<!--get방식에서는 띄어쓰기 X, &으로 여러개 넘길수도 있음-->
-								<!-- page번호도 꼭 넘겨주어야 한다.  -->
+								<!-- page번호도 꼭 넘겨주어야 한다. -->
 								<td>${board.b_name}</td>
 								<td><a href="/board2/download?b_num=${board.b_num}">${board.b_file}</a></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.b_date}"/></td>

@@ -39,7 +39,7 @@ public class AdminController {
 			session.setAttribute("a_id", admin.getA_id()); //세션변수 생성
 
 			log.info("로그인성공");
-			return "redirect: /";
+			return "redirect:/product/list";
 			
 		} else {
 			log.info("로그인실패");

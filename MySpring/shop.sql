@@ -2,17 +2,18 @@
 /*use mysql*/
 use webjava;
 
-/* 데이터베이스 생성
+/*데이터베이스 생성
 create database webjava default character set utf8;
 */
+
 /* 데이터베이스 오픈 
 show databases;
 use webjava;
 */
 
-/* 유저 생성 및 암호 지정
+/*유저 생성 및 암호 지정
 grant all privileges on webjava.* to javauser@localhost identified by 'webjava';
- */
+*/
 
 /* tblboard 테이블 */
 create table tblboard (
@@ -31,7 +32,7 @@ create table tblboard2 (
  b_num int not null primary key AUTO_INCREMENT,
  b_subject varchar(100) not null,
  b_contents varchar(2000) not null,
- b_file varchar(200),  --업로드파일
+ b_file varchar(200), 
  b_name varchar(50) not null,
  b_date datetime not null default sysdate()
 );
@@ -88,7 +89,7 @@ create table tblmember (
 	m_udate datetime not null default sysdate()
 );
 
---select * from tblmember;
+select * from tblmember;
 
 /* 상품테이블*/
 create table tblproduct(
@@ -102,7 +103,7 @@ create table tblproduct(
 alter table tblproduct auto_increment=1001; 
 -- 출력되는 경우 영수증 번호 자리수를 유지하기 위해 (4자리)
 -- 단, 부족하지 않게. 쇼핑몰 매출 규모에 맞게 (8자리 이상 등)
--- select * from tblproduct;
+select * from tblproduct;
 
 /* 장바구니 main */
 -- 실제 정보는 장바구니sub로 분리

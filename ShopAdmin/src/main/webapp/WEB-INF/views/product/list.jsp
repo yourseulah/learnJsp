@@ -15,7 +15,7 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary"><a href="/product/insert">Register</a></h6>
+			<h6 class="m-0 font-weight-bold text-primary"><a href="/product/insert">New</a></h6>
 		<!-- 컨트롤러로 간다. /product/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
 		<div class="card-body">
@@ -37,7 +37,7 @@
 							<tr>
 								<td>${product.p_code}</td>
 								<td><a href="/product/view?p_code=${product.p_code}">${product.p_name}</a></td>
-								<td>${product.p_price}</td>
+								<td><fmt:formatNumber value="${product.p_price}"/></td>
 								<!--get방식에서는 띄어쓰기 X, &으로 여러개 넘길수도 있음-->
 								<td><img src="/resources/product/${product.p_code}.jpg" height="70"></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${product.p_rdate}"/></td>
