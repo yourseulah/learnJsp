@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.NoticeMapper">
+
+	<select id="getNotice" resultType="com.it.domain.NoticeVO">
+		select * from tblnotice order by n_num desc
+		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
+	</select>
+	
+	<insert id="insert">
+		insert into tblnotice (n_subject, n_name, n_contents)
+		values (#{n_subject}, #{n_name}, #{n_contents})
+	</insert>
+	
+	<!-- 
+	select 구문이면 Read이니까 무조건 반환이 있다 = resultType 무조건 있다. 
+	* : 이상태에서는 데이터 갯수를 알수 없고 필드갯수는 정해져 있으니 
+	반환할것이 있으면 resultType에 타입을 담은 클라스경로 지정 
+	만약 하나의필드(타입)만 있다면 그냥 그타입 자체를 적어주어도 된다 
+	예) resultType="string" -->
+	<select id="read" resultType="com.it.domain.NoticeVO">
+		select * from tblnotice	where n_num = #{n_num}
+	</select>
+	
+	<update id="update">
+		update tblnotice set n_subject = #{n_subject},
+		n_name = #{n_name}, n_contents = #{n_contents}
+		where n_num = #{n_num}
+	</update>
+	
+	<delete id="delete">
+		delete from tblnotice where n_num = #{n_num} 
+	</delete>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(n_num) from tblnotice 
+	</select>
+	
+</mapper>

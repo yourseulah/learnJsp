@@ -31,7 +31,6 @@ public class AdminController {
 		log.info(admin);
 		//service 쪽 log가 찍히지 않아서 여기서 다시 해주기
 		
-		
 		boolean chk = service.auth(admin);
 		if(chk == true) {	
 			//세션변수 생성하면서 저장하는 setAttribute 메서드

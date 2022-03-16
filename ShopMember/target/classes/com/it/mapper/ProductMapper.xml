@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.ProductMapper">
+	
+	<select id="getList" resultType="com.it.domain.ProductVO"> 
+		select * from tblproduct order by p_code asc
+	</select>
+	
+	<insert id="insert"> 
+		insert into tblproduct (p_name, p_price) <!-- 테이블필드명 -->
+		values (#{p_name}, #{p_price}) <!-- ProductVO에 있는 입력되는 내용 3개 -->
+	</insert>
+	
+	<select id="read" resultType="com.it.domain.ProductVO"> <!-- 반환받는게 있을때 resultType써준다 -->
+		select * from tblproduct where p_code = #{p_code}
+	</select>
+	
+	<update id="update">
+		update tblproduct set p_name = #{p_name}, p_price = #{p_price}
+		where p_code= #{p_code} 
+	</update>
+	
+	<delete id="delete">
+		delete from tblproduct where p_code = #{p_code}
+	</delete>
+	
+</mapper>

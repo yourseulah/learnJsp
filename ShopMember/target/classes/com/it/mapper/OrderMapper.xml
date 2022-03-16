@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.OrderMapper">
+	
+	<insert id="insertmain"> 
+		insert into tblordermain (m_id) values (#{m_id})
+	</insert>
+	
+	<select id="readmainid" resultType="com.it.domain.OrdermainVO">  <!-- 주문을 여러번 했을수 있으니까 역순으로 조회해서 가장 최근걸 인출 -->
+		select * from tblordermain where m_id = #{m_id} order by om_code desc limit 1
+	</select>
+	
+	<insert id="insertsub"> 
+		insert into tblordersub (om_code, p_code, os_cnt)
+		values (#{om_code}, #{p_code}, #{os_cnt})
+	</insert>
+	
+	<select id="getListOrderDetail" resultType="com.it.domain.OrderdetailDTO"> 
+		select os.os_code, p.p_code, p.p_name, p.p_price, os.os_cnt, p.p_price*os.os_cnt os_money <!-- price*cnt : CartdetailDTO의 cs_money에 해당 --> 
+		from tblproduct p, tblordersub os
+		where p.p_code = os.p_code
+		and os.om_code = #{om_code}
+	</select>
+	
+	<select id="getOrderTotal" resultType="com.it.domain.OrdermemberDTO">
+		select sum(p.p_price * os.os_cnt) om_total
+		from tblproduct p, tblordersub os
+		where p.p_code = os.p_code
+		and os.om_code = #{om_code}
+	</select>
+
+</mapper>
+	
