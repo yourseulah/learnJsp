@@ -46,7 +46,7 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${list}" var="ordersub"> 
-						<!-- Controller에서 넘어온 list배열로부터 cart변수에 각각 저장하고 
+						<!-- Controller에서 넘어온 list배열로부터 ordersub변수에 각각 저장하고 
 						forEach 반복구문으로 뽑아온다 -->
 							<tr>
 								<td>${ordersub.os_code}</td>

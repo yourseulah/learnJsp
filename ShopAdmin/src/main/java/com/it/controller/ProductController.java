@@ -76,7 +76,7 @@ public class ProductController {
 	
 	@PostMapping ("/imgupload")
 	public void imgupload(HttpServletRequest request) {
-		DiskFileUpload upload = new DiskFileUpload(); // 모든데이터(파일포함)전전송컴포넌트객체 생성
+		DiskFileUpload upload = new DiskFileUpload(); // 모든데이터(파일포함)전송컴포넌트객체 생성
 		try {
 			List items = upload.parseRequest(request); //웹브라우저 전송 객체 생성해서 업로드컴포넌트에 전달
 			Iterator params = items.iterator() ; // 반복자 생성 
@@ -85,7 +85,7 @@ public class ProductController {
 			//log.info(items.size()); // 파일을 선택하지 않아도 두개가 찍힌다. 상품코드 & 파일하나
 			
 			//파일 저장위치전
-			String imgpath = "C:\\myWorkSpace\\learnJsp\\MySpring\\src\\main\\webapp\\resources\\product";
+			String imgpath = "C:\\myWorkSpace\\learnJsp\\ShopAdmin\\src\\main\\webapp\\resources\\product";
 			
 			String p_code = ""; //item에 담겨있는 p_code를 else에서 p_code가 필요로하니까 전역변수로 
 			//어떤순서로 넘어와도 처리할수 있도록 while루프
@@ -99,12 +99,11 @@ public class ProductController {
 					//log.info(data);
 					p_code = item.getString(); //파일보다 먼저 반환됨
 				} else { //바이너리 파일이라면 
-					//log.info("이미지파일");
+					log.info("이미지파일");
 					//String data = item.getName();
 					//log.info(data);
 					File imgfile = new File(imgpath + "/" + p_code + ".jpg"); //파일객체 생성 (.jpg 파일만)
 					item.write(imgfile); //해당 경로에 파일 저장
-					
 				}
 			}
 		} catch (Exception e) {

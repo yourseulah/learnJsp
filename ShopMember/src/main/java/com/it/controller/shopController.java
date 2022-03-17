@@ -57,8 +57,8 @@ public class shopController {
 			CartmainVO cartmain = new CartmainVO();
 			cartmain.setM_id(m_id); // VO에 사용자의 세션정보를 저장 
 			cartservice.cartinsert(cartmain, cartsub); //서비스계층 호출
-				//cartmain : 사용자정보가 담겨있고 m_id만 담김
-				//cartsub : 상품정보가 담겨있고
+			//cartmain : 사용자정보가 담겨있고 m_id만 담김
+			//cartsub : 상품정보가 담겨있고
 			//log.info("로그인오케이");
 			return "redirect: /shop/cartinfo";
 		} else {
