@@ -110,7 +110,7 @@ public class MemberController {
 		
 		boolean chk = service.auth(member);
 		if(chk == true) {	
-			member = service.read(member); // auth로는 못가져와서 read로 id와 passwd 가져오기
+			member = service.read(member); //auth로는 못가져와서 read로 id와 passwd 가져오기
 			//세션변수 생성하면서 저장하는 setAttribute 메서드
 			//setAttribute (저장할변수이름, 변수값)
 			session.setAttribute("m_id", member.getM_id()); //세션변수 생성

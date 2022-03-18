@@ -79,11 +79,11 @@
 				
 				<div class="form-group row">
 					<div class="col-sm-6">
-						<a href="/product/update?p_code=${product.p_code}">[Update]</a>
+						<a class="btn btn-primary" href="/product/update?p_code=${product.p_code}">Update</a>
 						&nbsp;&nbsp;&nbsp;
-						<a href="/product/delete?p_code=${product.p_code}">[Delete]</a>
+						<a class="btn btn-primary" href="/product/delete?p_code=${product.p_code}" >Delete</a>
 					</div>
-				</div>
+				</div>s
 			</div>
 		</div>
 	</div>

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.FileItem;
@@ -30,23 +31,38 @@ public class ProductController {
 	private ProductService service;
 	
 	@GetMapping("/list")
-	public void list(Model model) { 
-	//Model 객체는 VO객체를(테이블 데이터를) 저장해서 
-	//list.jsp파일로 데이터 전송
-		model.addAttribute("list", service.getList()); 
-		//getList로 조회한 모든 내용을 list 변수로 전달
+	public String list(HttpSession session, Model model) { 
+		//log.info(service.getList());
+		//model.addAttribute("list", service.getList()); 
+		String a_id = (String)session.getAttribute("a_id");
+		if(a_id != null) {
+			model.addAttribute("list", service.getList());
+			return "/product/list";
+		} else {
+			return "redirect: /admin/login";
+		}  
 	}
 	
 	@GetMapping("/insert")
-	public void insert() {
-		
+	public String insert(HttpSession session) {
+		String a_id = (String)session.getAttribute("a_id");
+		if(a_id == null) {
+			return "redirect:/admin/login";
+		} else {
+		return "/product/insert";
+		}
 	}
 	
 	@PostMapping("/insert")
-	public String insert(ProductVO product) {
-		//log.info(product);
-		service.insert(product);
-		return "redirect:/product/list";
+	public String insert(HttpSession session, ProductVO product) {
+		String a_id = (String)session.getAttribute("a_id");
+		if(a_id == null) {
+			return "redirect: /admin/login";
+		} else {
+			//log.info(product);
+			service.insert(product);
+			return "redirect:/product/list";
+		}
 	}
 	
 	@GetMapping("/view")
@@ -110,4 +126,10 @@ public class ProductController {
 			System.out.print(e);
 		}
 	}
+	
+//	/*
+//	 * @GetMapping("/delete") public String delete(ProductVO product) {
+//	 * log.info("-----상품삭제-----"); service.delete(product); return
+//	 * "redirect:/product/list"; }
+//	 */
 }

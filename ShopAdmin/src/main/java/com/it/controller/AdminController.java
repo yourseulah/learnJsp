@@ -36,7 +36,6 @@ public class AdminController {
 			//세션변수 생성하면서 저장하는 setAttribute 메서드
 			//setAttribute (저장할변수이름, 변수값)
 			session.setAttribute("a_id", admin.getA_id()); //세션변수 생성
-
 			log.info("로그인성공");
 			return "redirect:/product/list";
 			

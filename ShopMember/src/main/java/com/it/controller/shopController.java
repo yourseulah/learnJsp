@@ -40,9 +40,21 @@ public class shopController {
 	private OrderService orderservice;
 	
 	@GetMapping("/list")
-	public void list(Model model) { //Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전달
+	public void list(HttpSession session, Model model) { //Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전달
 		model.addAttribute("list", productservice.getList()); 
 		//getList로 조회한 모든 내용을 list 변수로 전달
+		
+		//로그인상태확인 
+		String m_id = (String)session.getAttribute("m_id");
+		String m_name = (String)session.getAttribute("m_name");
+		model.addAttribute("m_id", m_id); 
+		//여기한곳에서만해주면 다 적용된다.
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); //세션끊기
+		return "redirect:/shop/list";
 	}
 	
 	@PostMapping("/cart")
@@ -96,6 +108,7 @@ public class shopController {
 					//model.addAttribute("cartmain", cartmain); //cm_code을 담은 cartmain 가방을 넘기자
 					model.addAttribute("cm_code", cartmain.getCm_code()); //cm_code 단일변수명으로 넘기기
 					
+					
 					log.info("장바구니에 담은 상품이 있습니다");
 				} else { //장바구니에 담은 상품이 없다면 
 					log.info("장바구니에 담은 상품이 없습니다 ");
@@ -108,6 +121,8 @@ public class shopController {
 				log.info("로그아웃상태");
 				return "/member/login"; //컨트롤러의 메서드를 호출후에 jsp로 이동, redirect생략시 jsp 페이지로 바로 이동한다
 			}
+			
+			
 		}
 	
 	@PostMapping("/cartupdate")

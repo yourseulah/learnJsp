@@ -23,12 +23,12 @@
 				<table class="table table-bordered" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>상품코드</th>
-							<th>상품명</th>
-							<th>단가</th>
-							<th>이미지</th>
-							<th>등록일</th>
-							<th>수정일</th>
+							<th>Product Code</th>
+							<th>Product Name</th>
+							<th>Unit Price</th>
+							<th>Image</th>
+							<th>Updated Date</th>
+							<th>Edited Date</th>
 						</tr>
 					</thead>
 					<tbody>

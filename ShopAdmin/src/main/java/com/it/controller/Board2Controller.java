@@ -159,7 +159,6 @@ public class Board2Controller {
 			
 		} catch (Exception e) {
 			System.out.println(e);
-			
 		}
 		
 	}

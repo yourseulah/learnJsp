@@ -3,7 +3,6 @@
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="com.it.domain.BoardVO"/>
-    <fullyQualifiedTypeName name="com.it.domain.NoticeVO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.it.domain.MemberVO"/>
     <fullyQualifiedTypeName name="com.it.domain.ProductVO"/>
@@ -24,4 +23,6 @@
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
+    <fullyQualifiedTypeName name="com.it.domain.PageDTO"/>
+    <fullyQualifiedTypeName name="com.it.domain.NoticeVO"/>
 </qualifiedTypeNameHistroy>

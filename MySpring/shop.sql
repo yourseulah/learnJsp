@@ -49,6 +49,8 @@ create table tblnotice (
  n_date datetime not null default sysdate()
 );
 
+select * from tblnotice order by n_num desc
+		limit 1 offset 0;
 select * from tblnotice;
 INSERT INTO tblnotice (n_subject, n_name, n_contents) VALUES ('제목이다','홍길동','jsp프로그래밍');
 
@@ -77,7 +79,7 @@ select hex(aes_encrypt('tiger', sha2('123!', 512)));
 select aes_decrypt(unhex('FAEE86A08A044E2B3CCAADDECD3B272A'), sha2('123!', 512));	
 	
 select * from tbladmin;
-drop table tbladmin;
+drop table tbladmin;http://127.0.0.1:8081/member/list#
 
 
 /* 고객테이블*/
@@ -91,11 +93,17 @@ create table tblmember (
 
 select * from tblmember;
 
+/* 16진수로 암호화된 비번과 같이 데이터 추가 */
+insert into tblmember (m_id, m_passwd, m_name) 
+	values('otter', hex(aes_encrypt('1234', sha2('123!', 512))), '이수달');
+
+
 /* 상품테이블*/
 create table tblproduct(
 	p_code int not null primary key auto_increment,
 	p_name varchar(100) not null, 
 	p_price int not null,
+	--p_status char(1) not null default 'A', A활성 B비활성
 	p_rdate datetime not null default sysdate(),
 	p_udate datetime not null default sysdate()
 );
@@ -304,6 +312,7 @@ desc tblmember;
 select * from tblmember;
 
 --이 순서대로
+delete from tblproduct;
 delete from tblordersub;
 delete from tblordermain;
 delete from tblcartsub;
