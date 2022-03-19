@@ -25,7 +25,7 @@ public class NoticeController {
 	
 	@GetMapping("/list")
 	public void list(Model model, PageDTO page) {
-	//Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전송
+		//Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전송
 		//model.addAttribute("list", service.getNotice(page)); //기본값이 전달이 안되어서 밑으로보내버림
 		//getNotice로 조회한 모든 내용을 list변수로 전달
 		
@@ -90,7 +90,7 @@ public class NoticeController {
 		
 		
 		//notice로 데이터 들어온것 확인 (mapper까지 내려감)
-		//글번호 하나만 받은 board를 service의 read함수로 모든 데이터를 다시 notice객체에 대입
+		//글번호 하나만 받은 notice를 service의 read함수로 모든 데이터를 다시 notice객체에 대입
 		notice = service.read(notice); 
 		log.info("---업데이트를 위한 데이터---");
 		log.info(notice);

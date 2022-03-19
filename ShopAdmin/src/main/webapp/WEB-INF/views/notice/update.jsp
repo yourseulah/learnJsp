@@ -17,44 +17,52 @@
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/notice/list?pageNum=${page.pageNum}">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
+			
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
 
 				<form class="user" method="post" action="/notice/update?pageNum=${page.pageNum}">
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<label>번호</label> <input type="text"
-								class="form-control form-control-user" name="n_num"
+						<div class="col-md-2">
+							<label><b>No.</b></label> 
+							<input type="text"
+								class="form-control" name="n_num"
 								value="${notice.n_num}" readonly>
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<label>제목</label> <input type="text"
-								class="form-control form-control-user" name="n_subject"
-								value="${notice.n_subject}">
+						<div class="col-md-4">
+						<!-- <div class="col-sm-6 mb-3 mb-sm-0"> -->
+							<label for="subject" class="form-label"><b>Title</b></label> 
+							<input type="text"
+								class="form-control" name="n_subject"
+								value="${notice.n_subject}" id="subject">
 						</div>
-						<div class="col-sm-6">
-							<label>작성자</label> <input type="text"
-								class="form-control form-control-user" name="n_name"
-								value="${notice.n_name}">
+						<div class="col-md-4">
+							<label for="writer" class="form-label"><b>Writer</b></label> 
+							<input type="text"
+								class="form-control" name="n_name"
+								value="${notice.n_name}" id="writer">
 						</div>
-					</div>
-					<div class="form-group">
-						<label>내용</label>
-						<textarea rows="10" class="form-control" name="n_contents">${notice.n_contents}</textarea>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6">
-							<label>작성일</label> 
+						<div class="col-md-8">
+						<label for="content" class="form-label"><b>Content</b></label>
+						<textarea rows="10" class="form-control" name="n_contents" id="content">${notice.n_contents}</textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="mb-1 col-md-8">
+							<label><b>Written Date : </b></label> 
 							${notice.n_date}
 						</div>
 					</div>
-
-					<input type="submit" class="btn btn-primary btn-user btn-block"
-						value="수정하기">
+					
+					
+					<input type="submit" class="mb-4 btn btn-primary"
+						value="Save">
+				
 				</form>
 
 			</div>

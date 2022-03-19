@@ -5,12 +5,20 @@
 <mapper namespace="com.it.mapper.ProductMapper">
 	
 	<select id="getList" resultType="com.it.domain.ProductVO"> 
-		select * from tblproduct order by p_code asc
+		select * from tblproduct order by p_code desc
+		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
+		<!-- pageNum-1 왜 1을 빼지??? -->
+		<!-- LIMIT: 행을 얼마나 가져올지 -->
+		<!-- OFFSET: 어디서 부터 가져올지 -->
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(p_code) from tblproduct
 	</select>
 	
 	<insert id="insert"> 
 		insert into tblproduct (p_name, p_price) <!-- 테이블필드명 -->
-		values (#{p_name}, #{p_price}) <!-- ProductVO에 있는 입력되는 내용 3개 -->
+		values (#{p_name}, #{p_price}) 
 	</insert>
 	
 	<select id="read" resultType="com.it.domain.ProductVO"> <!-- 반환받는게 있을때 resultType써준다 -->

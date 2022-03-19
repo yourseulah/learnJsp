@@ -17,50 +17,53 @@
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/notice/list?pageNum=${page.pageNum}">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
+			<!-- 컨트롤러로 간다. /board/list.jsp 로 바로 못감 -->
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
 
 				<div class="form-group row">
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>번호</label> <input type="text"
-							class="form-control form-control-user" value="${notice.n_num}"
-							readonly>
+					<div class="col-md-2">
+						<label><b>No.</b></label> 
+						<input type="text" class="form-control" 
+						value="${notice.n_num}"	readonly>
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>제목</label> <input type="text"
-							class="form-control form-control-user" value="${notice.n_subject}"
-							readonly >
+					<div class="col-md-4">
+						<label><b>Title</b></label> 
+							<input type="text" class="form-control" 
+							value="${notice.n_subject}"	readonly>
 					</div>
-					<div class="col-sm-6">
-						<label>작성자</label> <input type="text"
-							class="form-control form-control-user" value="${notice.n_name}"
-							readonly>
+					<div class="col-md-4">
+						<label><b>Writer</b></label> 
+						<input type="text" class="form-control" 
+						value="${notice.n_name}" readonly>
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label>내용</label>
+				<div class="form-group row">
+					<div class="col-md-8">
+					<label><b>Content</b></label>
 					<textarea rows="10" class="form-control" readonly>${notice.n_contents}</textarea>
-				</div>
-
-				<div class="form-group row">
-					<div class="col-sm-6">
-						<label>작성일</label> <input type="text"
-							class="form-control form-control-user" value="${notice.n_date}"
-							readonly>
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-6">
-						<a href="/notice/update?n_num=${notice.n_num}&pageNum=${page.pageNum}">[수정]</a>
+					<div class="col-md-8">
+						<label><b>Written Date :</b></label> 
+						${notice.n_date}
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="mb-3 col-md-8">
+						<a class="btn btn-primary"
+						href="/notice/update?n_num=${notice.n_num}&pageNum=${page.pageNum}">Update</a>
 						&nbsp;&nbsp;&nbsp;
-						<a href="/notice/delete?n_num=${notice.n_num}">[삭제]</a>
+						<a class="btn btn-secondary"
+						href="/notice/delete?n_num=${notice.n_num}">Delete</a>
 					</div>
 				</div>
 			</div>

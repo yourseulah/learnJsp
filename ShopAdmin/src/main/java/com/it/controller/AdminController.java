@@ -50,6 +50,6 @@ public class AdminController {
 		//세션처리용으로 session 
 		session.invalidate(); //세션 끊기, 관련된 모든 변수 삭제 
 		//로그아웃한 뒤에 home으로 가라
-		return "redirect:/";
+		return "redirect:/admin/login";
 	}
 }

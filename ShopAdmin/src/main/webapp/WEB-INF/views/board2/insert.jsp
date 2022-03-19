@@ -17,8 +17,8 @@
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/board2/list">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
+		
 		<div class="card-body">
 			<div class="table-responsive">
 				<form class="user" method="post" action="/board2/insert" enctype = "multipart/form-data">
@@ -45,7 +45,7 @@
 							<input type="file" name="b_file" placeholder="작성자">
 					</div>
 					&nbsp;&nbsp;
-					<input type="submit" class="btn btn-primary btn-user btn-block">
+					<input type="submit" class="btn btn-primary">
 
 				</form>
 			</div>

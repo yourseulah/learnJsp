@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PageViewDTO {
 
-	//화면에 뿌려줄 멤버변수 반들기
+	//화면에 뿌려줄 멤버변수 만들기
 	//시작과 끝번호
 	//이전 다음
 	//맨처음으로 맨끝으로 

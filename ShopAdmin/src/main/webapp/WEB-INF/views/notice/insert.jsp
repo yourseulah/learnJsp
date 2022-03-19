@@ -19,8 +19,7 @@
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/notice/list">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. 
-			/notice/list/insert.jsp 이렇게 바로 못감 -->
+			
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -29,27 +28,31 @@
 				 method="post" action="/notice/insert" 지우고 name 부여-->
 				<form class="user" name="writefrm">
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>제목</label>
-							<input type="text" id="id_subject" class="form-control form-control-user"
-							 name="n_subject" placeholder="제목">
+						<div class="mb-3 col-md-4">
+							<input type="text" class="form-control"
+							 name="n_subject" id="id_subject" placeholder="Title">
 						</div>
-						<div class="col-sm-6">
-						<label>작성자</label>
-							<input type="text" class="form-control form-control-user"
-								name="n_name" placeholder="작성자">
+						<div class="mb-3 col-md-4">
+							<input type="text" class="form-control"
+							name="n_name" placeholder="Admin">
 						</div>
 					</div>
-					<div class="form-group">
-						<label>내용</label>
+					<div class="form-group row">	
+						<div class="mb-3 col-md-8">
 						<textarea rows="10" class="form-control" name="n_contents"
-							placeholder="내용"></textarea>
+						placeholder="content"></textarea>
+						</div>
 					</div>
-
-					<input type="button" class="btn btn-primary btn-user btn-block" 
-					onclick="writeform();" value="Post">
+					
+					<div class="form-group row">
+						<div class="mb-3 col-md-8">
+							<input type="button" class="mb-3 btn btn-primary" 
+							onclick="writeform();" value="Post">
+						</div>
+					</div>
 					<!-- type을 submit에서 button으로 처리하고 javascript onclick 사용해보기 -->
-					<a href="javascript:writeform2();">글쓰기2</a> 
+					
+					<!-- <a href="javascript:writeform2();">글쓰기2</a> -->
 					<!-- button이 아닌 hyperlink도 가능, javascript를 링크로 호출하겠다는 것 -->
 					
 					<!-- 수많은 제어를 하고 싶을때 type="submit" 이 아니라 javascript로 할수 있다. -->

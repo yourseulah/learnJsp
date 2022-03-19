@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.it.domain.PageDTO;
 import com.it.domain.ProductVO;
 import com.it.mapper.ProductMapper;
 
@@ -18,6 +19,16 @@ public class ProductServiceImpl implements ProductService {
 	private ProductMapper mapper;
 		
 	@Override
+	public List<ProductVO> getList(PageDTO page) {
+		return mapper.getList(page);
+	}
+	
+	@Override
+	public int getTotalCount() {
+		return mapper.getTotalCount();
+	}
+	
+	@Override
 	public ProductVO read(ProductVO product) {
 		return mapper.read(product);
 	}
@@ -26,12 +37,6 @@ public class ProductServiceImpl implements ProductService {
 	public void insert(ProductVO product) { //사용자로부터(맨위계층-웹브라우저에서) 내려오는 내용
 		mapper.insert(product);
 	}
-	
-	@Override
-	public List<ProductVO> getList() {
-		return mapper.getList();
-	}
-	
 	
 	@Override
 	public void update(ProductVO product) {

@@ -54,7 +54,7 @@
 						</div>
 					</div>
 
-					<input type="submit" class="btn btn-primary btn-user btn-block"
+					<input type="submit" class="btn btn-primary"
 						value="수정하기">
 				</form>
 
@@ -63,4 +63,4 @@
 	</div>
 </div>
 
-	<%@include file="../include/footer.jsp"%>
+<%@include file="../include/footer.jsp"%>

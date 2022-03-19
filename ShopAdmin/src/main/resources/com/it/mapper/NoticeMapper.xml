@@ -7,6 +7,8 @@
 	<select id="getNotice" resultType="com.it.domain.NoticeVO">
 		select * from tblnotice order by n_num desc
 		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
+		<!-- LIMIT: 행을 얼마나 가져올지 -->
+		<!-- OFFSET: 어디서 부터 가져올지 -->
 	</select>
 	
 	<insert id="insert">

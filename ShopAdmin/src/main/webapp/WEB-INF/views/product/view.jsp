@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../include/header.jsp"%>
 
 <script>
 	function ImgWinOpen(p_code) {
-		window.open("/product/imgupload?p_code="+p_code,"","width=500,height=300,menubar=no,toobar=no, status=no,scrollbars=no,");
-		
+		window.open("/product/imgupload?p_code=" + p_code, "",
+		"width=500, height=300, menubar=no, toobar=no, status=no, scrollbars=no,");
 	}
 </script>
 
@@ -18,72 +18,69 @@
 	<h1 class="h3 mb-2 text-gray-800">Product Detail</h1>
 	<p class="mb-4"></p>
 
-	<!-- Datatables Example -->
+	<!-- datatable Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">
-				<a href="/product/list">Back to List</a>
+				<a href="/product/list?pageNum=${page.pageNum}">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
+
 		<div class="card-body">
 			<div class="table-responsive">
+				<div class="form-group row">
+					<div class="col-md-2">
+						<label><b>Code</b></label> 
+						<input type="text" class="form-control"
+							value="${product.p_code}" readonly>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-4">
+						<label><b>Name</b></label>
+						<input type="text" class="form-control"
+							value="${product.p_name}" readonly>
+					</div>
+					<div class="col-md-4">
+						<label><b>Unit Price</b></label> 
+						<input type="text" class="form-control"
+							value="${product.p_price}" readonly>
+					</div>
+				</div>
 
 				<div class="form-group row">
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>상품코드</label> <input type="text"
-							class="form-control form-control-user" value="${product.p_code}"
-							readonly>
+					<div class="col-md-8">
+						<p>
+							<img src="/resources/product/${product.p_code}.jpg" height="250">
+						</p>
+						<input type="button" value="Image" class="btn btn-secondary"
+							onclick="ImgWinOpen('${product.p_code}')">
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>상품명</label> <input type="text"
-							class="form-control form-control-user" value="${product.p_name}"
-							readonly >
+					<div class="col-md-4">
+						<label><b>Registered Date :</b></label> 
+						<br>${product.p_rdate}
 					</div>
-					<div class="col-sm-6">
-						<label>단가</label> <input type="text"
-							class="form-control form-control-user" value="${product.p_price}"
-							readonly>
-					</div>
-				</div>
-					
-				<div class="form-group row">
-					<div class="col-sm-6">
-						<label>이미지</label> 
-						<p><img src="/resources/product/${product.p_code}.jpg" height="70"></p>
+
+					<div class="col-md-4">
+						<label><b>Edited Date : </b></label> 
+						<br>${product.p_udate}"
 					</div>
 				</div>
-					<div class="form-group row">
-					<div class="col-sm-6">
-						<label>이미지</label> 
-						<input type="button" value="이미지등록" class="form-control" onclick="ImgWinOpen('${product.p_code}')">
-					</div>
-				</div>				
 				
+				
+				<hr>
 				<div class="form-group row">
 					<div class="col-sm-6">
-						<label>등록일</label> <input type="text"
-							class="form-control form-control-user" value="${product.p_rdate}"
-							readonly>
+						<a class="btn btn-primary"
+							href="/product/update?p_code=${product.p_code}">Update</a>
+							<%-- &nbsp;&nbsp;&nbsp; <a class="btn btn-primary"
+							href="/product/delete?p_code=${product.p_code}">Delete</a> --%>
 					</div>
-					
-					<div class="col-sm-6">
-						<label>수정일</label> <input type="text"
-							class="form-control form-control-user" value="${product.p_udate}"
-							readonly>   
-					</div>
-				</div> 
+				</div>
 				
-				<div class="form-group row">
-					<div class="col-sm-6">
-						<a class="btn btn-primary" href="/product/update?p_code=${product.p_code}">Update</a>
-						&nbsp;&nbsp;&nbsp;
-						<a class="btn btn-primary" href="/product/delete?p_code=${product.p_code}" >Delete</a>
-					</div>
-				</div>s
 			</div>
 		</div>
 	</div>

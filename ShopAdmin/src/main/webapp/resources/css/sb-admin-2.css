@@ -2367,6 +2367,18 @@ fieldset:disabled a.btn {
   border-color: #2653d4;
 }
 
+.btn-pink {
+  color: #fff;
+  background-color: #FF647F;
+  border-color: #FF647F;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #FF3659;
+  border-color: #FF3659;
+}
+
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
   background-color: #2e59d9;

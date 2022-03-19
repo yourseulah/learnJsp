@@ -18,30 +18,24 @@
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/product/list">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /product/insert.jsp 이렇게 바로 못감 -->
 		</div>
+		
 		<div class="card-body">
 			<div class="table-responsive">
 				<form class="user" method="post" action="/product/insert">
-					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>상품명</label>
-							<input type="text" class="form-control form-control-user"
-							 name="p_name" placeholder="상품명">
-						</div>
+					<div class="mb-3 col-md-6">
+  					<input type="text" class="form-control"
+  					name ="p_name" placeholder="Product Name">
 					</div>
 					
-					<div class="form-group row ">
-						<div class="col-sm-6">
-						<label>단가</label>
-							<input type="text" class="form-control form-control-user"
-								name="p_price" placeholder="단가">
-						</div>
+					<div class="mb-3 col-md-6">
+  					<input type="text" class="form-control" 
+  					name ="p_price" placeholder="Unit Price">
 					</div>
 					
-
-					<input type="submit" value="상품등록" class="btn btn-primary btn-user btn-block">
-
+					<div class="mb-3 col-md-6">
+					<input type="submit" value="Save" class="btn btn-primary">
+					</div>
 				</form>
 			</div>
 		</div>
