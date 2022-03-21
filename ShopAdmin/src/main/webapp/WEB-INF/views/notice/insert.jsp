@@ -26,7 +26,7 @@
 			
 				<!-- javascript 사용해서 제출 해보기, 
 				 method="post" action="/notice/insert" 지우고 name 부여-->
-				<form class="user" name="writefrm">
+				<form class="user" name="writefrm" enctype="multipart/form-data">
 					<div class="form-group row">
 						<div class="mb-3 col-md-4">
 							<input type="text" class="form-control"
@@ -34,7 +34,7 @@
 						</div>
 						<div class="mb-3 col-md-4">
 							<input type="text" class="form-control"
-							name="n_name" placeholder="Admin">
+							name="n_name" value="${a_name}" readonly>
 						</div>
 					</div>
 					<div class="form-group row">	
@@ -44,9 +44,16 @@
 						</div>
 					</div>
 					
+					<div class="form-group row">				
+						<div class="input-group mb-4 col-md-8">
+  							<input type="file" class="form-control" name="n_file" id="inputGroup">
+ 					 		<label class="input-group-text" for="inputGroup">Upload</label>
+						</div>
+					</div>
+					
 					<div class="form-group row">
 						<div class="mb-3 col-md-8">
-							<input type="button" class="mb-3 btn btn-primary" 
+							<input type="button" class="btn btn-primary" 
 							onclick="writeform();" value="Post">
 						</div>
 					</div>

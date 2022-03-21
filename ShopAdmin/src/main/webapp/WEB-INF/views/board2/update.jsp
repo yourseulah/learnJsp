@@ -15,47 +15,67 @@
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">
-				<a href="/board/list?pageNum=${page.pageNum}">Back to List</a>
+				<a href="/board2/list?pageNum=${page.pageNum}">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
 
-				<form class="user" method="post" action="/board/update?pageNum=${page.pageNum}">
+				<form class="user" method="post" action="/board2/update?pageNum=${page.pageNum}" enctype="multipart/form-data">
 				<!-- post방식이라도 get방식으로 (링크) 넘길수 있다 혼합형 -->
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<label>번호</label> <input type="text"
-								class="form-control form-control-user" name="b_num"
+						<div class="col-md-2">
+							<label><b>No.</b></label> 
+							<input type="text"
+								class="form-control" name="b_num"
 								value="${board.b_num}" readonly>
 						</div>
 					</div>
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<label>제목</label> <input type="text"
-								class="form-control form-control-user" name="b_subject"
+						<div class="col-md-4">
+							<label><b>Title</b></label> 
+							<input type="text"
+								class="form-control" name="b_subject"
 								value="${board.b_subject}">
 						</div>
-						<div class="col-sm-6">
-							<label>작성자</label> <input type="text"
-								class="form-control form-control-user" name="b_name"
-								value="${board.b_name}">
+						<div class="col-md-4">
+							<label><b>Writer</b></label> 
+							<input type="text"
+								class="form-control" name="b_name"
+								value="${board.b_name}" readonly>
 						</div>
 					</div>
-					<div class="form-group">
-						<label>내용</label>
-						<textarea rows="10" class="form-control" name="b_contents">${board.b_contents}</textarea>
-					</div>
 					<div class="form-group row">
-						<div class="col-sm-6">
-							<label>작성일</label> 
-							${board.b_date}
+						<div class="col-md-8">
+							<label for="content" class="form-label"><b>Content</b></label>
+							<textarea rows="10" class="form-control" name="b_contents" id="contnet">${board.b_contents}</textarea>
+						</div>
+					</div>
+					
+					<div class="form-group row">				
+						<div class="input-group mb-2 col-md-4">
+  							<input type="text" class="form-control" name="b_file" value="${board.b_file}" readonly>
+						</div>
+			
+						<div class="input-group mb-2 col-md-4">
+  							<input type="file" class="form-control" name="b_file" id="inputGroup">
+ 					 		<label class="input-group-text" for="inputGroup">Upload</label>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="mb-1 col-md-8">
+							<label><b>Written Date :</b></label> 
+							${board.b_rdate}
+						</div>
+						<div class="mb-1 col-md-8">
+							<label><b>Updated Date :</b></label> 
+							${board.b_udate}
 						</div>
 					</div>
 
-					<input type="submit" class="btn btn-primary"
-						value="수정하기">
+					<input type="submit" class="mb-4 btn btn-primary"
+						value="Save">
 				</form>
 
 			</div>

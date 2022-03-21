@@ -17,7 +17,7 @@
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/notice/list?pageNum=${page.pageNum}">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /board/list.jsp 로 바로 못감 -->
+			<!-- 컨트롤러로 간다. /notice/list.jsp 로 바로 못감 -->
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -51,9 +51,19 @@
 				</div>
 				
 				<div class="form-group row">
+					<div class="mb-4 col-md-8">
+						<label class="form-control"><b>File attached :</b><a 
+						href="/notice/download?n_num=${notice.n_num}">
+						${notice.n_file}</a></label>
+					</div>
+					
 					<div class="col-md-8">
 						<label><b>Written Date :</b></label> 
-						${notice.n_date}
+						${notice.n_rdate}
+					</div>
+					<div class="col-md-8">
+						<label><b>Updated Date :</b></label> 
+						${notice.n_udate}
 					</div>
 				</div>
 				
@@ -66,6 +76,7 @@
 						href="/notice/delete?n_num=${notice.n_num}">Delete</a>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>

@@ -10,5 +10,7 @@ public class NoticeVO {
 	private String n_subject;
 	private String n_name;
 	private String n_contents;
-	private Date n_date;
+	private String n_file;
+	private Date n_rdate;
+	private Date n_udate;
 }

@@ -26,7 +26,9 @@
 							<th>No.</th>
 							<th>Title</th>
 							<th>Writer</th>
+							<th>File</th>
 							<th>Written Date</th>
+							<th>Updated Date</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -36,10 +38,10 @@
 							<tr>
 								<td>${notice.n_num}</td>
 								<td><a href = "/notice/view?n_num=${notice.n_num}&pageNum=${pageview.page.pageNum}">${notice.n_subject}</a></td>
-								<!--get방식에서는 띄어쓰기 X, 
-								&으로 여러개 넘길수도 있음-->
 								<td>${notice.n_name}</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${notice.n_date}" /></td>
+								<td>${notice.n_file}</td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${notice.n_rdate}"/></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${notice.n_udate}"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>

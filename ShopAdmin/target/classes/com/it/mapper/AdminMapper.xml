@@ -10,6 +10,6 @@
 		a_id = #{a_id} and 
 		a_passwd = hex(aes_encrypt(#{a_passwd}, sha2('123987!', 512)))
 	</select>
-
+	
 
 </mapper>

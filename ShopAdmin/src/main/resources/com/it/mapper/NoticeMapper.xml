@@ -12,8 +12,8 @@
 	</select>
 	
 	<insert id="insert">
-		insert into tblnotice (n_subject, n_name, n_contents)
-		values (#{n_subject}, #{n_name}, #{n_contents})
+		insert into tblnotice (n_subject, n_name, n_contents, n_file)
+		values (#{n_subject}, #{n_name}, #{n_contents}, #{n_file})
 	</insert>
 	
 	<!-- 
@@ -29,7 +29,7 @@
 	
 	<update id="update">
 		update tblnotice set n_subject = #{n_subject},
-		n_name = #{n_name}, n_contents = #{n_contents}
+		n_name = #{n_name}, n_contents = #{n_contents}, n_file = #{n_file}
 		where n_num = #{n_num}
 	</update>
 	

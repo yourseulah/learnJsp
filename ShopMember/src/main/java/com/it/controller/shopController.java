@@ -108,7 +108,6 @@ public class shopController {
 					//model.addAttribute("cartmain", cartmain); //cm_code을 담은 cartmain 가방을 넘기자
 					model.addAttribute("cm_code", cartmain.getCm_code()); //cm_code 단일변수명으로 넘기기
 					
-					
 					log.info("장바구니에 담은 상품이 있습니다");
 				} else { //장바구니에 담은 상품이 없다면 
 					log.info("장바구니에 담은 상품이 없습니다 ");

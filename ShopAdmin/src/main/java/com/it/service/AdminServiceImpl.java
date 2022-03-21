@@ -23,7 +23,12 @@ public class AdminServiceImpl implements AdminService{
 			return true;
 		} else {
 			return false;
-		}
-		
+		}		
 	}
+	
+	@Override
+	public AdminVO read(AdminVO admin) {
+		return mapper.read(admin);
+	}
+	
 }

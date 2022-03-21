@@ -34,24 +34,31 @@ create table tblboard2 (
  b_contents varchar(2000) not null,
  b_file varchar(200), 
  b_name varchar(50) not null,
- b_date datetime not null default sysdate()
+ b_rdate datetime not null default sysdate(),
+ b_udate timestamp default current_timestamp on update current_timestamp
 );
 
 select * from tblboard2;
 delete from tblboard2;
+drop table tblboard2;
 
 /* tblnotice 테이블 */
 create table tblnotice (
  n_num int not null primary key AUTO_INCREMENT,
  n_subject varchar(100) not null,
  n_contents varchar(2000) not null,
+ n_file varchar(200), 
  n_name varchar(50) not null,
- n_date datetime not null default sysdate()
+ n_rdate datetime not null default sysdate(),
+ n_udate timestamp default current_timestamp on update current_timestamp
 );
 
 select * from tblnotice order by n_num desc
 		limit 1 offset 0;
 select * from tblnotice;
+delete from tblnotice;
+drop table tblnotice;
+
 INSERT INTO tblnotice (n_subject, n_name, n_contents) VALUES ('제목이다','홍길동','jsp프로그래밍');
 
 
@@ -63,6 +70,8 @@ create table tbladmin (
 	a_rdate datetime not null default sysdate(),
 	a_udate datetime not null default sysdate()
 );
+
+select * from tbladmin; 
 
 /* 16진수로 암호화된 비번과 같이 데이터 추가 */
 insert into tbladmin (a_id, a_passwd, a_name) 
@@ -103,15 +112,17 @@ create table tblproduct(
 	p_code int not null primary key auto_increment,
 	p_name varchar(100) not null, 
 	p_price int not null,
-	--p_status char(1) not null default 'A', A활성 B비활성
-	p_rdate datetime not null default sysdate(),
-	p_udate datetime not null default sysdate()
+	p_rdate TIMESTAMP default current_timestamp,
+	p_udate TIMESTAMP default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+--p_status char(1) not null default 'A', A활성 B비활성
 alter table tblproduct auto_increment=1001; 
 -- 출력되는 경우 영수증 번호 자리수를 유지하기 위해 (4자리)
 -- 단, 부족하지 않게. 쇼핑몰 매출 규모에 맞게 (8자리 이상 등)
 select * from tblproduct;
+delete * from tblprdocut;
+drop table tblproduct;
 
 /* 장바구니 main */
 -- 실제 정보는 장바구니sub로 분리

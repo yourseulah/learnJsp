@@ -17,50 +17,63 @@
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/board2/list?pageNum=${page.pageNum}">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
 
 				<div class="form-group row">
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>번호</label> <input type="text"
-							class="form-control form-control-user" value="${board.b_num}"
+					<div class="col-md-2">
+						<label><b>No.</b></label> 
+						<input type="text"
+							class="form-control" value="${board.b_num}"
 							readonly>
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>제목</label> <input type="text"
-							class="form-control form-control-user" value="${board.b_subject}"
+					<div class="col-md-4">
+						<label><b>Title</b></label> 
+						<input type="text"
+							class="form-control" value="${board.b_subject}"
 							readonly >
 					</div>
-					<div class="col-sm-6">
-						<label>작성자</label> <input type="text"
-							class="form-control form-control-user" value="${board.b_name}"
+					<div class="col-md-4">
+						<label><b>Writer</b></label> 
+						<input type="text"
+							class="form-control" value="${board.b_name}"
 							readonly>
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label>내용</label>
-					<textarea rows="10" class="form-control" readonly>${board.b_contents}</textarea>
+				<div class="form-group row">
+					<div class="col-md-8">
+						<label><b>Content</b></label>
+						<textarea rows="10" class="form-control" readonly>${board.b_contents}</textarea>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="mb-4 col-md-8">
+						<label class="form-control"><b>File attached :</b>
+						<a href="/board2/download?b_num=${board.b_num}">${board.b_file}</a></label>
+					</div>
+					<div class="col-md-8">
+						<label><b>Written Date :</b></label>
+						${board.b_rdate}
+					</div>
+					<div class="col-md-8">
+						<label><b>Updated Date :</b></label>
+						${board.b_udate}
+					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-sm-6">
-						<label>작성일</label> <input type="text"
-							class="form-control form-control-user" value="${board.b_date}"
-							readonly>
-					</div>
-				</div>
-				
-				<div class="form-group row">
-					<div class="col-sm-6">
-						<a href="/board2/update?b_num=${board.b_num}&pageNum=${page.pageNum}">[수정]</a>
+						<a class="btn btn-primary"
+						href="/board2/update?b_num=${board.b_num}&pageNum=${page.pageNum}">Update</a>
 						&nbsp;&nbsp;&nbsp;
-						<a href="/board2/delete?b_num=${board.b_num}">[삭제]</a>
+						<a class="btn btn-secondary"
+						href="/board2/delete?b_num=${board.b_num}">Delete</a>
 					</div>
 				</div>
 			</div>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it.domain.MemberVO;
+import com.it.domain.PageDTO;
 import com.it.service.MemberService;
 
 import lombok.Setter;
@@ -24,10 +25,12 @@ public class MemberController {
 	private MemberService service;
 	
 	@GetMapping("/list")
-	public void list(Model model) { 
-	//Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전송
-		model.addAttribute("list", service.getList()); 
-		//getList로 조회한 모든 내용을 list 변수로 전달
+	public void list(HttpSession session, Model model, PageDTO page) { 
+		String a_id = (String)session.getAttribute("a_id");
+			if(a_id != null) {
+				model.addAttribute("list", service.getList()); 
+				
+			}
 	}
 	
 	@GetMapping("/insert")
@@ -131,6 +134,5 @@ public class MemberController {
 		//로그아웃한 뒤에 home으로 가라
 		return "redirect:/";
 	}
-	
 	
 }

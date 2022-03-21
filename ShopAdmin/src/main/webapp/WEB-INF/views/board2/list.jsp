@@ -23,11 +23,12 @@
 				<table class="table table-bordered" width="100%" cellspacing="0">
 					<thead>
 						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>파일명</th>
-							<th>작성일</th>
+							<th>No.</th>
+							<th>Title</th>
+							<th>Writer</th>
+							<th>File</th>
+							<th>Written Date</th>
+							<th>Updated Date</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -40,7 +41,8 @@
 								<!-- page번호도 꼭 넘겨주어야 한다. -->
 								<td>${board.b_name}</td>
 								<td><a href="/board2/download?b_num=${board.b_num}">${board.b_file}</a></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.b_date}"/></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.b_rdate}"/></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.b_udate}"/></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.FileItem;
@@ -35,31 +36,37 @@ public class Board2Controller {
 	private Board2Service service;
 	
 	@GetMapping("/list")
-	public void list(Model model, PageDTO page) { 
-		model.addAttribute("list", service.getList(page)); 
-		//getList로 조회한 모든 내용(출력시킬데이터)을 list 변수로 전달
-		int total = service.getTotalCount(); //전체레코드 갯수 뽑아내기
-		PageViewDTO pageview = new PageViewDTO(page, total);
-		//log.info(page);
-		//log.info(pageview);
-		model.addAttribute("pageview", pageview);
-		//log.info("------------여기------------");
-		//log.info(user);
-		//log.info(age + 1);
-		//model.addAttribute("user", user);
-		//model.addAttribute("age", age);
+	public String list(HttpSession session, Model model, PageDTO page) { 
+		String a_id = (String)session.getAttribute("a_id");
+		if(a_id != null) {
+			model.addAttribute("list", service.getList(page)); 
+			//getList로 조회한 모든 내용(출력시킬데이터)을 list 변수로 전달
+			int total = service.getTotalCount(); //전체레코드 갯수 뽑아내기
+			PageViewDTO pageview = new PageViewDTO(page, total);
+			//log.info(page);
+			//log.info(pageview);
+			model.addAttribute("pageview", pageview);
+			return "/board2/list";
+		} else {
+			return "redirect:/admin/login";
+		}
 	}
 	
 	@GetMapping("/insert")
-	public void insert () {
-		//메세지를 호출만 함
+	public String insert (HttpSession session) {
+		String a_id = (String)session.getAttribute("a_id");
+		if(a_id != null) {
+			return "/board2/insert";
+		} else {
+			return "redirect:/admin/login";
+		}
 	}
 	
 	@PostMapping ("/insert")
 	public String insert(HttpServletRequest request) { //부호화 방식이 multipart이면 객체를 수신할수 없음, 그래서 가방이아니라 request로 할수 밖에 없다.
 		DiskFileUpload upload = new DiskFileUpload(); // common-file upload 패키지에 있는 DiskFileUpload객체
 		//모든데이터(파일포함)전송컴포넌트객체 생성
-		log.info(request);
+		//log.info(request);
 		try {
 			List items = upload.parseRequest(request); //웹브라우저 전송 객체 생성해서 업로드컴포넌트에 전달
 			Iterator params = items.iterator() ; // 반복자 생성 
@@ -115,7 +122,7 @@ public class Board2Controller {
 		/* response => HTTP 응답 정보(요청 처리 결과)를 제공하는 인터페이스 */
 		/* request => HTTP 요청 정보(클라이언트 요청, 쿠키, 세션 등)를 제공하는 인터페이스 */
 		board = service.read(board);
-		log.info(response);
+		//log.info(response);
 		
 		try {
 			String filepath = "C:\\MyWorkSpace\\LearnJsp\\pds\\" + board.getB_file();
@@ -160,7 +167,91 @@ public class Board2Controller {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		
+	}
+	
+	@GetMapping("/view")
+	public String view(HttpSession session, Board2VO board, Model model, PageDTO page) {
+		String a_id = (String)session.getAttribute("a_id");
+		if(a_id != null) {
+			board = service.read(board);
+			model.addAttribute("board", board);
+			model.addAttribute("page", page);
+			return "/board2/view";
+		} else {
+			return "redirect:/admin/login";
+		}
+	}
+	
+	@GetMapping("/update")
+	public String update(HttpSession session, Board2VO board, Model model, PageDTO page) {
+		String a_id = (String)session.getAttribute("a_id");
+		if(a_id != null) {
+			board = service.read(board);
+			model.addAttribute("board", board);
+			model.addAttribute("page", page);
+			return "/board2/update";
+		} else {
+			return "redirect:/admin/login";
+		}
+	}
+	
+	@PostMapping("/update")
+	public String update(HttpServletRequest request, PageDTO page) {
+		DiskFileUpload upload = new DiskFileUpload(); 
+		//log.info(request);
+		Board2VO board = new Board2VO();
+		try {
+			List items = upload.parseRequest(request); 
+			Iterator params = items.iterator(); 
+				
+			String filepath = "C:\\myWorkSpace\\learnJsp\\pds"; 
+			
+			//log.info(items.size());
+			while (params.hasNext()) { //form 객체가 있을 경우  .hasNest() 데이터 있다 없다 
+				FileItem item = (FileItem)params.next(); //폼 형식 객체를 변수에 저장 .next() 반환
+				log.info(item);
+				if (item.isFormField()) { //파일형식이 아니라면 
+					//p_code = item.getString(); //파일보다 먼저 반환됨
+					String fieldname = item.getFieldName();
+					String fieldvalue = item.getString("utf-8");
+					log.info(fieldname + ":" + fieldvalue);
+					if (fieldname.equals("b_subject")) {
+						board.setB_subject(fieldvalue);
+					} else if (fieldname.equals("b_name")) {
+						board.setB_name(fieldvalue);
+					} else if (fieldname.equals("b_contents")) {
+						board.setB_contents(fieldvalue);
+					} else if (fieldname.equals("b_file")) {
+						board.setB_file(fieldvalue);
+					} else if (fieldname.equals("b_num")) {
+						board.setB_num(Integer.parseInt(fieldvalue));
+						log.info(board);
+					}
+						
+				} else { //바이너리 파일이라면 
+					String fname = item.getName();
+					log.info(fname);
+					if (fname != "") {
+						board.setB_file(fname);
+						File file = new File(filepath + "/" + fname); //파일객체 생성 
+						item.write(file); //해당 경로에 파일 저장	
+					}
+				}
+			}
+			log.info(board);
+			service.update(board);
+			return "redirect:/board2/view?b_num=" + board.getB_num(); 
+			
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+		return "redirect:/board2/view?b_num=" + board.getB_num() + "&pageNum=" + page.getPageNum();
+	}
+	
+	@GetMapping("/delete")
+	public String delete(Board2VO board) {
+		service.delete(board);
+		return "redirect:/board2/list";
 	}
 
 }

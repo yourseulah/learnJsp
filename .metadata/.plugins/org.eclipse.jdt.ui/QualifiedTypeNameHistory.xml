@@ -8,14 +8,12 @@
     <fullyQualifiedTypeName name="com.it.domain.ProductVO"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
-    <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
     <fullyQualifiedTypeName name="com.it.domain.CartsubVO"/>
     <fullyQualifiedTypeName name="com.it.domain.CartmainVO"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="com.it.domain.OrdermainVO"/>
     <fullyQualifiedTypeName name="com.it.domain.OrdersubVO"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.awt.List"/>
     <fullyQualifiedTypeName name="com.it.domain.OrdermemberDTO"/>
     <fullyQualifiedTypeName name="com.it.domain.AdminVO"/>
@@ -25,4 +23,9 @@
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
     <fullyQualifiedTypeName name="com.it.domain.PageDTO"/>
     <fullyQualifiedTypeName name="com.it.domain.NoticeVO"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.javassist.bytecode.Descriptor.Iterator"/>
+    <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

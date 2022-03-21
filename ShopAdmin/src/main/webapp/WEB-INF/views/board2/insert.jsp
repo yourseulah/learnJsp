@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../include/header.jsp"%>
 
+<script src="/resources/js/my.js"></script>   
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -21,32 +23,41 @@
 		
 		<div class="card-body">
 			<div class="table-responsive">
-				<form class="user" method="post" action="/board2/insert" enctype = "multipart/form-data">
+			
+				<!-- <form class="user" method="post" action="/board2/insert" enctype = "multipart/form-data"> -->
+				<!-- javascript 활용해보기 -->	
+				<form class="user" name="boardfrm" enctype="multipart/form-data">
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>제목</label>
-							<input type="text" class="form-control form-control-user"
-							 name="b_subject" placeholder="제목">
+						<div class="mb-3 col-md-4">
+							<input type="text" class="form-control"
+							 name="b_subject" id="b_subject" placeholder="Title">
 						</div>
-						<div class="col-sm-6">
-						<label>작성자</label>
-							<input type="text" class="form-control form-control-user"
-								name="b_name" placeholder="작성자">
+						<div class="mb-3 col-md-4">
+							<input type="text" class="form-control"
+								name="b_name" value="${a_name}" readonly>
 						</div>
 					</div>
-					<div class="form-group">
-						<label>내용</label>
-						<textarea rows="10" class="form-control" name="b_contents"
-							placeholder="내용"></textarea>
+					<div class="form-group row">
+						<div class="mb-3 col-md-8">
+							<textarea rows="10" class="form-control" name="b_contents"
+							placeholder="Content"></textarea>
+						</div>
+					</div>
+								
+					<div class="form-group row">				
+						<div class="input-group mb-4 col-md-8">
+  							<input type="file" class="form-control" name="b_file" id="inputGroupFile02">
+ 					 		<label class="input-group-text" for="inputGroupFile02">Upload</label>
+						</div>
 					</div>
 					
-					<div class="col-sm-6">
-						<label>파일</label> &nbsp;
-							<input type="file" name="b_file" placeholder="작성자">
+					<div class="form-group row">
+						<div class = "mb-3 col-md-8">
+						<a class="btn btn-primary" href = "javascript:boardform();">Post</a>
+						<!-- input 대신에 a태그를 사용해서 폼처리해보기 -->
+						
+						</div>
 					</div>
-					&nbsp;&nbsp;
-					<input type="submit" class="btn btn-primary">
-
 				</form>
 			</div>
 		</div>
