@@ -37,13 +37,16 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Logged in as ${m_id}</a>
                         	<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/member/view?m_id=${m_id}">My Setting</a></li>
+                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
-                             </ul>
+                            </ul>
+                            
                         </li>
                         </c:if>
                         
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item"><a class="nav-link" href="/board2/list">Board</a></li>
+                       <!--  <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/shop/list">All Products</a></li>
@@ -51,7 +54,7 @@
                                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                     <form class="d-flex">
                         <a class="btn btn-outline-dark" type="submit"  href="/shop/cartinfo">

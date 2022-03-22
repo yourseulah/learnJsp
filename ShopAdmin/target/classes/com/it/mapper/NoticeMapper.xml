@@ -11,6 +11,10 @@
 		<!-- OFFSET: 어디서 부터 가져올지 -->
 	</select>
 	
+	<select id="getTotalCount" resultType="int">
+		select count(n_num) from tblnotice 
+	</select>
+	
 	<insert id="insert">
 		insert into tblnotice (n_subject, n_name, n_contents, n_file)
 		values (#{n_subject}, #{n_name}, #{n_contents}, #{n_file})
@@ -37,8 +41,6 @@
 		delete from tblnotice where n_num = #{n_num} 
 	</delete>
 	
-	<select id="getTotalCount" resultType="int">
-		select count(n_num) from tblnotice 
-	</select>
+	
 	
 </mapper>

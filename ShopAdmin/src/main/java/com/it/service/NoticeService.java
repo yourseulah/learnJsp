@@ -13,9 +13,9 @@ public interface NoticeService {
 	
 	public List<NoticeVO> getNotice(PageDTO page); //전체레코드조회
 	
+	public int getTotalCount();
+	
 	public void update(NoticeVO notice); //레코드수정
 	
 	public void delete(NoticeVO notice); //레코드삭제
-	
-	public int getTotalCount();
  }

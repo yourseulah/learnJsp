@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.it.domain.MemberVO;
+import com.it.domain.PageDTO;
 import com.it.mapper.MemberMapper;
 
 import lombok.Setter;
@@ -61,8 +62,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public List<MemberVO> getList() {
-		return mapper.getList();
+	public List<MemberVO> getList(PageDTO page) {
+		return mapper.getList(page);
+	}
+	
+	@Override
+	public int getTotalCount() {
+		return mapper.getTotalCount();
 	}
 	
 	

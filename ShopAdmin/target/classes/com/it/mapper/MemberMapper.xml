@@ -5,13 +5,18 @@
 <mapper namespace="com.it.mapper.MemberMapper">
 	
 	<select id="getList" resultType="com.it.domain.MemberVO"> 
-		select * from tblmember order by m_id
+		select * from tblmember order by m_id 
+		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
 	</select>
 	
-	<!-- <insert id="insert"> 
-		insert into tblmember (m_id, m_passwd, m_name) 테이블필드명
-		values (#{m_id}, #{m_passwd}, #{m_name}) boardVO에 있는 입력되는 내용 3개
-	</insert> -->
+	<select id="getTotalCount" resultType="int">
+		select count(m_id) from tblmember
+	</select>
+	
+	<insert id="insert"> 
+		insert into tblmember(m_id, m_passwd, m_fname, m_lname, m_email) 
+		values (#{m_id}, #{m_passwd}, #{m_fname}, #{m_lname}, #{m_email}) 
+	</insert>
 	
 	<select id="read" resultType="com.it.domain.MemberVO"> <!-- 반환받는게 있을때 resultType써준다 -->
 		select * from tblmember where m_id = #{m_id}
@@ -24,7 +29,7 @@
 	</select> -->
 	
 	<update id="update">
-		update tblmember set m_name = #{m_name}, m_passwd = #{m_passwd}, m_udate = sysdate()
+		update tblmember set m_fname = #{m_fname}, m_lname = #{m_lname}, m_email = #{m_email}, m_udate = sysdate()
 		where m_id= #{m_id} 
 	</update>
 	

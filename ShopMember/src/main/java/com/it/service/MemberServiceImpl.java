@@ -36,11 +36,9 @@ public class MemberServiceImpl implements MemberService{
 			if(member.getM_passwd().equals(tmp.getM_passwd())) { //암호동일할경우 
 				//member.getM_passwd() : 사용자가 입력한 passwd 
 				//tmp.getM_passwd() : id를 가지고 조회한 테이블 레코드의 passwd  
-				
 				log.info(tmp); //진짜 정보 들어있고
 				log.info("인증성공");
 				return true;
-				
 			} else { //아이디는 일치하나 암호가 일치하지 않는 경우
 				log.info(tmp);
 				log.info(member);

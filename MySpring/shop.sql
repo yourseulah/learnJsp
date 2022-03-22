@@ -88,23 +88,28 @@ select hex(aes_encrypt('tiger', sha2('123!', 512)));
 select aes_decrypt(unhex('FAEE86A08A044E2B3CCAADDECD3B272A'), sha2('123!', 512));	
 	
 select * from tbladmin;
-drop table tbladmin;http://127.0.0.1:8081/member/list#
+drop table tbladmin;
 
 
 /* 고객테이블*/
 create table tblmember (
 	m_id varchar(50) not null primary key, -- 아이디 
 	m_passwd varchar(50) not null, -- 비밀번호
-	m_name varchar(50) not null, -- 성명
+	m_fname varchar(50) not null,
+	m_lname varchar(50) not null,
+	m_name varchar(101) generated always as (concat(m_fname,' ',m_lname)), -- full name
+	m_email varchar(100) not null, -- 이메일
 	m_rdate datetime not null default sysdate(),
-	m_udate datetime not null default sysdate()
+	m_udate timestamp default current_timestamp on update current_timestamp
 );
 
+drop table tblmember;
 select * from tblmember;
+delete from tblmember;
 
 /* 16진수로 암호화된 비번과 같이 데이터 추가 */
-insert into tblmember (m_id, m_passwd, m_name) 
-	values('otter', hex(aes_encrypt('1234', sha2('123!', 512))), '이수달');
+insert into tblmember (m_id, m_passwd, m_fname, m_lname, m_email) 
+	values('otter', hex(aes_encrypt('1234', sha2('123!', 512))), 'Sudal', 'Lee', 'abc@abc.com');
 
 
 /* 상품테이블*/
@@ -121,7 +126,7 @@ alter table tblproduct auto_increment=1001;
 -- 출력되는 경우 영수증 번호 자리수를 유지하기 위해 (4자리)
 -- 단, 부족하지 않게. 쇼핑몰 매출 규모에 맞게 (8자리 이상 등)
 select * from tblproduct;
-delete * from tblprdocut;
+delete from tblproduct;
 drop table tblproduct;
 
 /* 장바구니 main */
@@ -351,6 +356,9 @@ select count(*) from tblboard;
 select * from tblboard order by b_num desc limit 10 offset 10;
 select * from tblboard limit 5;
 
+---------
+select count(*) from tblmember;
+---------
 
 select * from tblnotice;
 --	재귀쿼리

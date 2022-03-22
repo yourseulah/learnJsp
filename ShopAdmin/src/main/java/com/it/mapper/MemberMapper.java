@@ -3,10 +3,13 @@ package com.it.mapper;
 import java.util.List;
 
 import com.it.domain.MemberVO;
+import com.it.domain.PageDTO;
 
 public interface MemberMapper {
 
-		public List<MemberVO> getList();
+		public List<MemberVO> getList(PageDTO page);
+		
+		public int getTotalCount();
 		
 		public void insert(MemberVO member);
 		

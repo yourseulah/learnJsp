@@ -225,7 +225,6 @@ public class Board2Controller {
 						board.setB_file(fieldvalue);
 					} else if (fieldname.equals("b_num")) {
 						board.setB_num(Integer.parseInt(fieldvalue));
-						log.info(board);
 					}
 						
 				} else { //바이너리 파일이라면 

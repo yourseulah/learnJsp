@@ -35,6 +35,7 @@ public class AdminController {
 			//세션변수 생성하면서 저장하는 setAttribute 메서드
 			//setAttribute (저장할변수이름, 변수값) 
 			session.setAttribute("a_id", admin.getA_id()); //세션변수 생성
+			
 			//notice에서 작성자는 관리자밖에 없으니 이름을 default값으로 주기위해서 read 메서드로 레코드전체를 뽑아오도록함
 			admin = service.read(admin);
 			log.info(admin); 

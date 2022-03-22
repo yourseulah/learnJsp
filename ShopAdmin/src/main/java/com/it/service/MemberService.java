@@ -3,6 +3,7 @@ package com.it.service;
 import java.util.List;
 
 import com.it.domain.MemberVO;
+import com.it.domain.PageDTO;
 
 public interface MemberService {
 
@@ -13,7 +14,9 @@ public interface MemberService {
 	
 	public void insert (MemberVO member); //레코드입력
 	
-	public List<MemberVO> getList(); //전체레코드조회
+	public List<MemberVO> getList(PageDTO page); //전체레코드조회
+	
+	public int getTotalCount();
 	
 	public void update(MemberVO member); //레코드수정
 	

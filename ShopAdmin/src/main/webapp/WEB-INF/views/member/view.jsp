@@ -17,51 +17,77 @@
 			<h6 class="m-0 font-weight-bold text-primary">
 				<a href="/member/list">Back to List</a>
 			</h6>
-			<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
 
 				<div class="form-group row">
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>아이디</label> <input type="text"
-							class="form-control form-control-user" value="${member.m_id}"
+					<div class="col-md-4">
+						<label><b>ID</b></label>
+						<input type="text"
+							class="form-control" value="${member.m_id}"
 							readonly>
 					</div>
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>패스워드</label> <input type="text"
-							class="form-control form-control-user" value="${member.m_passwd}"
+					<div class="col-md-4">
+						<label><b>Password</b></label>
+						<input type="text"
+							class="form-control" value="${member.m_passwd}"
 							readonly >
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-6">
-						<label>이름</label> <input type="text"
-							class="form-control form-control-user" value="${member.m_name}"
+					<div class="col-md-4">
+						<label><b>First Name</b></label> 
+						<input type="text"
+							class="form-control" value="${member.m_fname}"
+							readonly>
+					</div>
+					<div class="col-md-4">
+						<label><b>Last Name</b></label> 
+						<input type="text"
+							class="form-control" value="${member.m_lname}"
+							readonly>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-md-8">
+						<label><b>Full Name</b></label> 
+						<input type="text"
+							class="form-control" value="${member.m_name}"
+							readonly>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="mb-4 col-md-8">
+						<label><b>Email</b></label> 
+						<input type="text"
+							class="form-control" value="${member.m_email}"
 							readonly>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>등록일</label> <input type="text"
-							class="form-control form-control-user" value="${member.m_rdate}"
-							readonly>
+					<div class="col-md-8">
+						<p class="form-control"><b>Registered Date : </b>${member.m_udate}"</p> 
 					</div>
 
-					<div class="col-sm-6 mb-3 mb-sm-0">
-						<label>수정일</label> <input type="text"
-							class="form-control form-control-user" value="${member.m_udate}"
-							readonly>   
+					<div class="col-md-8">
+						<p class="form-control"><b>Updated Date : </b> ${member.m_udate}"</p> 
 					</div>
 				</div> 
 				
+				
+				
 				<div class="form-group row">
-					<div class="col-sm-6 ">
-						<a href="/member/update?m_id=${member.m_id}">[Update]</a>
+					<div class="col-sm-6">
+						<a class="btn btn-primary" 
+						href="/member/update?m_id=${member.m_id}">Update</a>
 						&nbsp;&nbsp;&nbsp;
-						<a href="/member/delete?m_id=${member.m_id}">[Delete]</a>
+						<a class="btn btn-secondary"
+						href="/member/delete?m_id=${member.m_id}">Delete</a>
 					</div>
 				</div>
 			</div>

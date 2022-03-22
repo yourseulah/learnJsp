@@ -46,6 +46,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				
 				<!-- Pagination -->
 				<ul align="center">
 					<c:if test="${pageview.prev}">
@@ -54,10 +55,10 @@
 					</c:if>
 					<c:forEach var="num" begin="${pageview.startPage}" end="${pageview.endPage}">
 						<c:if test="${pageview.page.pageNum == num}"> <!-- 현재페이지와 만났다 bold처리-->
-							<b><a href="/notice/list?pageNum=${num}">[${num}]</a></b>&nbsp;&nbsp;
+							<b><a href="/notice/list?pageNum=${num}">${num}</a></b>&nbsp;&nbsp;
 						</c:if>
 						<c:if test="${pageview.page.pageNum != num}"> <!-- 현재페이지가 아니면 그대로-->
-							<a href="/notice/list?pageNum=${num}">[${num}]</a>&nbsp;&nbsp;
+							<a href="/notice/list?pageNum=${num}">${num}</a>&nbsp;&nbsp;
 						</c:if>													
 					</c:forEach>
 					<c:if test="${pageview.next}">

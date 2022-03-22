@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.mapper.Board2Mapper">
+	
+	<select id="getList" resultType="com.it.domain.Board2VO"> 
+		select * from tblboard2 order by b_num desc 
+		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
+		<!-- #는 문자열로 들어가고 작은따옴표가 붙고 : 연산이 자체가 안됨  $는 연산이 됨 
+		 가 아니라 (#{pageNum} -1)*#{pageAmount} -->
+	</select>
+	
+	<insert id="insert"> 
+		insert into tblboard2 (b_subject, b_name, b_contents, b_file) 
+		values (#{b_subject}, #{b_name}, #{b_contents}, #{b_file}) 
+	</insert>
+	
+	<select id="read" resultType="com.it.domain.Board2VO">
+		select * from tblboard2 where b_num = #{b_num}
+	</select>
+	
+	<update id="update">
+		update tblboard2 set b_subject = #{b_subject},
+		b_name = #{b_name}, b_contents = #{b_contents}, b_file = #{b_file}
+		where b_num = #{b_num}
+	</update>
+	
+	<delete id="delete">
+		delete from tblboard2 where b_num = #{b_num}
+	</delete>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(b_num) from tblboard2 
+	</select>
+	
+</mapper>
+

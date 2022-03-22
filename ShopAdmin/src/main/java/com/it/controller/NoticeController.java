@@ -243,7 +243,7 @@ public class NoticeController {
 			}
 			log.info(notice);
 			service.update(notice);
-			return "redirect:/notice/list";
+			return "redirect:/notice/view?n_num=" + notice.getN_num();
 			
 		} catch (Exception e) {
 			System.out.print(e);

@@ -25,41 +25,67 @@
 
 				<form class="user" method="post" action="/member/update">
 					<div class="form-group row">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<label>아이디</label> <input type="text"
-								class="form-control form-control-user" name="m_id"
+						<div class="col-md-4">
+							<label><b>ID</b></label> 
+							<input type="text"
+								class="form-control" name="m_id"
 								value="${member.m_id}" readonly>
 						</div>
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<label>패스워드</label> <input type="text"
-								class="form-control form-control-user" name="m_passwd"
-								value="${member.m_passwd}">
+						<div class="col-md-4">
+							<label><b>Password</b></label> 
+							<input type="text"
+								class="form-control" name="m_passwd"
+								value="${member.m_passwd}" readonly>
 						</div>
 					</div>
 					
 					<div class="form-group row">
-						<div class="col-sm-6">
-							<label>이름</label> <input type="text"
-								class="form-control form-control-user" name="m_name"
-								value="${member.m_name}">
+						<div class="col-md-4">
+							<label><b>First Name</b></label> 
+							<input type="text"
+								class="form-control" name="m_fname"
+								value="${member.m_fname}">
+						</div>
+						<div class="col-md-4">
+							<label><b>Last Name</b></label> 
+							<input type="text"
+								class="form-control" name="m_lname"
+								value="${member.m_lname}">
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-md-8">
+							<label><b>Full Name</b></label> 
+							<input type="text"
+								class="form-control" name="m_name"
+								value="${member.m_name}" readonly>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="mb-4 col-md-8">
+							<label><b>Email</b></label> 
+							<input type="text"
+								class="form-control" name="m_email"
+								value="${member.m_email}">
 						</div>
 					</div>
 					
 					
 					<div class="form-group row ">
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<label><b>등록일 :</b></label> 
-							${member.m_rdate}
+						<div class="col-md-8">
+							<p class="form-control"><b>Written Date : </b>
+							${member.m_rdate}</p>
 						</div>
 					
-						<div class="col-sm-6 mb-3 mb-sm-0">
-							<label><b>수정일 :</b></label> 
-							${member.m_udate}
+						<div class="col-md-8">
+							<p class="form-control"><b>Updated Date : </b>
+							${member.m_udate}</p>
 						</div>
 					</div>
 
-					<input type="submit" class="btn btn-primary btn-user btn-block"
-						value="Finish">
+					<input type="submit" class="mb-4 btn btn-primary"
+						value="Save">
 				</form>
 
 			</div>

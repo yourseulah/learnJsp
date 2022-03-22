@@ -36,6 +36,11 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
+	public int getTotalCount() {
+		return mapper.getTotalCount();
+	}
+	
+	@Override
 	public void update(NoticeVO notice) {
 		mapper.update(notice);
 	}
@@ -45,9 +50,6 @@ public class NoticeServiceImpl implements NoticeService {
 		mapper.delete(notice);
 	}
 	
-	@Override
-	public int getTotalCount() {
-		return mapper.getTotalCount();
-	}
+	
 	
 }
