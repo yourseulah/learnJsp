@@ -4,23 +4,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../include/header.jsp"%>
 
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
-	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">Board List</h1>
-	<p class="mb-4">
-	</p>
+<!-- Section-->
+<section class="py-5 px-4 mx-sm-5">
+    
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800" >Board List</h1>
+<p class="mb-4"></p>
 
 	<!-- DataTales Example -->
-	<div class="card shadow mb-4">
-		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary"><a href="/board2/insert">New</a><!-- &nbsp;${user}&nbsp;${age} --></h6>
-		<!-- 컨트롤러로 간다. /board/list/insert.jsp 이렇게 바로 못감 -->
+ 	 <div class="card shadow">
+		<div class="card-header px-4 py-2">
+			<a href="/board2/insert" class="btn btn-primary">Write</a>	
+			<!-- &nbsp;
+			<a href="/shop/list" class="btn btn-primary">Back</a> -->
 		</div>
-		<div class="card-body">
-			<div class="table-responsive">
-				<table class="table table-bordered" width="100%" cellspacing="0">
+		<div class="card-body px-4">
+			<div class="table-responsive mt-2">
+				<table class="table table-hover py-2" width="100%" cellspacing="0">
 					<thead>
 						<tr>
 							<th>No.</th>
@@ -69,9 +69,9 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+ 	</div> 
 
-</div>
+</section>
 <!-- /.container-fluid -->
 
 <%@include file="../include/footer.jsp"%>

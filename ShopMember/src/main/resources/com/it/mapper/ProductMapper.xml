@@ -18,8 +18,8 @@
 	</select>
 	
 	<update id="update">
-		update tblproduct set p_name = #{p_name}, p_price = #{p_price}
-		where p_code= #{p_code} 
+		update tblproduct set p_name = #{p_name}, p_price = #{p_price},
+		 p_soldout= #{p_soldout} where p_code= #{p_code} 
 	</update>
 	
 	<delete id="delete">

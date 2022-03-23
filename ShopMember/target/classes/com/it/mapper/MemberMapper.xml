@@ -14,10 +14,15 @@
 		select count(m_id) from tblmember
 	</select> -->
 	
-	<insert id="insert"> 
+	<!-- <insert id="insert"> 
 		insert into tblmember (m_id, m_passwd, m_fname, m_lname, m_email) 
 		values (#{m_id}, hex(aes_encrypt(#{m_passwd}, sha2('123!',512))), #{m_fname}, #{m_lname}, #{m_email}) 
-	</insert>
+	</insert> -->
+	
+	<insert id="insert"> 
+		insert into tblmember (m_id, m_passwd, m_fname, m_lname, m_email) 
+		values (#{m_id}, #{m_passwd}, #{m_fname}, #{m_lname}, #{m_email}) 
+	</insert> 
 	
 	<select id="read" resultType="com.it.domain.MemberVO"> <!-- 반환받는게 있을때 resultType써준다 -->
 		select * from tblmember where m_id = #{m_id}

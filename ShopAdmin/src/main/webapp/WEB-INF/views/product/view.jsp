@@ -26,10 +26,10 @@
 			</h6>
 		</div>
 
-		<div class="card-body">
+		<div class="card-body" >
 			<div class="table-responsive">
 				<div class="form-group row">
-					<div class="col-md-2">
+					<div class="col-md-4">
 						<label><b>Code</b></label> 
 						<input type="text" class="form-control"
 							value="${product.p_code}" readonly>
@@ -58,20 +58,31 @@
 					</div>
 				</div>
 				
+				<!-- Default switch -->
+			<div class="custom-control custom-switch mb-3">
+			<c:if test="${product.p_soldout == 1}">
+			  <input type="checkbox" class="custom-control-input" value="${product.p_soldout}" id="customSwitches" checked>
+			</c:if>
+			<c:if test="${product.p_soldout == 0}">
+			  <input type="checkbox" class="custom-control-input" value="${product.p_soldout}" id="customSwitches">
+			</c:if>
+			  <label class="custom-control-label" for="customSwitches">Sold Out</label>
+			</div>
+				
 				<div class="form-group row">
 					<div class="col-md-4">
-						<label><b>Registered Date :</b></label> 
-						<br>${product.p_rdate}
+						<label class="form-control"><b>Registered Date :</b>${product.p_rdate}</label> 
+						<br>
 					</div>
 
 					<div class="col-md-4">
-						<label><b>Edited Date : </b></label> 
-						<br>${product.p_udate}"
+						<label class="form-control"><b>Edited Date : </b>${product.p_udate}</label> 
+						<br>
 					</div>
 				</div>
 				
 				
-				<hr>
+				
 				<div class="form-group row">
 					<div class="col-sm-6">
 						<a class="btn btn-primary"

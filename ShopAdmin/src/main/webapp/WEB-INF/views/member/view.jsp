@@ -71,7 +71,7 @@
 
 				<div class="form-group row">
 					<div class="col-md-8">
-						<p class="form-control"><b>Registered Date : </b>${member.m_udate}"</p> 
+						<p class="form-control"><b>Registered Date : </b>${member.m_rdate}"</p> 
 					</div>
 
 					<div class="col-md-8">

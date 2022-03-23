@@ -155,11 +155,7 @@ public class ProductController {
 	public String update(HttpSession session, ProductVO product, Model model, PageDTO page) {
 		String a_id = (String)session.getAttribute("a_id");
 		if(a_id != null) {
-			log.info("---업데이트를 위한 번호 ---");
-			log.info(product);
 			product = service.read(product); 
-			log.info("---업데이트를 위한 데이터---");
-			log.info(product);
 			model.addAttribute("product", product);
 			model.addAttribute("page", page);
 			return "/product/update";
@@ -173,10 +169,13 @@ public class ProductController {
 	public String update(ProductVO product, PageDTO page) {
 		log.info("---업데이트데이터---");
 		log.info(product);
-		service.update(product); //업데이트
-		return "redirect:/product/view?p_code=" + product.getP_code() + "&pageNum=" + page.getPageNum();
-	}
+			
+		service.update(product); 
 	
+		
+		return "redirect:/product/view?p_code=" + product.getP_code() + "&pageNum=" + page.getPageNum();
+	
+	}
 	
 	
 

@@ -5,7 +5,6 @@
     <fullyQualifiedTypeName name="com.it.domain.BoardVO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.it.domain.MemberVO"/>
-    <fullyQualifiedTypeName name="com.it.domain.ProductVO"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="com.it.domain.CartsubVO"/>
@@ -28,4 +27,5 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.javassist.bytecode.Descriptor.Iterator"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.it.domain.ProductVO"/>
 </qualifiedTypeNameHistroy>

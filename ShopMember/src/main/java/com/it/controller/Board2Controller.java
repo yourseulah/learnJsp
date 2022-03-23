@@ -37,22 +37,23 @@ public class Board2Controller {
 	
 	@GetMapping("/list")
 	public String list(HttpSession session, Model model, PageDTO page) { 
-		
-			model.addAttribute("list", service.getList(page)); 
-			//getList로 조회한 모든 내용(출력시킬데이터)을 list 변수로 전달
-			int total = service.getTotalCount(); //전체레코드 갯수 뽑아내기
-			PageViewDTO pageview = new PageViewDTO(page, total);
-			//log.info(page);
-			//log.info(pageview);
-			model.addAttribute("pageview", pageview);
-			return "/board2/list";
-		
+			String m_id = (String)session.getAttribute("m_id");
+			if(m_id != null) {
+				model.addAttribute("list", service.getList(page)); 
+				int total = service.getTotalCount(); 
+				PageViewDTO pageview = new PageViewDTO(page, total);
+				//log.info(page);
+				//log.info(pageview);
+				model.addAttribute("pageview", pageview);
+				return "/board2/list";	
+			}
+			return "redirect:/member/login";
 	}
 	
 	@GetMapping("/insert")
 	public String insert (HttpSession session) {
-		String a_id = (String)session.getAttribute("a_id");
-		if(a_id != null) {
+		String m_id = (String)session.getAttribute("m_id");
+		if(m_id != null) {
 			return "/board2/insert";
 		} else {
 			return "redirect:/member/login";
@@ -159,8 +160,6 @@ public class Board2Controller {
 											// 로컬로 보내는 것이아닌 브라우저 서버로 보내는 것.
 				log.info(read);
 			}
-			
-			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -168,8 +167,8 @@ public class Board2Controller {
 	
 	@GetMapping("/view")
 	public String view(HttpSession session, Board2VO board, Model model, PageDTO page) {
-		String a_id = (String)session.getAttribute("a_id");
-		if(a_id != null) {
+		String m_id = (String)session.getAttribute("m_id");
+		if(m_id != null) {
 			board = service.read(board);
 			model.addAttribute("board", board);
 			model.addAttribute("page", page);
@@ -181,14 +180,14 @@ public class Board2Controller {
 	
 	@GetMapping("/update")
 	public String update(HttpSession session, Board2VO board, Model model, PageDTO page) {
-		String a_id = (String)session.getAttribute("a_id");
-		if(a_id != null) {
+		String m_id = (String)session.getAttribute("m_id");
+		if(m_id != null) {
 			board = service.read(board);
 			model.addAttribute("board", board);
 			model.addAttribute("page", page);
 			return "/board2/update";
 		} else {
-			return "redirect:/admin/login";
+			return "redirect:/member/login";
 		}
 	}
 	

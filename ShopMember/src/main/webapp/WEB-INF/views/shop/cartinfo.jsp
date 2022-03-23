@@ -5,7 +5,7 @@
 <%@include file="../include/header.jsp"%>
 
 <!-- Section-->
-<section class="py-5 px-4 px-lg-5 mt-5">
+<section class="py-5 px-4 px-lg-5 mt-2">
     
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800" >${carttotal.m_id}'s Cart</h1>

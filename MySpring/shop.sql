@@ -117,10 +117,12 @@ create table tblproduct(
 	p_code int not null primary key auto_increment,
 	p_name varchar(100) not null, 
 	p_price int not null,
+	p_soldout tinyint(1) not null default 0,
 	p_rdate TIMESTAMP default current_timestamp,
 	p_udate TIMESTAMP default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+-- p_status tinyint default1
 --p_status char(1) not null default 'A', A활성 B비활성
 alter table tblproduct auto_increment=1001; 
 -- 출력되는 경우 영수증 번호 자리수를 유지하기 위해 (4자리)

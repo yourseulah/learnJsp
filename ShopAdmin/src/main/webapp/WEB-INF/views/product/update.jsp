@@ -45,6 +45,19 @@
 						</div>
 				</div>
 				
+				<!-- Default switch -->
+			<div class="custom-control custom-switch mb-3">
+			<c:if test="${product.p_soldout == 1}">
+			 <input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="1" checked>
+			 <input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="0" >
+			</c:if>
+			<c:if test="${product.p_soldout == 0}">
+			<input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="1" checked>
+			<input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="0" >
+			</c:if>
+			  <label class="custom-control-label" for="customSwitches">Sold Out</label>
+			</div>
+				
 				<div class="form-group row">
 					<div class="col-md-4">
 						<label for="Name" class="form-label"><b>Registered Date: </b></label> 
