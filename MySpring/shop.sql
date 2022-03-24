@@ -117,6 +117,7 @@ create table tblproduct(
 	p_code int not null primary key auto_increment,
 	p_name varchar(100) not null, 
 	p_price int not null,
+	p_stock int not null,
 	p_soldout tinyint(1) not null default 0,
 	p_rdate TIMESTAMP default current_timestamp,
 	p_udate TIMESTAMP default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP

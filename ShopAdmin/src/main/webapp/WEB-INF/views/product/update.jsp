@@ -22,40 +22,47 @@
 		<div class="table-responsive">
 			<form class="user" method="post" action="/product/update">
 				<div class="form-group row">
-					<div class="col-md-2">
+					<div class="col-md-4">
 						<label><b>Code</b></label> 
 						<input type="text"
 							class="form-control" name="p_code"
 							value="${product.p_code}" readonly>
 						</div>
-				</div>
-					
-				<div class="form-group row">
 					<div class="col-md-4">
 						<label for="Name" class="form-label"><b>Name</b></label> 
 						<input type="text"
-								class="form-control" name="p_name"
-								value="${product.p_name}" id="Name">
+						class="form-control" name="p_name"
+						value="${product.p_name}" id="Name">
 					</div>
+				</div>
+					
+				<div class="form-group row">
 						<div class="col-md-4">
 							<label for="unitPrice" class="form-label"><b>Unit Price</b></label> 
 							<input type="text"
 								class="form-control" name="p_price"
 								value="${product.p_price}" id="unitPrice">
 						</div>
+						<div class="mb- col-md-4">
+							<label for="stock" class="form-label"><b>Stock</b></label> 
+							<input type="text"
+								class="form-control" name="p_stock"
+								value="${product.p_stock}" id="stock">
+						</div>
 				</div>
+				
 				
 				<!-- Default switch -->
 			<div class="custom-control custom-switch mb-3">
-			<c:if test="${product.p_soldout == 1}">
+			<c:if test="${product.p_soldout == 1 || product.p_stock == 0}">
 			 <input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="1" checked>
 			 <input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="0" >
 			</c:if>
-			<c:if test="${product.p_soldout == 0}">
-			<input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="1" checked>
-			<input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="0" >
+			<c:if test="${product.p_soldout == 0 || product.p_stock > 0}">
+			<input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="1">
+			<input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="0">
 			</c:if>
-			  <label class="custom-control-label" for="customSwitches">Sold Out</label>
+			  <label class="custom-control-label" for="customSwitches">Sold Out</label> 
 			</div>
 				
 				<div class="form-group row">

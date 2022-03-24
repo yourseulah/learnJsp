@@ -169,9 +169,7 @@ public class ProductController {
 	public String update(ProductVO product, PageDTO page) {
 		log.info("---업데이트데이터---");
 		log.info(product);
-			
 		service.update(product); 
-	
 		
 		return "redirect:/product/view?p_code=" + product.getP_code() + "&pageNum=" + page.getPageNum();
 	

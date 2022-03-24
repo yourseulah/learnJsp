@@ -17,8 +17,8 @@
 	</select>
 	
 	<insert id="insert"> 
-		insert into tblproduct (p_name, p_price) <!-- 테이블필드명 -->
-		values (#{p_name}, #{p_price}) 
+		insert into tblproduct (p_name, p_price, p_stock) <!-- 테이블필드명 -->
+		values (#{p_name}, #{p_price}, #{p_stock}) 
 	</insert>
 	
 	<select id="read" resultType="com.it.domain.ProductVO"> <!-- 반환받는게 있을때 resultType써준다 -->
@@ -26,7 +26,7 @@
 	</select>
 	
 	<update id="update">
-		update tblproduct set p_name = #{p_name}, p_price = #{p_price}, p_soldout = #{p_soldout}
+		update tblproduct set p_name = #{p_name}, p_price = #{p_price}, p_stock = #{p_stock}, p_soldout = #{p_soldout}
 		where p_code= #{p_code} 
 	</update>
 	

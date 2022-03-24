@@ -38,6 +38,7 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Logged in as ${m_id}</a>
                         	<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/member/view?m_id=${m_id}">My Setting</a></li>
+                                <li><a class="dropdown-item" href="#">My Order</a></li>
                                  <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="/shop/logout">Logout</a></li>
                             </ul>

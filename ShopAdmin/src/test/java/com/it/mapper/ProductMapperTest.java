@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.it.domain.PageDTO;
 import com.it.domain.ProductVO;
+import com.it.service.ProductService;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -19,8 +21,11 @@ public class ProductMapperTest {
 	@Setter(onMethod_ = @Autowired)
 	private ProductMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private ProductService service;
 	
-	@Test
+	
+	//@Test
 	public void testUpdate() {
 		ProductVO product = new ProductVO();
 		product.setP_code(1);
@@ -31,6 +36,12 @@ public class ProductMapperTest {
 		log.info(product);
 		product = mapper.read(product);
 		log.info(product);
+	}
+	
+	@Test
+	public void testList() {
+		PageDTO page = new PageDTO();
+		log.info(mapper.getList(page));
 	}
 	
 }

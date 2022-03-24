@@ -24,13 +24,21 @@
 			<div class="table-responsive">
 				<form class="user" method="post" action="/product/insert">
 					<div class="mb-3 col-md-6">
-  					<input type="text" class="form-control"
+					<label for="Name"><b>Product Name</b></label> 
+  					<input type="text" class="form-control" id="Name"
   					name ="p_name" placeholder="Product Name">
 					</div>
 					
 					<div class="mb-3 col-md-6">
-  					<input type="text" class="form-control" 
+					<label for= "price"><b>Unit Price</b></label> 
+  					<input type="text" class="form-control" id="price"
   					name ="p_price" placeholder="Unit Price">
+					</div>
+					
+					<div class="mb-3 col-md-6">
+					<label for= "stock"><b>Stock Available</b></label> 
+  					<input type="text" class="mb-5 form-control" id="stock"
+  					name ="p_stock" placeholder="Stock">
 					</div>
 					
 					<div class="mb-3 col-md-6">

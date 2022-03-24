@@ -26,7 +26,7 @@
 			</h6>
 		</div>
 
-		<div class="card-body" >
+		<div class="card-body">
 			<div class="table-responsive">
 				<div class="form-group row">
 					<div class="col-md-4">
@@ -34,24 +34,29 @@
 						<input type="text" class="form-control"
 							value="${product.p_code}" readonly>
 					</div>
-				</div>
-				<div class="form-group row">
 					<div class="col-md-4">
 						<label><b>Name</b></label>
 						<input type="text" class="form-control"
 							value="${product.p_name}" readonly>
 					</div>
+				</div>
+				<div class="form-group row">
 					<div class="col-md-4">
 						<label><b>Unit Price</b></label> 
 						<input type="text" class="form-control"
 							value="${product.p_price}" readonly>
 					</div>
+					<div class="col-md-4">
+						<label><b>Stock Available</b></label> 
+						<input type="text" class="form-control"
+							value="${product.p_stock}" readonly>
+					</div>
 				</div>
 
-				<div class="form-group row">
+				<div class="mt-4 form-group row">
 					<div class="col-md-8">
 						<p>
-							<img src="/resources/product/${product.p_code}.jpg" height="250">
+							<img src="/resources/product/${product.p_code}.jpg" height="280">
 						</p>
 						<input type="button" value="Image" class="btn btn-secondary"
 							onclick="ImgWinOpen('${product.p_code}')">
@@ -59,11 +64,11 @@
 				</div>
 				
 				<!-- Default switch -->
-			<div class="custom-control custom-switch mb-3">
-			<c:if test="${product.p_soldout == 1}">
+			<div class="mt-4 mb-4 custom-control custom-switch">
+			<c:if test="${product.p_soldout == 1 || product.p_stock == 0}">
 			  <input type="checkbox" class="custom-control-input" value="${product.p_soldout}" id="customSwitches" checked>
 			</c:if>
-			<c:if test="${product.p_soldout == 0}">
+			<c:if test="${product.p_soldout == 0 || product.p_stock > 0}">
 			  <input type="checkbox" class="custom-control-input" value="${product.p_soldout}" id="customSwitches">
 			</c:if>
 			  <label class="custom-control-label" for="customSwitches">Sold Out</label>
@@ -71,12 +76,14 @@
 				
 				<div class="form-group row">
 					<div class="col-md-4">
-						<label class="form-control"><b>Registered Date :</b>${product.p_rdate}</label> 
+						<label><b>Registered Date :</b></label> 
+						${product.p_rdate}
 						<br>
 					</div>
 
 					<div class="col-md-4">
-						<label class="form-control"><b>Edited Date : </b>${product.p_udate}</label> 
+						<label><b>Edited Date : </b></label> 
+						${product.p_udate}
 						<br>
 					</div>
 				</div>

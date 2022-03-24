@@ -26,6 +26,7 @@
 							<th>Product Code</th>
 							<th>Product Name</th>
 							<th>Unit Price</th>
+							<th>Stock</th>
 							<th>Image</th>
 							<th>Updated Date</th>
 							<th>Edited Date</th>
@@ -40,6 +41,7 @@
 								<td><a href="/product/view?p_code=${product.p_code}">${product.p_name}</a></td>
 								<!--get방식에서는 띄어쓰기 X, &으로 여러개 넘길수도 있음-->
 								<td><fmt:formatNumber value="${product.p_price}"/></td>
+								<td><fmt:formatNumber value="${product.p_stock}"/></td>
 								<td><img src="/resources/product/${product.p_code}.jpg" height="70"></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${product.p_rdate}"/></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${product.p_udate}"/></td>

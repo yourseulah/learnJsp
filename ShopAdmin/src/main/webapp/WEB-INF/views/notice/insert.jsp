@@ -26,8 +26,9 @@
 			
 				<!-- javascript 사용해서 제출 해보기, 
 				 method="post" action="/notice/insert" 지우고 name 부여-->
-				<form class="user" name="writefrm" enctype="multipart/form-data">
-					<div class="form-group row">
+				<form class="user" name="writefrm"
+				enctype="multipart/form-data">
+					<div class="form-group row mt-3">
 						<div class="mb-3 col-md-4">
 							<input type="text" class="form-control"
 							 name="n_subject" id="id_subject" placeholder="Title">
@@ -39,8 +40,8 @@
 					</div>
 					<div class="form-group row">	
 						<div class="mb-3 col-md-8">
-						<textarea rows="10" class="form-control" name="n_contents"
-						placeholder="content"></textarea>
+						<textarea rows="10"class="form-control" 
+						name="n_contents" placeholder="content"></textarea>
 						</div>
 					</div>
 					
@@ -53,16 +54,18 @@
 					
 					<div class="form-group row">
 						<div class="mb-3 col-md-8">
-							<input type="button" class="btn btn-primary" 
+							<input type="button"  class="btn btn-primary" 
 							onclick="writeform();" value="Post">
 						</div>
 					</div>
 					<!-- type을 submit에서 button으로 처리하고 javascript onclick 사용해보기 -->
+					<!-- 수많은 제어를 하고 싶을때 type="submit" 이 아니라 javascript로 할수 있다. -->
+					
 					
 					<!-- <a href="javascript:writeform2();">글쓰기2</a> -->
 					<!-- button이 아닌 hyperlink도 가능, javascript를 링크로 호출하겠다는 것 -->
+					<!-- board2 insert 참조  -->
 					
-					<!-- 수많은 제어를 하고 싶을때 type="submit" 이 아니라 javascript로 할수 있다. -->
 				</form>
 			</div>
 		</div>

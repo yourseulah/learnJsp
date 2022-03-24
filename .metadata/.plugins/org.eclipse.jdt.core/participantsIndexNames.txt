@@ -21,6 +21,8 @@ C:\myWorkSpace\learnJsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\53
 \ShopAdmin\src\main\java
 C:\myWorkSpace\learnJsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3750260232.index
 \ShopAdmin\src\main\java
+C:\myWorkSpace\learnJsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\627912568.index
+\ShopAdmin\src\main\java
 C:\myWorkSpace\learnJsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\138358022.index
 \MySpring\src\main\java
 C:\myWorkSpace\learnJsp\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\399420868.index

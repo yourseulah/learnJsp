@@ -1,3 +1,4 @@
+
 function writeform() {
 		var thisform = document.writefrm; //폼 저장 
 		thisform.method = "post";
@@ -28,5 +29,43 @@ function boardform() {
 			thisform.submit(); // 폼 전송
 		}
 	};
+
+/*
+//jQuery 시작 - multipart일때는 이렇게 쓸수 x MySpring가서 multipart처리 안되어있는 notice에서 확인해보기
+$(document).ready(function() { //현재 페이지가 시작될때 처리할 내용을 작성 (ready)
+	$("#id_btn").click(function() { //버튼이 클릭될 때 처리할 내용을 작성 (click)
+		//alert('테스트버튼');
+		//alert($("#id_subject").val()); //그 명칭안에 들어있는 값(value)
+		if($("#id_subject").val() == '') {
+			alert('Please fill in title');
+		} else if ($("#id_contents").val() == '') {
+			alert('Please fill in content');
+		} else { 
+		$("id_writeform").submit(); //폼에 소속된 객체의 내용을 전송
+		}
+	});
+});
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	

@@ -4,6 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../include/header.jsp"%>
     
+    
+<script src="/resources/js/my.js"></script>  
+    
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -22,27 +25,30 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<form class="user" method="post" action="/notice/insert">
+				<form class="user" method="post" action="/notice/insert"
+				 id="id_writeform">
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
 						<label>제목</label>
 							<input type="text" class="form-control form-control-user"
-							 name="n_subject" placeholder="제목">
+							 name="n_subject" id="id_subject" placeholder="제목">
 						</div>
 						<div class="col-sm-6">
 						<label>작성자</label>
 							<input type="text" class="form-control form-control-user"
-								name="n_name" placeholder="작성자">
+							name="n_name" id= "id_name" placeholder="작성자">
 						</div>
 					</div>
 					<div class="form-group">
 						<label>내용</label>
 						<textarea rows="10" class="form-control" name="n_contents"
-							placeholder="내용"></textarea>
+						 id= "id_contents"	placeholder="내용"></textarea>
 					</div>
 
-					<input type="submit" class="btn btn-primary btn-user btn-block">
-
+					<input type="button" id="id_btn" value="저장"
+					class="btn btn-primary btn-user btn-block">
+					<!-- Jquery로 사용해보기  -->
+					<!-- type="submit"대신에 "button"으로 바꿔주고-->
 				</form>
 			</div>
 		</div>

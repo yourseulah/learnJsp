@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../include/header.jsp"%>
 
+
 <script src="/resources/js/my.js"></script>   
 
 <!-- Begin Page Content -->

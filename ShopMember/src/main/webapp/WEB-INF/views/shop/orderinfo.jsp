@@ -8,8 +8,8 @@
 <section class="py-5 px-4 px-lg-5 mt-5">
 
 	<!-- Page Heading -->
-	<%-- <h1 class="h3 mb-2 text-gray-800">${ordertotal.m_id}'s Order</h1>
-	<p class="mb-4"></p> --%>
+	<h1 class="h3 mb-2 text-gray-800">${ordertotal.m_id}'s Order</h1>
+	<p class="mb-4"></p> 
 
 	<!-- DataTales Example -->
 	<a href="/shop/list" class="btn btn-primary">Back to list</a>
@@ -43,7 +43,7 @@
 			</c:forEach>
 			<tr align="right">
 				<td colspan="7" style="font-weight: bold">총금액 : <fmt:formatNumber
-						value="${ordertotal.om_total}" pattern="#,###" />원 <!-- om_code있을때만 전체삭제나타나도록 -->
+						value="${ordertotal.om_total}" pattern="#,###" />원 
 					&nbsp;
 				</td>
 			</tr>
