@@ -42,7 +42,7 @@
 								<!--get방식에서는 띄어쓰기 X, &으로 여러개 넘길수도 있음-->
 								<td><fmt:formatNumber value="${product.p_price}"/></td>
 								<td><fmt:formatNumber value="${product.p_stock}"/></td>
-								<td><img src="/resources/product/${product.p_code}.jpg" height="70"></td>
+								<td><img src="/resources/product/${product.p_code}.jpg" height="60"></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${product.p_rdate}"/></td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${product.p_udate}"/></td>
 							</tr>

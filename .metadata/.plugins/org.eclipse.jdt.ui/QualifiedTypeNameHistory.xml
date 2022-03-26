@@ -28,4 +28,5 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.it.domain.ProductVO"/>
     <fullyQualifiedTypeName name="com.it.domain.PageDTO"/>
+    <fullyQualifiedTypeName name="com.it.domain.OrderListDTO"/>
 </qualifiedTypeNameHistroy>

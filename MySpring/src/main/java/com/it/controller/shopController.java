@@ -152,7 +152,8 @@ public class shopController {
 				//redirect 사용할경우 : 처리할 내용이 Controller에 있을때. 컨트롤러의 메서드를 호출후에 jsp로 이동, 
 				//redirect 사용하지않을경우 : 처리할 내용이 Controller에 없을때. jsp 페이지로 바로 이동한다
 			}
-	
 	}
+	
+
 
 }

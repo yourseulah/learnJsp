@@ -115,7 +115,7 @@ public class ProductController {
 	}
 	
 	@PostMapping ("/imgupload")
-	public void imgupload(HttpServletRequest request) {
+	public String imgupload(HttpServletRequest request) {
 		DiskFileUpload upload = new DiskFileUpload(); // 모든데이터(파일포함)전송컴포넌트객체 생성
 		try {
 			List items = upload.parseRequest(request); //웹브라우저 전송 객체 생성해서 업로드컴포넌트에 전달
@@ -149,7 +149,14 @@ public class ProductController {
 		} catch (Exception e) {
 			System.out.print(e);
 		}
+		return "product/imgupload_end";
 	}
+	
+	@GetMapping ("/imgupload_end")
+	public void imgupload_end() {
+		//창닫기를 위한 임시 url
+	}
+	
 	
 	@GetMapping("/update")
 	public String update(HttpSession session, ProductVO product, Model model, PageDTO page) {

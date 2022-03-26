@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.it.domain.CartmainVO;
 import com.it.domain.CartsubVO;
+import com.it.domain.OrderListDTO;
 import com.it.domain.OrderdetailDTO;
 import com.it.domain.OrdermainVO;
 import com.it.domain.OrdermemberDTO;
@@ -27,6 +28,20 @@ public class OrderServiceImpl implements OrderService {
 	@Setter(onMethod_ = @Autowired)
 	private CartMapper cartmapper;
 	
+	
+	@Override public List<OrderListDTO> getOrderList(OrderListDTO orderlist) { 
+		return ordermapper.getOrderList(orderlist); 
+	}
+
+	/*
+	 * @Override public List<OrderListDTO> getOrderList(OrderListDTO orderlist,
+	 * PageDTO page) { return ordermapper.getOrderList(orderlist, page); }
+	 */
+	
+	
+	/*
+	 * @Override public int getTotalCount() { return ordermapper.getTotalCount(); }
+	 */
 	
 	@Override
 	public OrdermainVO orderproc(CartmainVO cartmain) { //om_code 반환(주문리스트에서 사용)
@@ -57,7 +72,6 @@ public class OrderServiceImpl implements OrderService {
 		cartmapper.deletemain(cartmain); //장바구니 메인(영수증) 삭제 (cm_code활용)
 		
 		return ordermain;
-		
 	}
 	
 	@Override

@@ -25,8 +25,9 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<form class="user" method="post" action="/notice/insert"
-				 id="id_writeform">
+				<form class="user"id="id_writeform">
+				 <!-- form 안에 method="post" action="/notice/insert" 
+				 지우도 id만 남겨놓고 jQuery에서 실행 -->
 					<div class="form-group row">
 						<div class="col-sm-6 mb-3 mb-sm-0">
 						<label>제목</label>

@@ -10,10 +10,14 @@ $(document).ready(function() { //현재 페이지가 시작될때 처리할 내�
 		} else if ($("#id_contents").val() == '') {
 			alert('Please fill in content');
 		} else { 
+			$("#id_writeform").attr("method", "post");
+			$("#id_writeform").attr("action", "/notice/insert");
 			$("#id_writeform").submit(); //폼에 소속된 객체의 내용을 전송
 		}
 	});
 });
+
+
 
 
 

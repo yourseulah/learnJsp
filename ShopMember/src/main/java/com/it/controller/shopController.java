@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.it.domain.CartmainVO;
 import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
+import com.it.domain.OrderListDTO;
 import com.it.domain.OrdermainVO;
 import com.it.domain.OrdermemberDTO;
 import com.it.service.CartService;
@@ -38,6 +39,7 @@ public class shopController {
 	
 	@Setter(onMethod_ = @Autowired)
 	private OrderService orderservice;
+	
 	
 	@GetMapping("/list")
 	public void list(HttpSession session, Model model) { //Model 객체는 VO객체를(테이블 데이터를) 저장해서 list.jsp파일로 데이터 전달
@@ -162,12 +164,32 @@ public class shopController {
 								
 				return "/shop/orderinfo";
 			} else {
-				return "/member/login"; 
+				return "redirect:/member/login"; 
 				//redirect 사용할경우 : 처리할 내용이 Controller에 있을때. 컨트롤러의 메서드를 호출후에 jsp로 이동, 
 				//redirect 사용하지않을경우 : 처리할 내용이 Controller에 없을때. jsp 페이지로 바로 이동한다
 			}
 	}
 	
+	@GetMapping("/orderlist")
+	public String orderlist(HttpSession session, OrderListDTO orderlist, Model model) {
+		String m_id = (String)session.getAttribute("m_id");
+		String m_name = (String)session.getAttribute("m_name");
+		if(m_id != null) {
+			orderlist.setM_id(m_id);
+			model.addAttribute("list", orderservice.getOrderList(orderlist)); 
+			return "/shop/orderlist";
+		} else {
+			return "redirect:/member/login";
+		}
+		
+	}
+	
+	
+	/*OrdermemberDTO ordertotal = orderservice.getOrderTotal(ordermain); //om_total만 있으니까
+	ordertotal.setOm_code(ordermain.getOm_code()); //om_code 넣기
+	ordertotal.setM_id(m_id); // m_id 넣기
+	ordertotal.setM_name(m_name); //m_name 넣기
+	model.addAttribute("ordertotal", ordertotal); */
 	
 
 }

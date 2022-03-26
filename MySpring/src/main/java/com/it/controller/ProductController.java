@@ -75,7 +75,7 @@ public class ProductController {
 	}
 	
 	@PostMapping ("/imgupload")
-	public void imgupload(HttpServletRequest request) {
+	public String imgupload(HttpServletRequest request) {
 		DiskFileUpload upload = new DiskFileUpload(); // 모든데이터(파일포함)전전송컴포넌트객체 생성
 		try {
 			List items = upload.parseRequest(request); //웹브라우저 전송 객체 생성해서 업로드컴포넌트에 전달
@@ -104,11 +104,16 @@ public class ProductController {
 					//log.info(data);
 					File imgfile = new File(imgpath + "/" + p_code + ".jpg"); //파일객체 생성 (.jpg 파일만)
 					item.write(imgfile); //해당 경로에 파일 저장
-					
 				}
 			}
 		} catch (Exception e) {
 			System.out.print(e);
 		}
+		return "/product/imgupload_end";
+	}
+	
+	@GetMapping ("/imgupload_end")
+	public void imgupload_end() {
+		//창닫기를 위한 임시 url
 	}
 }

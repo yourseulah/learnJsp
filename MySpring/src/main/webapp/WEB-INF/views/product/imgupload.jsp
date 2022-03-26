@@ -9,7 +9,7 @@
 				opener.location.reload(); //부모창 갱신
 				window.close();
 			}
-		</script>
+		</script> 
 	</head>
 	<body>
 		<h3>상품 이미지 등록</h3>
