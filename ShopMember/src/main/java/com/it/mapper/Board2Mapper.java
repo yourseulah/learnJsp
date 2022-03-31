@@ -9,6 +9,8 @@ public interface Board2Mapper {
 	
 	public List<Board2VO> getList(PageDTO page);
 	
+	public int getTotalCount();
+	
 	public void insert(Board2VO board);
 	
 	public Board2VO read(Board2VO board);
@@ -16,6 +18,4 @@ public interface Board2Mapper {
 	public void update(Board2VO board);
 	
 	public void delete(Board2VO board);
-	
-	public int getTotalCount();
 }

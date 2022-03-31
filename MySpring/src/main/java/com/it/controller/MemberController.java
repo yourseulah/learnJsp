@@ -131,6 +131,4 @@ public class MemberController {
 		//로그아웃한 뒤에 home으로 가라
 		return "redirect:/";
 	}
-	
-	
 }

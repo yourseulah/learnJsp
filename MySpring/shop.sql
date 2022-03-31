@@ -94,7 +94,7 @@ drop table tbladmin;
 /* 고객테이블*/
 create table tblmember (
 	m_id varchar(50) not null primary key, -- 아이디 
-	m_passwd varchar(50) not null, -- 비밀번호
+	m_passwd varchar(256) not null, -- 비밀번호
 	m_fname varchar(50) not null,
 	m_lname varchar(50) not null,
 	m_name varchar(101) generated always as (concat(m_fname,' ',m_lname)), -- full name

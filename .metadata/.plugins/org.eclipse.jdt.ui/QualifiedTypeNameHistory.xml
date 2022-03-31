@@ -29,4 +29,7 @@
     <fullyQualifiedTypeName name="com.it.domain.ProductVO"/>
     <fullyQualifiedTypeName name="com.it.domain.PageDTO"/>
     <fullyQualifiedTypeName name="com.it.domain.OrderListDTO"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
+    <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <fullyQualifiedTypeName name="org.springframework.security.crypto.password.PasswordEncoder"/>
 </qualifiedTypeNameHistroy>

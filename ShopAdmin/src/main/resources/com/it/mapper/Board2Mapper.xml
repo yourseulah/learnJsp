@@ -7,8 +7,10 @@
 	<select id="getList" resultType="com.it.domain.Board2VO"> 
 		select * from tblboard2 order by b_num desc 
 		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
-		<!-- #는 문자열로 들어가고 작은따옴표가 붙고 : 연산이 자체가 안됨  $는 연산이 됨 
-		 가 아니라 (#{pageNum} -1)*#{pageAmount} -->
+		<!-- 
+		# : 연산X $ : 연산O
+		LIMIT: 행을 얼마나 가져올지
+		OFFSET: 어디서 부터 가져올지 -->
 	</select>
 	
 	<insert id="insert"> 

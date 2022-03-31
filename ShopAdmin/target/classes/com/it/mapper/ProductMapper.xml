@@ -6,11 +6,10 @@
 	
 	<select id="getList" resultType="com.it.domain.ProductVO"> 
 		select * from tblproduct order by p_code desc
-		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
-		<!-- pageNum-1 왜 1을 빼지??? -->
+	</select>
+		<!-- limit #{pageAmount} offset ${(pageNum-1)*pageAmount} -->
 		<!-- LIMIT: 행을 얼마나 가져올지 -->
 		<!-- OFFSET: 어디서 부터 가져올지 -->
-	</select>
 	
 	<select id="getTotalCount" resultType="int">
 		select count(p_code) from tblproduct

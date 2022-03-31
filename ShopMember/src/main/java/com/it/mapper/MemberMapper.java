@@ -8,7 +8,7 @@ public interface MemberMapper {
 
 		public List<MemberVO> getList();
 		
-		public void insert(MemberVO member);
+		public void regist(MemberVO member);
 		
 		//public MemberVO auth(MemberVO member); 좋은 방법이 아님 
 		

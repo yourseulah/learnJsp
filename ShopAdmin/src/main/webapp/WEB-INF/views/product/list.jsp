@@ -15,12 +15,14 @@
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-dark"><a href="/product/insert">New</a></h6>
+			<h6 class="m-0 font-weight-bold text-dark">
+				<a href="/product/insert">New</a>
+			</h6>
 		</div>
 		
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" width="100%" cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
 							<th>Product Code</th>
@@ -49,9 +51,8 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				
 				<!-- Pagination -->
-				<ul align="center">
+		<%-- 	<ul align="center">
 					<c:if test="${pageview.prev}">
 						<a href="/product/list?pageNum=1"><i class="fa-solid fa-angles-left"></i></a> &nbsp;&nbsp;
 						<a href="/product/list?pageNum=${pageview.startPage-1}"><i class="fa-solid fa-angle-left"></i></a> &nbsp;&nbsp;     
@@ -64,11 +65,12 @@
 							<a href="/product/list?pageNum=${num}">${num}</a> &nbsp;&nbsp;
 						</c:if>
 					</c:forEach>	
-					<c:if test="$pageview.next">
+					<c:if test="${pageview.next}">
 						<a href="/product/list?pageNum=${pageview.endPage+1}"><i class="fa-solid fa-angle-right"></i></a> &nbsp;&nbsp;
 						<a href="/product/list?pageNum=${pageview.realend}"><i class="fa-solid fa-angles-right"></i></a>
 					</c:if>
-				</ul>	
+				</ul> --%>
+				
 				
 			</div>
 		</div>

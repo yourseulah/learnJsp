@@ -1,12 +1,10 @@
 package com.it.mapper;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.it.domain.PageDTO;
 import com.it.domain.ProductVO;
 import com.it.service.ProductService;
 
@@ -38,10 +36,9 @@ public class ProductMapperTest {
 		log.info(product);
 	}
 	
-	@Test
-	public void testList() {
-		PageDTO page = new PageDTO();
-		log.info(mapper.getList(page));
-	}
+	/*
+	 * @Test public void testList() { PageDTO page = new PageDTO();
+	 * log.info(mapper.getList(page)); }
+	 */
 	
 }

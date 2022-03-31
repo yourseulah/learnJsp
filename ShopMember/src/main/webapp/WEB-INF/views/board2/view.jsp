@@ -70,10 +70,13 @@
 
 				<div class="form-group row">
 					<div class="col-sm-6 mb-5">
+						<c:if test="${m_name == board.b_name}">
+						<!-- login 세션에서 생성된 m_id, m_name은 굳이 controller에서 넘기지 않더라도 쓸수 있다. -->
 						<a class="btn btn-primary"
 						href="/board2/update?b_num=${board.b_num}&pageNum=${page.pageNum}">Update</a>
 						<a class="btn btn-secondary"
 						href="/board2/delete?b_num=${board.b_num}">Delete</a>
+						</c:if>
 					</div>
 				</div>
 			</div>

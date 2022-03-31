@@ -7,10 +7,6 @@
 <!-- Login Section-->
 <section style="height: 45vh">
 	<div class="container px-1 mt-5">
-		<!-- Page Heading -->
-		<!-- <h1
-			class="row gx-3 gx-lg-2 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">Login</h1>
-		<p class="mb-4"></p> -->
 
 		<div
 			class="row gx-3 gx-lg-2 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
@@ -19,8 +15,8 @@
 			<form class="user" method="post" action="/member/login">
 
 				<div class="mb-3">
-					<label for="InputId" class="form-label"><b>ID</b></label> <input
-						type="text" class="form-control" id="InputId" name="m_id">
+					<label for="InputId" class="form-label"><b>ID</b></label> 
+					<input type="text" class="form-control" id="InputId" name="m_id">
 				</div>
 
 				<div class="mb-3">
@@ -37,7 +33,7 @@
 
 				<button type="submit" class="mb-3 form-control btn btn-primary">Sign
 					in</button>
-				<a href="/member/insert" class="form-control btn btn-outline-dark">Create
+				<a href="/member/regist" class="form-control btn btn-outline-dark">Create
 					Account</a>
 			</form>
 

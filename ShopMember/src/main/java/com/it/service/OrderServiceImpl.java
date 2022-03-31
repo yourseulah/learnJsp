@@ -2,6 +2,7 @@ package com.it.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,15 @@ public class OrderServiceImpl implements OrderService {
 	@Setter(onMethod_ = @Autowired)
 	private CartMapper cartmapper;
 	
+	@Override
+	public List<OrderListDTO> getOrderList(@Param("pageNum") int pageNum, @Param("pageAmount") int pageAmount, @Param("m_id") String m_id) {
+		return ordermapper.getOrderList(pageNum, pageAmount, m_id);
+	}
+	
+	@Override
+	public int getTotalCount() {
+		return ordermapper.getTotalCount();
+	}
 	
 	@Override
 	public OrdermainVO orderproc(CartmainVO cartmain) { //om_code 반환(주문리스트에서 사용)
@@ -71,8 +81,5 @@ public class OrderServiceImpl implements OrderService {
 		return ordermapper.getOrderTotal(ordermain);
 	}			
 				
-	@Override
-	public List<OrderListDTO> getOrderList(OrderListDTO orderlist) {
-		return ordermapper.getOrderList(orderlist);
-	}
+	
 }

@@ -3,23 +3,8 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.mapper.MemberMapper">
-	
-<!-- ShopMember에서는 리스트를 볼 이유가 X -->	
-<!-- 	<select id="getList" resultType="com.it.domain.MemberVO"> 
-		select * from tblmember order by m_id 
-		limit #{pageAmount} offset ${(pageNum-1)*pageAmount}
-	</select>
-	
-	<select id="getTotalCount" resultType="int">
-		select count(m_id) from tblmember
-	</select> -->
-	
-	<!-- <insert id="insert"> 
-		insert into tblmember (m_id, m_passwd, m_fname, m_lname, m_email) 
-		values (#{m_id}, hex(aes_encrypt(#{m_passwd}, sha2('123!',512))), #{m_fname}, #{m_lname}, #{m_email}) 
-	</insert> -->
-	
-	<insert id="insert"> 
+		
+	<insert id="regist"> 
 		insert into tblmember (m_id, m_passwd, m_fname, m_lname, m_email) 
 		values (#{m_id}, #{m_passwd}, #{m_fname}, #{m_lname}, #{m_email}) 
 	</insert> 

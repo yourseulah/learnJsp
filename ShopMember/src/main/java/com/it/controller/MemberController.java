@@ -3,6 +3,7 @@ package com.it.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,24 +24,23 @@ public class MemberController {
 	@Setter(onMethod_ = @Autowired)
 	private MemberService service;
 	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 	@GetMapping("/list")
 	public void list(Model model) { 
 		model.addAttribute("list", service.getList()); 
-		//getList로 조회한 모든 내용을 list 변수로 전달
 	}
 	
-	@GetMapping("/insert")
-	public void insert () {
+	@GetMapping("/regist")
+	public void regist () {
 		//메세지를 호출만 함
 	}
 	
-	@PostMapping("/insert")
-	public String insert(MemberVO member) {
-		log.info("--------글쓰기시작--------");
+	@PostMapping("/regist")
+	public String regist(MemberVO member) {
+		service.regist(member); 
 		log.info(member);
-		service.insert(member); 
-
-		log.info("--------글쓰기완료--------");
 		return "redirect:/member/login"; 
 	}
 	
@@ -89,15 +89,20 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(MemberVO member, HttpSession session) {
+	public String login(MemberVO member, HttpSession session, String password) {
 		log.info(member);
 		
-		boolean chk = service.auth(member);
-		if(chk == true) {	
-			member = service.read(member); // auth로는 못가져와서 read로 id와 passwd 가져오기
-			//setAttribute (저장할변수이름, 변수값)
+		MemberVO storedId = service.read(member);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
+		log.info(storedId.getM_passwd());
+	
+		// matches(입력된 값, 데이터에 저장된값)
+		// 입력된 값을 인코딩 후 인코딩되어져 저장된 값과 비교하여 맞으면 로그인 성공
+		if(encoder.matches(member.getM_passwd(), storedId.getM_passwd())) {
 			session.setAttribute("m_id", member.getM_id()); //세션변수 생성
 			session.setAttribute("m_name", member.getM_name()); //세션변수 생성
+
 			log.info("로그인성공");
 			return "redirect: /shop/list";
 			
@@ -109,7 +114,6 @@ public class MemberController {
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		//세션처리용으로 session 
 		session.invalidate(); //세션 끊기, 관련된 모든 변수 삭제 
 		//로그아웃한 뒤에 home으로 가라
 		return "redirect:/";

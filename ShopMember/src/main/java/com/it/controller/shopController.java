@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.it.domain.CartmainVO;
 import com.it.domain.CartmemberDTO;
 import com.it.domain.CartsubVO;
-import com.it.domain.OrderListDTO;
 import com.it.domain.OrdermainVO;
 import com.it.domain.OrdermemberDTO;
+import com.it.domain.PageDTO;
+import com.it.domain.PageViewDTO;
 import com.it.service.CartService;
 import com.it.service.MemberService;
 import com.it.service.OrderService;
@@ -171,25 +172,25 @@ public class shopController {
 	}
 	
 	@GetMapping("/orderlist")
-	public String orderlist(HttpSession session, OrderListDTO orderlist, Model model) {
+	public String orderlist(HttpSession session, Model model, PageDTO page) {
 		String m_id = (String)session.getAttribute("m_id");
-		String m_name = (String)session.getAttribute("m_name");
+		/* String m_name = (String)session.getAttribute("m_name"); */
 		if(m_id != null) {
-			orderlist.setM_id(m_id);
-			model.addAttribute("list", orderservice.getOrderList(orderlist)); 
+			//orderlist.setM_id(m_id);
+			int pageNum = page.getPageNum();
+			int pageAmount = page.getPageAmount();
+			model.addAttribute("list", orderservice.getOrderList(pageNum, pageAmount, m_id)); 
+			
+			int total = orderservice.getTotalCount();
+			PageViewDTO pageview = new PageViewDTO(page, total);
+			model.addAttribute("pageview", pageview);
+
 			return "/shop/orderlist";
 		} else {
 			return "redirect:/member/login";
 		}
 		
 	}
-	
-	
-	/*OrdermemberDTO ordertotal = orderservice.getOrderTotal(ordermain); //om_total만 있으니까
-	ordertotal.setOm_code(ordermain.getOm_code()); //om_code 넣기
-	ordertotal.setM_id(m_id); // m_id 넣기
-	ordertotal.setM_name(m_name); //m_name 넣기
-	model.addAttribute("ordertotal", ordertotal); */
 	
 
 }

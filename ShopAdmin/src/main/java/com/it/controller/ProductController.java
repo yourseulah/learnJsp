@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it.domain.PageDTO;
-import com.it.domain.PageViewDTO;
 import com.it.domain.ProductVO;
 import com.it.service.ProductService;
 
@@ -33,19 +32,11 @@ public class ProductController {
 	private ProductService service;
 	
 	@GetMapping("/list")
-	public String list(HttpSession session, Model model, PageDTO page) { 
+	public String list(HttpSession session, Model model) { 
 		//log.info(service.getList());
 		String a_id = (String)session.getAttribute("a_id");
 		if(a_id != null) {  //id가 null값이 아니면 (id값이 있으면 = 로그인이 되면 = 세션이 열리면)
-			
-			int total = service.getTotalCount(); 
-			PageViewDTO pageview = new PageViewDTO(page, total);
-			log.info(page);
-			log.info(total);
-			model.addAttribute("pageview", pageview);
-			model.addAttribute("page", page);
-			
-			model.addAttribute("list", service.getList(page));
+			model.addAttribute("list", service.getList());
 			return "/product/list";
 			
 		} else { // id가 null값이면
