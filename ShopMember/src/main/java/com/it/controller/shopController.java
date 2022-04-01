@@ -162,7 +162,7 @@ public class shopController {
 				ordertotal.setM_id(m_id); // m_id 넣기
 				ordertotal.setM_name(m_name); //m_name 넣기
 				model.addAttribute("ordertotal", ordertotal); 
-								
+						
 				return "/shop/orderinfo";
 			} else {
 				return "redirect:/member/login"; 
@@ -189,7 +189,6 @@ public class shopController {
 		} else {
 			return "redirect:/member/login";
 		}
-		
 	}
 	
 

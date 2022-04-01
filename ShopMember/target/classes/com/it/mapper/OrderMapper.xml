@@ -5,7 +5,7 @@
 <mapper namespace="com.it.mapper.OrderMapper">
 	
 	<select id="getOrderList" resultType="com.it.domain.OrderListDTO">
-		select om.om_code, om.m_id, om.om_rdate, os.os_code, p.p_code, p.p_name, p.p_price, os.os_cnt, p.p_price*os.os_cnt os_money <!-- price*cnt : CartdetailDTO의 cs_money에 해당 --> 
+		select om.om_code, om.m_id, om.om_rdate, os.os_code, p.p_code, p.p_name, p.p_price, os.os_cnt, p.p_price*os.os_cnt os_money 
 		from tblproduct p, tblordersub os, tblordermain om
 		where p.p_code = os.p_code
 		and om.om_code = os.om_code 
@@ -22,7 +22,8 @@
 		insert into tblordermain (m_id) values (#{m_id})
 	</insert>
 	
-	<select id="readmainid" resultType="com.it.domain.OrdermainVO">  <!-- 주문을 여러번 했을수 있으니까 역순으로 조회해서 가장 최근걸 인출 -->
+	<select id="readmainid" resultType="com.it.domain.OrdermainVO">  
+	<!-- 주문을 여러번 했을수 있으니까 역순으로 조회해서 가장 최근걸 인출 -->
 		select * from tblordermain where m_id = #{m_id} order by om_code desc limit 1
 	</select>
 	

@@ -53,7 +53,9 @@ public class Board2Controller {
 	@GetMapping("/insert")
 	public String insert (HttpSession session) {
 		String m_id = (String)session.getAttribute("m_id");
+		String m_name = (String)session.getAttribute("m_name");
 		if(m_id != null) {
+			log.info(m_name);
 			return "/board2/insert";
 		} else {
 			return "redirect:/member/login";

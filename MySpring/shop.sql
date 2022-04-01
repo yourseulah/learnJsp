@@ -137,13 +137,12 @@ drop table tblproduct;
 create table tblcartmain (
 	cm_code int not null primary key auto_increment,
 	m_id varchar(50) not null, -- FK
-	-- 총금액을 적어놨다가 불일치 될수 있으니까 총금액 필드만들지 않고
-	-- 항상 실제 상품을 조회해서 가져오는것이 더 데이터를 안전하게 사용할수 있다. 이건 장바구니sub에서
 	cm_rdate datetime not null default sysdate(),
 	cm_udate datetime not null default sysdate(),
 	constraint foreign key (m_id) references tblmember(m_id) -- constraint 붙이고 안붙이고 상관없음 이름 주려면 필요
 );
-
+-- 총금액을 적어놨다가 불일치 될수 있으니까 총금액 필드만들지 않고
+-- 항상 실제 상품을 조회해서 가져오는것이 더 데이터를 안전하게 사용할수 있다. 이건 장바구니sub에서
 alter table tblcartmain auto_increment=1001;
 -- select * from tblcartmain;
 
@@ -173,7 +172,7 @@ create table tblordermain (
 );
 
 alter table tblordermain auto_increment=1001;
--- select * from tblordermain;
+select * from tblordermain;
 
 /* 주문 sub */
 create table tblordersub(
@@ -188,7 +187,7 @@ create table tblordersub(
 );
 
 alter table tblordersub auto_increment=1001;
--- select * from tblordersub;
+select * from tblordersub;
 
 /* 전체 테이블 삭제 코드 미리 만들어 놓기
 foreign key가 먼저 있는 것 부터

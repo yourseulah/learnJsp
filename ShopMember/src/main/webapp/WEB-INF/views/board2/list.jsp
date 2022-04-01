@@ -33,7 +33,8 @@
 					</thead>
 					<tbody>
 						<c:forEach items="${list}" var="board"> 
-						<!-- Controller에서 넘어온 list배열로부터 board변수에 각각 저장하고 forEach 반복구문으로 뽑아온다 -->
+						<!-- Controller에서 넘어온 list배열로부터 board변수에 
+						각각 저장하고 forEach 반복구문으로 뽑아온다 -->
 							<tr>
 								<td>${board.b_num}</td>
 								<td>

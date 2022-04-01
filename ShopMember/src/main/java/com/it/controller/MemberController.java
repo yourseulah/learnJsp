@@ -89,21 +89,22 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(MemberVO member, HttpSession session, String password) {
-		log.info(member);
+	public String login(MemberVO member, HttpSession session) {
+		//log.info(member);
 		
 		MemberVO storedId = service.read(member);
+		//log.info(storedId);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		//log.info(storedId.getM_passwd());
 		
-		log.info(storedId.getM_passwd());
-	
 		// matches(입력된 값, 데이터에 저장된값)
 		// 입력된 값을 인코딩 후 인코딩되어져 저장된 값과 비교하여 맞으면 로그인 성공
 		if(encoder.matches(member.getM_passwd(), storedId.getM_passwd())) {
-			session.setAttribute("m_id", member.getM_id()); //세션변수 생성
-			session.setAttribute("m_name", member.getM_name()); //세션변수 생성
-
+			session.setAttribute("m_id", storedId.getM_id()); //세션변수 생성
+			session.setAttribute("m_name", storedId.getM_name()); //세션변수 생성
+			log.info("member: "+ member);
 			log.info("로그인성공");
+			log.info(session.getAttribute("m_name"));
 			return "redirect: /shop/list";
 			
 		} else {

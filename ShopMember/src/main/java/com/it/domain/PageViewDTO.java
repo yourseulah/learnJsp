@@ -5,20 +5,16 @@ import lombok.Data;
 @Data
 public class PageViewDTO {
 
-	//화면에 뿌려줄 멤버변수 만들기
-	//시작과 끝번호
-	//이전 다음
-	//맨처음으로 맨끝으로 
-	private int startPage;
-	private int endPage;
-	private int realend;
-	private boolean prev;
+	private int startPage; //시작페이지
+	private int endPage; //끝페이지
+	private int realend; // 마지막페이지번호
+	private boolean prev; 
 	private boolean next;
-	
-	private int total;
+	private int total; //전체레코드수
 	
 	//PageDTO를 객체로 받기
-	PageDTO page; //입력된 page로 나머지 변수를 계산
+	//입력된 page로 나머지 변수를 계산
+	PageDTO page;
 	
 	public PageViewDTO(PageDTO page, int total) { //현재 페이지와 전체 레코드 개수 전달
 		this.page = page;
@@ -37,6 +33,4 @@ public class PageViewDTO {
 		this.prev = this.startPage > 1; //최소한 시작이 11페이지일 경우 참
 		this.next = this.endPage < this.realend; //endPage는 시시각각 바뀌는 값이고 realend값은 고정값 따라서 참, 거짓 둘다 나올수 있음
 	}
-	     
-	
 }

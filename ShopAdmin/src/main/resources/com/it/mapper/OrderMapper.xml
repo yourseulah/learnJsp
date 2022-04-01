@@ -5,11 +5,14 @@
 <mapper namespace="com.it.mapper.OrderMapper">
 
 	<select id="getOrderList" resultType="com.it.domain.OrderListDTO">
-		select om.om_code, om.m_id, om.om_rdate, os.os_code, p.p_code, p.p_name, p.p_price, os.os_cnt, p.p_price*os.os_cnt os_money <!-- price*cnt : CartdetailDTO의 cs_money에 해당 --> 
+		select 
+			om.om_code, om.m_id, om.om_rdate, os.os_code, p.p_code, 
+			p.p_name, p.p_price, os.os_cnt, sum(p.p_price*os.os_cnt) os_money
 		from tblproduct p, tblordersub os, tblordermain om 
 		where p.p_code = os.p_code
 		and om.om_code = os.om_code
-		order by om.om_code desc 
+		group by om.om_code, p.p_name desc
+   		with rollup;
 	</select>
 
 </mapper>

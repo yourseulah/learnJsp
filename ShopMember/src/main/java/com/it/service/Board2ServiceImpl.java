@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j	
 @Service 
 public class Board2ServiceImpl implements Board2Service {
-		//mapper에서 하던일을 자바코드로 만드는 과정
+		
 		@Setter(onMethod_ = @Autowired)
 		private Board2Mapper mapper;
 		
@@ -29,13 +29,13 @@ public class Board2ServiceImpl implements Board2Service {
 			return mapper.getTotalCount();
 		}
 		
-		@Override //BoardService인터페이스에서 선언된 메서드 이름과 동일하게 
+		@Override 
 		public Board2VO read(Board2VO board) {
 			return mapper.read(board);
 		}
 		
 		@Override
-		public void insert(Board2VO board) { //사용자로부터(맨위계층-웹브라우저에서) 내려오는 내용
+		public void insert(Board2VO board) { 
 			mapper.insert(board);
 		}
 		
