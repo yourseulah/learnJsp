@@ -245,6 +245,7 @@ public class Board2Controller {
 		return "redirect:/board2/view?b_num=" + board.getB_num() + "&pageNum=" + page.getPageNum();
 	}
 	
+	
 	@GetMapping("/delete")
 	public String delete(Board2VO board) {
 		service.delete(board);

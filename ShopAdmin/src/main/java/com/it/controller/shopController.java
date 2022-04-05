@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.it.domain.OrderListDTO;
-import com.it.service.CartService;
-import com.it.service.MemberService;
 import com.it.service.OrderService;
-import com.it.service.ProductService;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -21,15 +18,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/shop/")
 public class shopController {
-
-	@Setter(onMethod_ = @Autowired)
-	private ProductService productservice;
-
-	@Setter(onMethod_ = @Autowired)
-	private MemberService memberservice;
-
-	@Setter(onMethod_ = @Autowired)
-	private CartService cartservice;
 
 	@Setter(onMethod_ = @Autowired)
 	private OrderService orderservice;

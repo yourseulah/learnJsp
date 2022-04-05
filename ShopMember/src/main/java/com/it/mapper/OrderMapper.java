@@ -13,6 +13,7 @@ import com.it.domain.OrdersubVO;
 public interface OrderMapper {
 	
 	public List<OrderListDTO> getOrderList(@Param("pageNum") int pageNum, @Param("pageAmount") int pageAmount, @Param("m_id") String m_id);
+	//public List<OrderListDTO> getOrderList(OrderListDTO orderlist);
 	
 	public int getTotalCount();
 	

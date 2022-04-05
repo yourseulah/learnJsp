@@ -22,11 +22,6 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.getList();
 	}
 	
-	/*
-	 * @Override public List<ProductVO> getList(PageDTO page) { return
-	 * mapper.getList(page); }
-	 */
-	
 	@Override
 	public int getTotalCount() {
 		return mapper.getTotalCount();
@@ -38,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public void insert(ProductVO product) { //사용자로부터(맨위계층-웹브라우저에서) 내려오는 내용
+	public void insert(ProductVO product) { 
 		mapper.insert(product);
 	}
 	

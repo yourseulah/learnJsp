@@ -63,7 +63,7 @@
 					</div>
 				</div>
 				
-				<!-- Default switch -->
+			<!-- Default switch -->
 			<div class="mt-4 mb-4 custom-control custom-switch">
 			<c:if test="${product.p_soldout == 1 || product.p_stock == 0}">
 			  <input type="checkbox" class="custom-control-input" value="${product.p_soldout}" id="customSwitches" checked>
@@ -87,8 +87,6 @@
 						<br>
 					</div>
 				</div>
-				
-				
 				
 				<div class="form-group row">
 					<div class="col-sm-6">

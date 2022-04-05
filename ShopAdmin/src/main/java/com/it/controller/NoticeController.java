@@ -57,9 +57,9 @@ public class NoticeController {
 	@GetMapping("/insert")
 	public String insert(HttpSession session, Model model) {
 		String a_id = (String)session.getAttribute("a_id");
-		String a_name = (String)session.getAttribute("a_name");
+		/* String a_name = (String)session.getAttribute("a_name"); */
 		if(a_id != null) {
-			model.addAttribute("a_name", a_name);
+			/* model.addAttribute("a_name", a_name); */
 			//log.info("관리자이름: " + a_name);
 			return "/notice/insert";
 		} else {

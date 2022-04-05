@@ -162,8 +162,6 @@ public class Board2Controller {
 											// 로컬로 보내는 것이아닌 브라우저 서버로 보내는 것.
 				log.info(read);
 			}
-			
-			
 		} catch (Exception e) {
 			System.out.println(e);
 		}

@@ -52,7 +52,7 @@
 				</div>
 				
 				
-				<!-- Default switch -->
+			<!-- Default switch -->
 			<div class="custom-control custom-switch mb-3">
 			<c:if test="${product.p_soldout == 1 || product.p_stock == 0}">
 			 <input type="checkbox" class="custom-control-input" name="p_soldout" id="customSwitches" value="1" checked>

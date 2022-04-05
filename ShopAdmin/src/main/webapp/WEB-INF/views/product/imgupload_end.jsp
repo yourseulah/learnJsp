@@ -14,7 +14,7 @@
 	<body onload="winclose();"> 
 	<!-- onload: Page가 나타남과동시에 처리하는 기능 : 열리자마자 닫아라 -->
 	<!-- onload: body에 꼭 해줘야 한다 -->
-		<h1>이동된 페이지</h1>
+	<h1>이동된 페이지</h1>
 		
 	</body>
 </html>   

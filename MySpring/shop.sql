@@ -123,8 +123,6 @@ create table tblproduct(
 	p_udate TIMESTAMP default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- p_status tinyint default1
---p_status char(1) not null default 'A', A활성 B비활성
 alter table tblproduct auto_increment=1001; 
 -- 출력되는 경우 영수증 번호 자리수를 유지하기 위해 (4자리)
 -- 단, 부족하지 않게. 쇼핑몰 매출 규모에 맞게 (8자리 이상 등)
